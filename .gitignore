@@ -1,6 +1,18 @@
+## Solution
+.vscode/*
+
+## GrappleGame:
 GrappleGame/.vscode/*
-GrappleGame/Library/*
 GrappleGame/Library/*
 GrappleGame/Logs/*
 GrappleGame/Temp/*
 GrappleGame/UserSettings/*
+GrappleGame/Build/*
+
+## GrappleGameServer:
+GrappleGameServer/.vscode/*
+GrappleGameServer/Library/*
+GrappleGameServer/Logs/*
+GrappleGameServer/Temp/*
+GrappleGameServer/UserSettings/*
+GrappleGameServer/Build/*
