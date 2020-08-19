@@ -3,3 +3,5 @@ Grapplegame/Logs/*
 Grapplegame/Temp/*
 Grapplegame/UserSettings/*
 GrappleGame/Library/*
+GrappleGame/.vs/*
+GrappleGame/obj/*
