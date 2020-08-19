@@ -85,4 +85,9 @@ public class Player : MonoBehaviour
         inputs = _inputs;
         transform.rotation = _rotation;
     }
+
+    public void Disconnect()
+    {
+        ServerSend.PlayerDisconnect(this);
+    }
 }

@@ -128,5 +128,15 @@ public class ServerSend
             SendUDPDataToAll(_player.id, _packet);
         }
     }
+
+    public static void PlayerDisconnect(Player _player)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.playerDisconnect))
+        {
+            _packet.Write(_player.id);
+
+            SendTCPDataToAll(_player.id, _packet);
+        }
+    }
     #endregion
 }

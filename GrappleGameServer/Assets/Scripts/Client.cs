@@ -250,5 +250,7 @@ public class Client
 
         tcp.Disconnect();
         udp.Disconnect();
+
+        player.Disconnect();
     }
 }
