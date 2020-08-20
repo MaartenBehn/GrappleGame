@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
     }
 
-    float horizontalRotation;
-    float verticalRotation;
     bool grounded = false;
     Vector3 groundNormal;
 
@@ -42,10 +40,9 @@ public class PlayerController : MonoBehaviour
         {
             // Rotation on Ground
             float _mouseHorizontal = Input.GetAxis("Mouse X");
-            horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
 
-            transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
-            transform.rotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+            transform.rotation = Quaternion.FromToRotation(transform.rotation * Vector3.up, groundNormal) * transform.rotation;
+            transform.Rotate(0f, _mouseHorizontal * sensitivity * Time.deltaTime, 0f);
 
             // Movment on Ground
             Vector3 speed = input * walkSpeed;
@@ -57,9 +54,7 @@ public class PlayerController : MonoBehaviour
             float _mouseVertical = -Input.GetAxis("Mouse Y");
             float _mouseHorizontal = Input.GetAxis("Mouse X");
 
-            verticalRotation += _mouseVertical * sensitivity * Time.deltaTime;
-            horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
-            transform.localRotation = Quaternion.Euler(0f, horizontalRotation, verticalRotation);
+            transform.Rotate(0f, _mouseHorizontal * sensitivity * Time.deltaTime, _mouseVertical * sensitivity * Time.deltaTime);
 
             // Movment in Space
             Vector3 speed = input * jetpackSpeed;
@@ -78,12 +73,12 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        groundNormal = collisionInfo.contacts[0].normal;
+        SetGroundNormal(collisionInfo);
         grounded = true;
     }
     void OnCollisionStay(Collision collisionInfo)
     {
-        groundNormal = collisionInfo.contacts[0].normal;
+        SetGroundNormal(collisionInfo);
         grounded = true;
     }
 
@@ -96,5 +91,17 @@ public class PlayerController : MonoBehaviour
     {
         groundNormal = Vector3.zero;
         grounded = false;
+    }
+
+    void SetGroundNormal(Collision collisionInfo)
+    {
+        if (collisionInfo.gameObject.transform.tag.Equals("InverseSpehere"))
+        {
+            groundNormal = ((collisionInfo.gameObject.transform.position - transform.position).normalized);
+        }
+        else
+        {
+            groundNormal = collisionInfo.contacts[0].normal;
+        }
     }
 }
