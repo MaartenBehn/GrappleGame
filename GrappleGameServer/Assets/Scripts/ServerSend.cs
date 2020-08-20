@@ -76,9 +76,9 @@ public class ServerSend
     /// <summary>Sends a welcome message to the given client.</summary>
     /// <param name="_toClient">The client to send the packet to.</param>
     /// <param name="_msg">The message to send.</param>
-    public static void Welcome(int _toClient, string _msg)
+    public static void ServerConnection(int _toClient, string _msg)
     {
-        using (Packet _packet = new Packet((int)ServerPackets.welcome))
+        using (Packet _packet = new Packet((int)ServerPackets.serverConnection))
         {
             _packet.Write(_msg);
             _packet.Write(_toClient);
@@ -90,9 +90,9 @@ public class ServerSend
     /// <summary>Tells a client to spawn a player.</summary>
     /// <param name="_toClient">The client that should spawn the player.</param>
     /// <param name="_player">The player to spawn.</param>
-    public static void SpawnPlayer(int _toClient, Player _player)
+    public static void PlayerEnter(int _toClient, Player _player)
     {
-        using (Packet _packet = new Packet((int)ServerPackets.spawnPlayer))
+        using (Packet _packet = new Packet((int)ServerPackets.playerEnter))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.username);
@@ -103,39 +103,25 @@ public class ServerSend
         }
     }
 
-    /// <summary>Sends a player's updated position to all clients.</summary>
-    /// <param name="_player">The player whose position to update.</param>
-    public static void PlayerPosition(Player _player)
+    public static void PlayerLeave(Player _player)
     {
-        using (Packet _packet = new Packet((int)ServerPackets.playerPosition))
-        {
-            _packet.Write(_player.id);
-            _packet.Write(_player.transform.position);
-
-            SendUDPDataToAll(_packet);
-        }
-    }
-
-    /// <summary>Sends a player's updated rotation to all clients except to himself (to avoid overwriting the local player's rotation).</summary>
-    /// <param name="_player">The player whose rotation to update.</param>
-    public static void PlayerRotation(Player _player)
-    {
-        using (Packet _packet = new Packet((int)ServerPackets.playerRotation))
-        {
-            _packet.Write(_player.id);
-            _packet.Write(_player.transform.rotation);
-
-            SendUDPDataToAll(_player.id, _packet);
-        }
-    }
-
-    public static void PlayerDisconnect(Player _player)
-    {
-        using (Packet _packet = new Packet((int)ServerPackets.playerDisconnect))
+        using (Packet _packet = new Packet((int)ServerPackets.playerLeave))
         {
             _packet.Write(_player.id);
 
             SendTCPDataToAll(_player.id, _packet);
+        }
+    }
+
+    public static void ClientTransformUpdate(Player _player)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.clientTransformUpdate))
+        {
+            _packet.Write(_player.id);
+            _packet.Write(_player.transform.position);
+            _packet.Write(_player.transform.rotation);
+
+            SendUDPDataToAll(_player.id, _packet);
         }
     }
     #endregion

@@ -50,7 +50,7 @@ public class Client
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
-            ServerSend.Welcome(id, "Welcome to the server!");
+            ServerSend.ServerConnection(id, "Welcome to the server!");
         }
 
         /// <summary>Sends data to the client via TCP.</summary>
@@ -222,7 +222,7 @@ public class Client
             {
                 if (_client.id != id)
                 {
-                    ServerSend.SpawnPlayer(id, _client.player);
+                    ServerSend.PlayerEnter(id, _client.player);
                 }
             }
         }
@@ -232,7 +232,7 @@ public class Client
         {
             if (_client.player != null)
             {
-                ServerSend.SpawnPlayer(_client.id, player);
+                ServerSend.PlayerEnter(_client.id, player);
             }
         }
     }

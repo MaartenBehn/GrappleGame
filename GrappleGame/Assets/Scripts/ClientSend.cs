@@ -22,9 +22,9 @@ public class ClientSend : MonoBehaviour
 
     #region Packets
     /// <summary>Lets the server know that the welcome message was received.</summary>
-    public static void WelcomeReceived()
+    public static void ServerConnectionReceived()
     {
-        using (Packet _packet = new Packet((int)ClientPackets.welcomeReceived))
+        using (Packet _packet = new Packet((int)ClientPackets.serverConnectionReceived))
         {
             _packet.Write(Client.instance.myId);
             _packet.Write(UIManager.instance.usernameField.text);
@@ -35,17 +35,12 @@ public class ClientSend : MonoBehaviour
 
     /// <summary>Sends player input to the server.</summary>
     /// <param name="_inputs"></param>
-    public static void PlayerMovement(bool[] _inputs)
+    public static void TransformUpdate()
     {
-        using (Packet _packet = new Packet((int)ClientPackets.playerMovement))
+        using (Packet _packet = new Packet((int)ClientPackets.transformUpdate))
         {
-            _packet.Write(_inputs.Length);
-            foreach (bool _input in _inputs)
-            {
-                _packet.Write(_input);
-            }
+            _packet.Write(GameManager.players[Client.instance.myId].transform.position);
             _packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
-
             SendUDPData(_packet);
         }
     }

@@ -6,10 +6,8 @@ using UnityEngine;
 
 public class GrappleTestPlayer : MonoBehaviour
 {
-    [SerializeField] Transform modelTransform;
-    [SerializeField] Transform camTransform;
     [SerializeField] CinemachineFreeLook cinemachineFreeLook;
-    private Rigidbody rigidbody;
+    Rigidbody rigidbody;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -17,12 +15,23 @@ public class GrappleTestPlayer : MonoBehaviour
 
     public float horizontalRotation;
     private float verticalRotation;
-    public float jetpackSpeed;
     bool grounded = false;
-    
+    Vector3 groundNormal;
+
+    [SerializeField] float sensitivity = 100;
+    [SerializeField] float jetpackSpeed;
+
+    Vector3 input;
     void Update()
     {
         cinemachineFreeLook.m_YAxis.m_InputAxisName = grounded ? "Mouse Y" : "";
+
+        Vector3 input = Vector3.zero;
+        if (Input.GetKey(KeyCode.W)){input.x += 1;}
+        if (Input.GetKey(KeyCode.S)){input.x -= 1;}
+        if (Input.GetKey(KeyCode.A)){input.z += 1;}
+        if (Input.GetKey(KeyCode.D)){input.z -= 1;}
+        input = transform.rotation * -input;
 
         if (!grounded)
         {
@@ -34,70 +43,28 @@ public class GrappleTestPlayer : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(0f, horizontalRotation, verticalRotation);
 
-            Vector3 input = Vector3.zero;
-            if (Input.GetKey(KeyCode.W))
-            {
-                input.x += 1;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                input.x -= 1;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                input.z += 1;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                input.z -= 1;
-            }
-
-            input = transform.rotation * -input;
-
             Vector3 speed = input * jetpackSpeed;
             rigidbody.AddForce(speed);
         }
     }
 
-    public Vector3 normal;
-    public float magnetBootsForce = 10;
-    public float walkSpeed = 10;
-    public float sensitivity = 100;
+    [SerializeField] float magnetBootsForce = 10;
+    [SerializeField] float walkSpeed = 10;
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        normal = collisionInfo.contacts[0].normal;
+        groundNormal = collisionInfo.contacts[0].normal;
         grounded = true;
     }
     void OnCollisionStay(Collision collisionInfo)
     {
-        normal = collisionInfo.contacts[0].normal;
+        groundNormal = collisionInfo.contacts[0].normal;
 
         float _mouseHorizontal = Input.GetAxis("Mouse X");
         horizontalRotation += _mouseHorizontal * sensitivity * Time.deltaTime;
 
         transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
-        transform.rotation = Quaternion.FromToRotation(transform.up, normal) * transform.rotation;
-
-        Vector3 input = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
-        {
-            input.x += 1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            input.x -= 1;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            input.z += 1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            input.z -= 1;
-        }
-
-        input = transform.rotation * -input;
+        transform.rotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
 
         Vector3 speed = input * walkSpeed;
         rigidbody.velocity = speed;
@@ -106,12 +73,12 @@ public class GrappleTestPlayer : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        rigidbody.AddForce(-normal * magnetBootsForce);
+        rigidbody.AddForce(-groundNormal * magnetBootsForce);
     }
 
     void OnTriggerExit(Collider other)
     {
-        normal = Vector3.zero;
+        groundNormal = Vector3.zero;
         grounded = false;
     }
 }

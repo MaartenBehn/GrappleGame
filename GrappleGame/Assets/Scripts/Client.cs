@@ -292,16 +292,17 @@ public class Client : MonoBehaviour
         }
     }
 
+
+    //TODO:
     /// <summary>Initializes all necessary client data.</summary>
     private void InitializeClientData()
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ServerPackets.welcome, ClientHandle.Welcome },
-            { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
-            { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
-            { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
-            { (int)ServerPackets.playerDisconnect, ClientHandle.PlayerDisconnect },
+            { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
+            { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
+            { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
+            { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate }
         };
         Debug.Log("Initialized packets.");
     }

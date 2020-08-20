@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ServerHandle
 {
-    public static void WelcomeReceived(int _fromClient, Packet _packet)
+    public static void ServerConnectionReceived(int _fromClient, Packet _packet)
     {
         int _clientIdCheck = _packet.ReadInt();
         string _username = _packet.ReadString();
@@ -17,15 +17,11 @@ public class ServerHandle
         Server.clients[_fromClient].SendIntoGame(_username);
     }
 
-    public static void PlayerMovement(int _fromClient, Packet _packet)
+    public static void TransformUpdate(int fromClient, Packet packet)
     {
-        bool[] _inputs = new bool[_packet.ReadInt()];
-        for (int i = 0; i < _inputs.Length; i++)
-        {
-            _inputs[i] = _packet.ReadBool();
-        }
-        Quaternion _rotation = _packet.ReadQuaternion();
+        Vector3 position = packet.ReadVector3();
+        Quaternion rotation = packet.ReadQuaternion();
 
-        Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
+        Server.clients[fromClient].player.SetTransform(position, rotation);
     }
 }
