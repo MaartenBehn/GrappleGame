@@ -55,17 +55,17 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Client.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\GrappleTest\GrapplingGun.cs" />
-    <Compile Include="Assets\Scripts\ClientHandle.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\UIManager.cs" />
-    <Compile Include="Assets\Scripts\ClientSend.cs" />
-    <Compile Include="Assets\Scripts\ThreadManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerManager.cs" />
-    <Compile Include="Assets\Scripts\GrappleTest\GrappleTestPlayer.cs" />
-    <Compile Include="Assets\Scripts\Packet.cs" />
+    <Compile Include="Assets\Server\Client.cs" />
+    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\GrappleTest\GrapplingGun.cs" />
+    <Compile Include="Assets\Server\ClientHandle.cs" />
+    <Compile Include="Assets\Player\PlayerController.cs" />
+    <Compile Include="Assets\UI\UIManager.cs" />
+    <Compile Include="Assets\Server\ClientSend.cs" />
+    <Compile Include="Assets\Utility\ThreadManager.cs" />
+    <Compile Include="Assets\Player\PlayerManager.cs" />
+    <Compile Include="Assets\GrappleTest\GrappleTestPlayer.cs" />
+    <Compile Include="Assets\Utility\Packet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

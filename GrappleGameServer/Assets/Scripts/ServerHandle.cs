@@ -21,7 +21,9 @@ public class ServerHandle
     {
         Vector3 position = packet.ReadVector3();
         Quaternion rotation = packet.ReadQuaternion();
+        Vector3 velocity = packet.ReadVector3();
+        bool grounded = packet.ReadBool();
 
-        Server.clients[fromClient].player.SetTransform(position, rotation);
+        Server.clients[fromClient].player.SetTransform(position, rotation, velocity, grounded);
     }
 }

@@ -120,6 +120,8 @@ public class ServerSend
             _packet.Write(_player.id);
             _packet.Write(_player.transform.position);
             _packet.Write(_player.transform.rotation);
+            _packet.Write(_player.velocity);
+            _packet.Write(_player.grounded);
 
             SendUDPDataToAll(_player.id, _packet);
         }
