@@ -616,7 +616,7 @@ MonoBehaviour:
   jetpackSpeed: 10
   magnetBootsForce: 10
   walkSpeed: 10
-  grappleChangeSpeed: 1
+  grappleChangeSpeed: 0.1
 --- !u!114 &1012446226397902936
 MonoBehaviour:
   m_ObjectHideFlags: 0

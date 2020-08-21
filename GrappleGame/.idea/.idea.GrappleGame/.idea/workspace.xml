@@ -26,13 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Arena.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GrappleTest/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GrappleTest/GrapplingGun.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +55,8 @@
         <option value="$PROJECT_DIR$/Assets/Utility/Packet.cs" />
         <option value="$PROJECT_DIR$/Assets/Utility/ThreadManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/Client.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/GrappleTest/GrapplingGun.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -112,7 +110,8 @@
       <updated>1598007855678</updated>
       <workItem from="1598007860960" duration="78000" />
       <workItem from="1598007994231" duration="1986000" />
-      <workItem from="1598009645477" duration="4637000" />
+      <workItem from="1598009645477" duration="4898000" />
+      <workItem from="1598024857529" duration="849000" />
     </task>
     <servers />
   </component>

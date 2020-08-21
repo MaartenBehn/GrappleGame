@@ -62,10 +62,10 @@ public class GrapplingGun : MonoBehaviour
 
             //The distance grapple will try to keep from grapple point. 
             joint.maxDistance = distanceFromPoint;
-            joint.minDistance = 0;
+            joint.minDistance = distanceFromPoint;
 
             //Adjust these values to fit your game.
-            joint.spring = 1000f;
+            joint.spring = Single.PositiveInfinity;
             joint.damper = 7f;
             joint.massScale = 4.5f;
 
@@ -78,7 +78,7 @@ public class GrapplingGun : MonoBehaviour
     /// <summary>
     /// Call whenever we want to stop a grapple
     /// </summary>
-    void StopGrapple()
+    public void StopGrapple()
     {
         lr.positionCount = 0;
         Destroy(joint);
@@ -110,10 +110,13 @@ public class GrapplingGun : MonoBehaviour
     public void ChangeMaxDistance(float addMaxDistance)
     {
         joint.maxDistance += addMaxDistance;
+        joint.minDistance = joint.maxDistance;
         
         if (joint.maxDistance < 1)
         {
             joint.maxDistance = 1;
+            joint.minDistance = 1;
+
         }
     }
 }
