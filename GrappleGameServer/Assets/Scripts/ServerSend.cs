@@ -2,128 +2,127 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ServerSend
+public static class ServerSend
 {
     /// <summary>Sends a packet to a client via TCP.</summary>
-    /// <param name="_toClient">The client to send the packet the packet to.</param>
-    /// <param name="_packet">The packet to send to the client.</param>
-    private static void SendTCPData(int _toClient, Packet _packet)
+    /// <param name="toClient">The client to send the packet the packet to.</param>
+    /// <param name="packet">The packet to send to the client.</param>
+    private static void SendTcpData(int toClient, Packet packet)
     {
-        _packet.WriteLength();
-        Server.clients[_toClient].tcp.SendData(_packet);
+        packet.WriteLength();
+        Server.clients[toClient].tcp.SendData(packet);
     }
 
     /// <summary>Sends a packet to a client via UDP.</summary>
-    /// <param name="_toClient">The client to send the packet the packet to.</param>
-    /// <param name="_packet">The packet to send to the client.</param>
-    private static void SendUDPData(int _toClient, Packet _packet)
+    /// <param name="toClient">The client to send the packet the packet to.</param>
+    /// <param name="packet">The packet to send to the client.</param>
+    private static void SendUdpData(int toClient, Packet packet)
     {
-        _packet.WriteLength();
-        Server.clients[_toClient].udp.SendData(_packet);
+        packet.WriteLength();
+        Server.clients[toClient].udp.SendData(packet);
     }
 
     /// <summary>Sends a packet to all clients via TCP.</summary>
-    /// <param name="_packet">The packet to send.</param>
-    private static void SendTCPDataToAll(Packet _packet)
+    /// <param name="packet">The packet to send.</param>
+    private static void SendTcpDataToAll(Packet packet)
     {
-        _packet.WriteLength();
+        packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
         {
-            Server.clients[i].tcp.SendData(_packet);
+            Server.clients[i].tcp.SendData(packet);
         }
     }
     /// <summary>Sends a packet to all clients except one via TCP.</summary>
-    /// <param name="_exceptClient">The client to NOT send the data to.</param>
-    /// <param name="_packet">The packet to send.</param>
-    private static void SendTCPDataToAll(int _exceptClient, Packet _packet)
+    /// <param name="exceptClient">The client to NOT send the data to.</param>
+    /// <param name="packet">The packet to send.</param>
+    private static void SendTcpDataToAll(int exceptClient, Packet packet)
     {
-        _packet.WriteLength();
+        packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
         {
-            if (i != _exceptClient)
+            if (i != exceptClient)
             {
-                Server.clients[i].tcp.SendData(_packet);
+                Server.clients[i].tcp.SendData(packet);
             }
         }
     }
 
     /// <summary>Sends a packet to all clients via UDP.</summary>
-    /// <param name="_packet">The packet to send.</param>
-    private static void SendUDPDataToAll(Packet _packet)
+    /// <param name="packet">The packet to send.</param>
+    private static void SendUdpDataToAll(Packet packet)
     {
-        _packet.WriteLength();
+        packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
         {
-            Server.clients[i].udp.SendData(_packet);
+            Server.clients[i].udp.SendData(packet);
         }
     }
     /// <summary>Sends a packet to all clients except one via UDP.</summary>
-    /// <param name="_exceptClient">The client to NOT send the data to.</param>
-    /// <param name="_packet">The packet to send.</param>
-    private static void SendUDPDataToAll(int _exceptClient, Packet _packet)
+    /// <param name="exceptClient">The client to NOT send the data to.</param>
+    /// <param name="packet">The packet to send.</param>
+    private static void SendUdpDataToAll(int exceptClient, Packet packet)
     {
-        _packet.WriteLength();
+        packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
         {
-            if (i != _exceptClient)
+            if (i != exceptClient)
             {
-                Server.clients[i].udp.SendData(_packet);
+                Server.clients[i].udp.SendData(packet);
             }
         }
     }
 
     #region Packets
-    /// <summary>Sends a welcome message to the given client.</summary>
-    /// <param name="_toClient">The client to send the packet to.</param>
-    /// <param name="_msg">The message to send.</param>
-    public static void ServerConnection(int _toClient, string _msg)
-    {
-        using (Packet _packet = new Packet((int)ServerPackets.serverConnection))
-        {
-            _packet.Write(_msg);
-            _packet.Write(_toClient);
 
-            SendTCPData(_toClient, _packet);
+    /// <summary>Sends a welcome message to the given client.</summary>
+    public static void ServerConnection(int toClient, string msg)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.serverConnection))
+        {
+            packet.Write(msg);
+            packet.Write(toClient);
+
+            SendTcpData(toClient, packet);
         }
     }
 
     /// <summary>Tells a client to spawn a player.</summary>
-    /// <param name="_toClient">The client that should spawn the player.</param>
-    /// <param name="_player">The player to spawn.</param>
-    public static void PlayerEnter(int _toClient, Player _player)
+    /// <param name="toClient">The client that should spawn the player.</param>
+    /// <param name="player">The player to spawn.</param>
+    public static void PlayerEnter(int toClient, Player player)
     {
-        using (Packet _packet = new Packet((int)ServerPackets.playerEnter))
+        using (Packet packet = new Packet((int)ServerPackets.playerEnter))
         {
-            _packet.Write(_player.id);
-            _packet.Write(_player.username);
-            _packet.Write(_player.transform.position);
-            _packet.Write(_player.transform.rotation);
+            packet.Write(player.id);
+            packet.Write(player.username);
+            packet.Write(player.transform.position);
+            packet.Write(player.transform.rotation);
 
-            SendTCPData(_toClient, _packet);
+            SendTcpData(toClient, packet);
         }
     }
 
-    public static void PlayerLeave(Player _player)
+    public static void PlayerLeave(Player player)
     {
-        using (Packet _packet = new Packet((int)ServerPackets.playerLeave))
+        using (Packet packet = new Packet((int)ServerPackets.playerLeave))
         {
-            _packet.Write(_player.id);
+            packet.Write(player.id);
 
-            SendTCPDataToAll(_player.id, _packet);
+            SendTcpDataToAll(player.id, packet);
         }
     }
 
-    public static void ClientTransformUpdate(Player _player)
+    public static void ClientTransformUpdate(Player player)
     {
-        using (Packet _packet = new Packet((int)ServerPackets.clientTransformUpdate))
+        using (Packet packet = new Packet((int)ServerPackets.clientTransformUpdate))
         {
-            _packet.Write(_player.id);
-            _packet.Write(_player.transform.position);
-            _packet.Write(_player.transform.rotation);
-            _packet.Write(_player.velocity);
-            _packet.Write(_player.grounded);
+            packet.Write(player.id);
+            packet.Write(player.transform.position);
+            packet.Write(player.transform.rotation);
+            packet.Write(player.velocity);
+            packet.Write(player.grounded);
 
-            SendUDPDataToAll(_player.id, _packet);
+            SendUdpDataToAll(player.id, packet);
         }
     }
     #endregion

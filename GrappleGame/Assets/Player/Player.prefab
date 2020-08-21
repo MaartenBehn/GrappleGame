@@ -1934,7 +1934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b93d13cb73807341b5d81681ed1db8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animatior: {fileID: 3310983333873905823}
+  animator: {fileID: 3310983333873905823}
   id: 0
   username: 
   velocity: {x: 0, y: 0, z: 0}

@@ -1,317 +1,318 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
-using System;
+using UnityEngine;
+using Utility;
 
-public class Client : MonoBehaviour
+namespace Server
 {
-    public static Client instance;
-    public static int dataBufferSize = 4096;
-
-    public string ip = "127.0.0.1";
-    public int port = 17685;
-    public int myId = 0;
-    public TCP tcp;
-    public UDP udp;
-
-    private bool isConnected = false;
-    private delegate void PacketHandler(Packet _packet);
-    private static Dictionary<int, PacketHandler> packetHandlers;
-
-    private void Awake()
+    public class Client : MonoBehaviour
     {
-        if (instance == null)
+        public static Client instance;
+        private const int dataBufferSize = 4096;
+
+        public string ip = "127.0.0.1";
+        public int port = 17685;
+        public int myId = 0;
+        public Tcp tcp;
+        public Udp udp;
+
+        private bool isConnected = false;
+        private delegate void PacketHandler(Packet packet);
+        private static Dictionary<int, PacketHandler> packetHandlers;
+
+        private void Awake()
         {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Debug.Log("Instance already exists, destroying object!");
-            Destroy(this);
-        }
-    }
-
-    private void Start()
-    {
-        tcp = new TCP();
-        udp = new UDP();
-    }
-
-    private void OnApplicationQuit()
-    {
-        Disconnect(); // Disconnect when the game is closed
-    }
-
-    /// <summary>Attempts to connect to the server.</summary>
-    public void ConnectToServer()
-    {
-        InitializeClientData();
-
-        isConnected = true;
-        tcp.Connect(); // Connect tcp, udp gets connected once tcp is done
-    }
-
-    public class TCP
-    {
-        public TcpClient socket;
-
-        private NetworkStream stream;
-        private Packet receivedData;
-        private byte[] receiveBuffer;
-
-        /// <summary>Attempts to connect to the server via TCP.</summary>
-        public void Connect()
-        {
-            socket = new TcpClient
+            if (instance == null)
             {
-                ReceiveBufferSize = dataBufferSize,
-                SendBufferSize = dataBufferSize
-            };
-
-            receiveBuffer = new byte[dataBufferSize];
-            socket.BeginConnect(instance.ip, instance.port, ConnectCallback, socket);
-        }
-
-        /// <summary>Initializes the newly connected client's TCP-related info.</summary>
-        private void ConnectCallback(IAsyncResult _result)
-        {
-            socket.EndConnect(_result);
-
-            if (!socket.Connected)
-            {
-                return;
+                instance = this;
             }
-
-            stream = socket.GetStream();
-
-            receivedData = new Packet();
-
-            stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
+            else if (instance != this)
+            {
+                Debug.Log("Instance already exists, destroying object!");
+                Destroy(this);
+            }
         }
 
-        /// <summary>Sends data to the client via TCP.</summary>
-        /// <param name="_packet">The packet to send.</param>
-        public void SendData(Packet _packet)
+        private void Start()
         {
-            try
+            tcp = new Tcp();
+            udp = new Udp();
+        }
+
+        private void OnApplicationQuit()
+        {
+            Disconnect(); // Disconnect when the game is closed
+        }
+
+        /// <summary>Attempts to connect to the server.</summary>
+        public void ConnectToServer()
+        {
+            InitializeClientData();
+
+            isConnected = true;
+            tcp.Connect(); // Connect tcp, udp gets connected once tcp is done
+        }
+
+        public class Tcp
+        {
+            public TcpClient socket;
+
+            private NetworkStream stream;
+            private Packet receivedData;
+            private byte[] receiveBuffer;
+
+            /// <summary>Attempts to connect to the server via TCP.</summary>
+            public void Connect()
             {
-                if (socket != null)
+                socket = new TcpClient
                 {
-                    stream.BeginWrite(_packet.ToArray(), 0, _packet.Length(), null, null); // Send data to server
-                }
-            }
-            catch (Exception _ex)
-            {
-                Debug.Log($"Error sending data to server via TCP: {_ex}");
-            }
-        }
+                    ReceiveBufferSize = dataBufferSize,
+                    SendBufferSize = dataBufferSize
+                };
 
-        /// <summary>Reads incoming data from the stream.</summary>
-        private void ReceiveCallback(IAsyncResult _result)
-        {
-            try
+                receiveBuffer = new byte[dataBufferSize];
+                socket.BeginConnect(instance.ip, instance.port, ConnectCallback, socket);
+            }
+
+            /// <summary>Initializes the newly connected client's TCP-related info.</summary>
+            private void ConnectCallback(IAsyncResult result)
             {
-                int _byteLength = stream.EndRead(_result);
-                if (_byteLength <= 0)
+                socket.EndConnect(result);
+
+                if (!socket.Connected)
                 {
-                    instance.Disconnect();
                     return;
                 }
 
-                byte[] _data = new byte[_byteLength];
-                Array.Copy(receiveBuffer, _data, _byteLength);
+                stream = socket.GetStream();
 
-                receivedData.Reset(HandleData(_data)); // Reset receivedData if all data was handled
+                receivedData = new Packet();
+
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             }
-            catch
+
+            /// <summary>Sends data to the client via TCP.</summary>
+            /// <param name="packet">The packet to send.</param>
+            public void SendData(Packet packet)
             {
-                Disconnect();
-            }
-        }
-
-        /// <summary>Prepares received data to be used by the appropriate packet handler methods.</summary>
-        /// <param name="_data">The recieved data.</param>
-        private bool HandleData(byte[] _data)
-        {
-            int _packetLength = 0;
-
-            receivedData.SetBytes(_data);
-
-            if (receivedData.UnreadLength() >= 4)
-            {
-                // If client's received data contains a packet
-                _packetLength = receivedData.ReadInt();
-                if (_packetLength <= 0)
+                try
                 {
-                    // If packet contains no data
-                    return true; // Reset receivedData instance to allow it to be reused
+                    if (socket != null)
+                    {
+                        stream.BeginWrite(packet.ToArray(), 0, packet.Length(), null, null); // Send data to server
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log($"Error sending data to server via TCP: {ex}");
                 }
             }
 
-            while (_packetLength > 0 && _packetLength <= receivedData.UnreadLength())
+            /// <summary>Reads incoming data from the stream.</summary>
+            private void ReceiveCallback(IAsyncResult result)
             {
-                // While packet contains data AND packet data length doesn't exceed the length of the packet we're reading
-                byte[] _packetBytes = receivedData.ReadBytes(_packetLength);
-                ThreadManager.ExecuteOnMainThread(() =>
+                try
                 {
-                    using (Packet _packet = new Packet(_packetBytes))
+                    int byteLength = stream.EndRead(result);
+                    if (byteLength <= 0)
                     {
-                        int _packetId = _packet.ReadInt();
-                        packetHandlers[_packetId](_packet); // Call appropriate method to handle the packet
+                        instance.Disconnect();
+                        return;
                     }
-                });
 
-                _packetLength = 0; // Reset packet length
+                    byte[] data = new byte[byteLength];
+                    Array.Copy(receiveBuffer, data, byteLength);
+
+                    receivedData.Reset(HandleData(data)); // Reset receivedData if all data was handled
+                    stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
+                }
+                catch
+                {
+                    Disconnect();
+                }
+            }
+
+            /// <summary>Prepares received data to be used by the appropriate packet handler methods.</summary>
+            /// <param name="data">The recieved data.</param>
+            private bool HandleData(byte[] data)
+            {
+                int packetLength = 0;
+
+                receivedData.SetBytes(data);
+
                 if (receivedData.UnreadLength() >= 4)
                 {
-                    // If client's received data contains another packet
-                    _packetLength = receivedData.ReadInt();
-                    if (_packetLength <= 0)
+                    // If client's received data contains a packet
+                    packetLength = receivedData.ReadInt();
+                    if (packetLength <= 0)
                     {
                         // If packet contains no data
                         return true; // Reset receivedData instance to allow it to be reused
                     }
                 }
-            }
 
-            if (_packetLength <= 1)
-            {
-                return true; // Reset receivedData instance to allow it to be reused
-            }
-
-            return false;
-        }
-
-        /// <summary>Disconnects from the server and cleans up the TCP connection.</summary>
-        private void Disconnect()
-        {
-            instance.Disconnect();
-
-            stream = null;
-            receivedData = null;
-            receiveBuffer = null;
-            socket = null;
-        }
-    }
-
-    public class UDP
-    {
-        public UdpClient socket;
-        public IPEndPoint endPoint;
-
-        public UDP()
-        {
-            endPoint = new IPEndPoint(IPAddress.Parse(instance.ip), instance.port);
-        }
-
-        /// <summary>Attempts to connect to the server via UDP.</summary>
-        /// <param name="_localPort">The port number to bind the UDP socket to.</param>
-        public void Connect(int _localPort)
-        {
-            socket = new UdpClient(_localPort);
-
-            socket.Connect(endPoint);
-            socket.BeginReceive(ReceiveCallback, null);
-
-            using (Packet _packet = new Packet())
-            {
-                SendData(_packet);
-            }
-        }
-
-        /// <summary>Sends data to the client via UDP.</summary>
-        /// <param name="_packet">The packet to send.</param>
-        public void SendData(Packet _packet)
-        {
-            try
-            {
-                _packet.InsertInt(instance.myId); // Insert the client's ID at the start of the packet
-                if (socket != null)
+                while (packetLength > 0 && packetLength <= receivedData.UnreadLength())
                 {
-                    socket.BeginSend(_packet.ToArray(), _packet.Length(), null, null);
+                    // While packet contains data AND packet data length doesn't exceed the length of the packet we're reading
+                    byte[] packetBytes = receivedData.ReadBytes(packetLength);
+                    ThreadManager.ExecuteOnMainThread(() =>
+                    {
+                        using (Packet packet = new Packet(packetBytes))
+                        {
+                            int packetId = packet.ReadInt();
+                            packetHandlers[packetId](packet); // Call appropriate method to handle the packet
+                        }
+                    });
+
+                    packetLength = 0; // Reset packet length
+                    if (receivedData.UnreadLength() >= 4)
+                    {
+                        // If client's received data contains another packet
+                        packetLength = receivedData.ReadInt();
+                        if (packetLength <= 0)
+                        {
+                            // If packet contains no data
+                            return true; // Reset receivedData instance to allow it to be reused
+                        }
+                    }
                 }
+
+                if (packetLength <= 1)
+                {
+                    return true; // Reset receivedData instance to allow it to be reused
+                }
+
+                return false;
             }
-            catch (Exception _ex)
+
+            /// <summary>Disconnects from the server and cleans up the TCP connection.</summary>
+            private void Disconnect()
             {
-                Debug.Log($"Error sending data to server via UDP: {_ex}");
+                instance.Disconnect();
+
+                stream = null;
+                receivedData = null;
+                receiveBuffer = null;
+                socket = null;
             }
         }
 
-        /// <summary>Receives incoming UDP data.</summary>
-        private void ReceiveCallback(IAsyncResult _result)
+        public class Udp
         {
-            try
+            public UdpClient socket;
+            public IPEndPoint endPoint;
+
+            public Udp()
             {
-                byte[] _data = socket.EndReceive(_result, ref endPoint);
+                endPoint = new IPEndPoint(IPAddress.Parse(instance.ip), instance.port);
+            }
+
+            /// <summary>Attempts to connect to the server via UDP.</summary>
+            /// <param name="localPort">The port number to bind the UDP socket to.</param>
+            public void Connect(int localPort)
+            {
+                socket = new UdpClient(localPort);
+
+                socket.Connect(endPoint);
                 socket.BeginReceive(ReceiveCallback, null);
 
-                if (_data.Length < 4)
+                using (Packet packet = new Packet())
                 {
-                    instance.Disconnect();
-                    return;
+                    SendData(packet);
+                }
+            }
+
+            /// <summary>Sends data to the client via UDP.</summary>
+            /// <param name="packet">The packet to send.</param>
+            public void SendData(Packet packet)
+            {
+                try
+                {
+                    packet.InsertInt(instance.myId); // Insert the client's ID at the start of the packet
+                    if (socket != null)
+                    {
+                        socket.BeginSend(packet.ToArray(), packet.Length(), null, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log($"Error sending data to server via UDP: {ex}");
+                }
+            }
+
+            /// <summary>Receives incoming UDP data.</summary>
+            private void ReceiveCallback(IAsyncResult result)
+            {
+                try
+                {
+                    byte[] data = socket.EndReceive(result, ref endPoint);
+                    socket.BeginReceive(ReceiveCallback, null);
+
+                    if (data.Length < 4)
+                    {
+                        instance.Disconnect();
+                        return;
+                    }
+
+                    HandleData(data);
+                }
+                catch
+                {
+                    Disconnect();
+                }
+            }
+
+            /// <summary>Prepares received data to be used by the appropriate packet handler methods.</summary>
+            /// <param name="data">The recieved data.</param>
+            private static void HandleData(byte[] data)
+            {
+                using (Packet packet = new Packet(data))
+                {
+                    int packetLength = packet.ReadInt();
+                    data = packet.ReadBytes(packetLength);
                 }
 
-                HandleData(_data);
+                ThreadManager.ExecuteOnMainThread(() =>
+                {
+                    using (Packet packet = new Packet(data))
+                    {
+                        int packetId = packet.ReadInt();
+                        packetHandlers[packetId](packet); // Call appropriate method to handle the packet
+                    }
+                });
             }
-            catch
+
+            /// <summary>Disconnects from the server and cleans up the UDP connection.</summary>
+            private void Disconnect()
             {
-                Disconnect();
+                instance.Disconnect();
+
+                endPoint = null;
+                socket = null;
             }
         }
-
-        /// <summary>Prepares received data to be used by the appropriate packet handler methods.</summary>
-        /// <param name="_data">The recieved data.</param>
-        private void HandleData(byte[] _data)
+        
+        
+        /// <summary>Initializes all necessary client data.</summary>
+        private void InitializeClientData()
         {
-            using (Packet _packet = new Packet(_data))
+            packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                int _packetLength = _packet.ReadInt();
-                _data = _packet.ReadBytes(_packetLength);
-            }
-
-            ThreadManager.ExecuteOnMainThread(() =>
-            {
-                using (Packet _packet = new Packet(_data))
-                {
-                    int _packetId = _packet.ReadInt();
-                    packetHandlers[_packetId](_packet); // Call appropriate method to handle the packet
-                }
-            });
+                { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
+                { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
+                { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
+                { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate }
+            };
+            Debug.Log("Initialized packets.");
         }
 
-        /// <summary>Disconnects from the server and cleans up the UDP connection.</summary>
+        /// <summary>Disconnects from the server and stops all network traffic.</summary>
         private void Disconnect()
         {
-            instance.Disconnect();
-
-            endPoint = null;
-            socket = null;
-        }
-    }
-
-
-    //TODO:
-    /// <summary>Initializes all necessary client data.</summary>
-    private void InitializeClientData()
-    {
-        packetHandlers = new Dictionary<int, PacketHandler>()
-        {
-            { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
-            { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
-            { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
-            { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate }
-        };
-        Debug.Log("Initialized packets.");
-    }
-
-    /// <summary>Disconnects from the server and stops all network traffic.</summary>
-    private void Disconnect()
-    {
-        if (isConnected)
-        {
+            if (!isConnected) return;
+            
             isConnected = false;
             tcp.socket.Close();
             udp.socket.Close();

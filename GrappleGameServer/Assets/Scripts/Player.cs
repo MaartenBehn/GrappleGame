@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -10,10 +7,10 @@ public class Player : MonoBehaviour
     public Vector3 velocity;
     public bool grounded;
 
-    public void Initialize(int _id, string _username)
+    public void Initialize(int id, string username)
     {
-        id = _id;
-        username = _username;
+        this.id = id;
+        this.username = username;
     }
 
     /// <summary>Processes player input and moves the player.</summary>
@@ -22,14 +19,12 @@ public class Player : MonoBehaviour
         ServerSend.ClientTransformUpdate(this);
     }
 
-
-    /// <summary>Updates the player input with newly received input.</summary>
-    /// <param name="_inputs">The new key inputs.</param>
-    /// <param name="_rotation">The new rotation.</param>
+    
     public void SetTransform(Vector3 position, Quaternion rotation, Vector3 velocity, bool grounded)
     {
-        transform.position = position;
-        transform.rotation = rotation;
+        Transform transform1 = transform;
+        transform1.position = position;
+        transform1.rotation = rotation;
         this.velocity = velocity;
         this.grounded = grounded;
     }

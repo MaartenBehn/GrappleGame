@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Player;
+using Server;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,25 +26,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>Spawns a player.</summary>
-    /// <param name="_id">The player's ID.</param>
-    /// <param name="_name">The player's name.</param>
-    /// <param name="_position">The player's starting position.</param>
-    /// <param name="_rotation">The player's starting rotation.</param>
-    public void PlayerEnter(int _id, string _username, Vector3 _position, Quaternion _rotation)
+    
+    public void PlayerEnter(int id, string username, Vector3 position, Quaternion rotation)
     {
-        GameObject _player;
-        if (_id == Client.instance.myId)
+        GameObject player;
+        if (id == Client.instance.myId)
         {
-            _player = Instantiate(localPlayerPrefab, _position, _rotation);
+            player = Instantiate(localPlayerPrefab, position, rotation);
         }
         else
         {
-            _player = Instantiate(playerPrefab, _position, _rotation);
+            player = Instantiate(playerPrefab, position, rotation);
         }
 
-        _player.GetComponent<PlayerManager>().id = _id;
-        _player.GetComponent<PlayerManager>().username = _username;
-        players.Add(_id, _player.GetComponent<PlayerManager>());
+        player.GetComponent<PlayerManager>().id = id;
+        player.GetComponent<PlayerManager>().username = username;
+        players.Add(id, player.GetComponent<PlayerManager>());
     }
 }

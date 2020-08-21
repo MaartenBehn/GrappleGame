@@ -1,52 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using UnityEngine;
+using Utility;
 
-public class ClientHandle : MonoBehaviour
+namespace Server
 {
-    public static void ServerConnection(Packet _packet)
+    public class ClientHandle : MonoBehaviour
     {
-        string _msg = _packet.ReadString();
-        int _myId = _packet.ReadInt();
+        public static void ServerConnection(Packet packet)
+        {
+            string msg = packet.ReadString();
+            int myId = packet.ReadInt();
 
-        Debug.Log($"Message from server: {_msg}");
-        Client.instance.myId = _myId;
-        ClientSend.ServerConnectionReceived();
+            Debug.Log($"Message from server: {msg}");
+            Client.instance.myId = myId;
+            ClientSend.ServerConnectionReceived();
 
-        // Now that we have the client's id, connect UDP
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
-    }
+            // Now that we have the client's id, connect UDP
+            Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        }
 
-    public static void PlayerEnter(Packet _packet)
-    {
-        int _id = _packet.ReadInt();
-        string _username = _packet.ReadString();
-        Vector3 _position = _packet.ReadVector3();
-        Quaternion _rotation = _packet.ReadQuaternion();
+        public static void PlayerEnter(Packet packet)
+        {
+            int id = packet.ReadInt();
+            string username = packet.ReadString();
+            Vector3 position = packet.ReadVector3();
+            Quaternion rotation = packet.ReadQuaternion();
 
-        GameManager.instance.PlayerEnter(_id, _username, _position, _rotation);
-    }
+            GameManager.instance.PlayerEnter(id, username, position, rotation);
+        }
 
-    public static void PlayerLeave(Packet _packet)
-    {
-        int _id = _packet.ReadInt();
+        public static void PlayerLeave(Packet packet)
+        {
+            int id = packet.ReadInt();
 
-        Destroy(GameManager.players[_id].gameObject);
-        GameManager.players.Remove(_id);
-    }
+            Destroy(GameManager.players[id].gameObject);
+            GameManager.players.Remove(id);
+        }
 
-    public static void ClientTransformUpdate(Packet _packet)
-    {
-        int _id = _packet.ReadInt();
-        Vector3 _position = _packet.ReadVector3();
-        Quaternion _rotation = _packet.ReadQuaternion();
-        Vector3 velocity = _packet.ReadVector3();
-        bool grounded = _packet.ReadBool();
+        public static void ClientTransformUpdate(Packet packet)
+        {
+            int id = packet.ReadInt();
+            Vector3 position = packet.ReadVector3();
+            Quaternion rotation = packet.ReadQuaternion();
+            Vector3 velocity = packet.ReadVector3();
+            bool grounded = packet.ReadBool();
 
-        GameManager.players[_id].transform.position = _position;
-        GameManager.players[_id].transform.rotation = _rotation;
-        GameManager.players[_id].velocity = velocity;
-        GameManager.players[_id].grounded = grounded;
+            GameManager.players[id].transform.position = position;
+            GameManager.players[id].transform.rotation = rotation;
+            GameManager.players[id].velocity = velocity;
+            GameManager.players[id].grounded = grounded;
+        }
     }
 }

@@ -1,20 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
-public class ServerHandle
+public static class ServerHandle
 {
-    public static void ServerConnectionReceived(int _fromClient, Packet _packet)
+    public static void ServerConnectionReceived(int fromClient, Packet packet)
     {
-        int _clientIdCheck = _packet.ReadInt();
-        string _username = _packet.ReadString();
+        int clientIdCheck = packet.ReadInt();
+        string username = packet.ReadString();
 
-        Debug.Log($"{Server.clients[_fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {_fromClient}.");
-        if (_fromClient != _clientIdCheck)
+        Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
+        if (fromClient != clientIdCheck)
         {
-            Debug.Log($"Player \"{_username}\" (ID: {_fromClient}) has assumed the wrong client ID ({_clientIdCheck})!");
+            Debug.Log($"Player \"{username}\" (ID: {fromClient}) has assumed the wrong client ID ({clientIdCheck})!");
         }
-        Server.clients[_fromClient].SendIntoGame(_username);
+        Server.clients[fromClient].SendIntoGame(username);
     }
 
     public static void TransformUpdate(int fromClient, Packet packet)

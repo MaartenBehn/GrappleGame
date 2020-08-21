@@ -1,51 +1,53 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UI;
 using UnityEngine;
+using Utility;
 
-public class ClientSend : MonoBehaviour
+namespace Server
 {
-    /// <summary>Sends a packet to the server via TCP.</summary>
-    /// <param name="_packet">The packet to send to the sever.</param>
-    private static void SendTCPData(Packet _packet)
+    public class ClientSend : MonoBehaviour
     {
-        _packet.WriteLength();
-        Client.instance.tcp.SendData(_packet);
-    }
-
-    /// <summary>Sends a packet to the server via UDP.</summary>
-    /// <param name="_packet">The packet to send to the sever.</param>
-    private static void SendUDPData(Packet _packet)
-    {
-        _packet.WriteLength();
-        Client.instance.udp.SendData(_packet);
-    }
-
-    #region Packets
-    /// <summary>Lets the server know that the welcome message was received.</summary>
-    public static void ServerConnectionReceived()
-    {
-        using (Packet _packet = new Packet((int)ClientPackets.serverConnectionReceived))
+        /// <summary>Sends a packet to the server via TCP.</summary>
+        /// <param name="packet">The packet to send to the sever.</param>
+        private static void SendTcpData(Packet packet)
         {
-            _packet.Write(Client.instance.myId);
-            _packet.Write(UIManager.instance.usernameField.text);
-
-            SendTCPData(_packet);
+            packet.WriteLength();
+            Client.instance.tcp.SendData(packet);
         }
-    }
 
-    /// <summary>Sends player input to the server.</summary>
-    /// <param name="_inputs"></param>
-    public static void TransformUpdate()
-    {
-        using (Packet _packet = new Packet((int)ClientPackets.transformUpdate))
+        /// <summary>Sends a packet to the server via UDP.</summary>
+        /// <param name="packet">The packet to send to the sever.</param>
+        private static void SendUdpData(Packet packet)
         {
-            _packet.Write(GameManager.players[Client.instance.myId].transform.position);
-            _packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
-            _packet.Write(GameManager.players[Client.instance.myId].velocity);
-            _packet.Write(GameManager.players[Client.instance.myId].grounded);
-
-            SendUDPData(_packet);
+            packet.WriteLength();
+            Client.instance.udp.SendData(packet);
         }
+
+        #region Packets
+        /// <summary>Lets the server know that the welcome message was received.</summary>
+        public static void ServerConnectionReceived()
+        {
+            using (Packet packet = new Packet((int)ClientPackets.serverConnectionReceived))
+            {
+                packet.Write(Client.instance.myId);
+                packet.Write(UIManager.instance.usernameField.text);
+
+                SendTcpData(packet);
+            }
+        }
+
+        /// <summary>Sends player input to the server.</summary>
+        public static void TransformUpdate()
+        {
+            using (Packet packet = new Packet((int)ClientPackets.transformUpdate))
+            {
+                packet.Write(GameManager.players[Client.instance.myId].transform.position);
+                packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
+                packet.Write(GameManager.players[Client.instance.myId].velocity);
+                packet.Write(GameManager.players[Client.instance.myId].grounded);
+
+                SendUdpData(packet);
+            }
+        }
+        #endregion
     }
-    #endregion
 }
