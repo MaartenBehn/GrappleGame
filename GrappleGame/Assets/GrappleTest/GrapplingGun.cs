@@ -1,11 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+namespace Player
+{
+    
+}
 public class GrapplingGun : MonoBehaviour
 {
 
     private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
+    public LayerMask obstructions;
     public Transform gunTip, camera, player;
     private float maxDistance = 100f;
     private SpringJoint joint;
@@ -13,6 +19,7 @@ public class GrapplingGun : MonoBehaviour
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
+        lr.positionCount = 0;
     }
 
     void Update()
@@ -25,6 +32,11 @@ public class GrapplingGun : MonoBehaviour
         {
             StopGrapple();
         }
+        /*else if (Physics.Linecast(gunTip.position,grapplePoint,obstructions))
+        {
+            StopGrapple();
+        }*/
+        
     }
 
     //Called after Update
@@ -50,10 +62,10 @@ public class GrapplingGun : MonoBehaviour
 
             //The distance grapple will try to keep from grapple point. 
             joint.maxDistance = distanceFromPoint;
-            joint.minDistance = distanceFromPoint;
+            joint.minDistance = 0;
 
             //Adjust these values to fit your game.
-            joint.spring = 4.5f;
+            joint.spring = 1000f;
             joint.damper = 7f;
             joint.massScale = 4.5f;
 
@@ -93,5 +105,15 @@ public class GrapplingGun : MonoBehaviour
     public Vector3 GetGrapplePoint()
     {
         return grapplePoint;
+    }
+
+    public void ChangeMaxDistance(float addMaxDistance)
+    {
+        joint.maxDistance += addMaxDistance;
+        
+        if (joint.maxDistance < 1)
+        {
+            joint.maxDistance = 1;
+        }
     }
 }
