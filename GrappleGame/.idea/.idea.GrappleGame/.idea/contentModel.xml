@@ -21,7 +21,9 @@
           <e p="ClientSend.cs" t="Include" />
         </e>
         <e p="UI" t="Include">
+          <e p="StartPanel.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
+          <e p="UIPanelType.cs" t="Include" />
         </e>
         <e p="Utility" t="Include">
           <e p="Packet.cs" t="Include" />

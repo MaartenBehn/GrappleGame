@@ -61,6 +61,8 @@
      <Compile Include="Assets\Player\PlayerManager.cs" />
      <Compile Include="Assets\GrappleTest\GrappleTestPlayer.cs" />
      <Compile Include="Assets\Utility\Packet.cs" />
+     <Compile Include="Assets\UI\UIPanelType.cs" />
+     <Compile Include="Assets\UI\StartPanel.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -79,6 +81,9 @@
  <Reference Include="Unity.Timeline">
  <HintPath>H:/dev/GrappleGame/GrappleGame/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>H:/dev/GrappleGame/GrappleGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="com.unity.cinemachine.editor">
  <HintPath>H:/dev/GrappleGame/GrappleGame/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
@@ -90,9 +95,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>H:/dev/GrappleGame/GrappleGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>H:/dev/GrappleGame/GrappleGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>H:/Programms/Program Files/Unity/2019.3.3f1/2020.1.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
