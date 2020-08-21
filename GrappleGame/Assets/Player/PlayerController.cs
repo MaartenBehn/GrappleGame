@@ -22,7 +22,6 @@ namespace Player
         [SerializeField] float jetpackSpeed = 1f;
         [SerializeField] float magnetBootsForce = 10f;
         [SerializeField] float walkSpeed = 10f;
-        [SerializeField] float grappleChangeSpeed;
         
         void FixedUpdate()
         {
@@ -32,8 +31,7 @@ namespace Player
             if (Input.GetKey(KeyCode.S)) { input.x -= 1; }
             if (Input.GetKey(KeyCode.A)) { input.z += 1; }
             if (Input.GetKey(KeyCode.D)) { input.z -= 1; }
-            if (Input.GetKey(KeyCode.X)) { GetComponent<GrapplingGun>().ChangeMaxDistance(grappleChangeSpeed);}
-            if (Input.GetKey(KeyCode.Y)) { GetComponent<GrapplingGun>().ChangeMaxDistance(-grappleChangeSpeed);}
+            
 
             input = transform.rotation * -input;
 
