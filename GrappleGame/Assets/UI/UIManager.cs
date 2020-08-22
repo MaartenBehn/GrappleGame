@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Server;
 using UnityEngine;
@@ -8,17 +9,18 @@ namespace UI
 {
     public enum PanelType
     {
-        startMenu,
-        inGame,
-        pausePanel
+        startPanel = 0,
+        inGamePanel = 1,
+        pausePanel = 2,
+        settingsPanel = 4
     }
 
     public class UIManager : MonoBehaviour
     {
         public static UIManager instance;
 
-        List<UIPanelType> panelList;
-        UIPanelType lastActivePanel;
+        List<UIPanel> panelList;
+        UIPanel lastActivePanel;
 
         private void Awake()
         {
@@ -31,26 +33,52 @@ namespace UI
                 Debug.Log("Instance already exists, destroying object!");
                 Destroy(this);
             }
-            
-            panelList = GetComponentsInChildren<UIPanelType>().ToList();
-            panelList.ForEach(x => x.gameObject.SetActive(false));
-            SwitchPanel(PanelType.startMenu);
         }
-        
+
+        private void Start()
+        {
+            panelList = GetComponentsInChildren<UIPanel>().ToList();
+            panelList.ForEach(x => x.gameObject.SetActive(false));
+            SwitchPanel(PanelType.startPanel);
+        }
+
+        private void Update()
+        {
+            switch (lastActivePanel.panelType)
+            {
+                case PanelType.inGamePanel:
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.pausePanel); }
+                    break;
+                case PanelType.pausePanel:
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.inGamePanel); }
+                    break;
+                case PanelType.settingsPanel:
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.inGamePanel); }
+                    break;
+            }
+        }
+
         public void SwitchPanel(PanelType type)
         {
             if (lastActivePanel != null)
             {
+                lastActivePanel.OnUnload();
                 lastActivePanel.gameObject.SetActive(false);
             }
 
-            UIPanelType desiredCanvas = panelList.Find(x => x.panelType == type);
+            UIPanel desiredCanvas = panelList.Find(x => x.panelType == type);
             if (desiredCanvas != null)
             {
                 desiredCanvas.gameObject.SetActive(true);
                 lastActivePanel = desiredCanvas;
+                lastActivePanel.OnLoad();
             }
             else { Debug.LogWarning("The desired canvas was not found!"); }
+        }
+
+        public void SwitchPanel(int typeId)
+        {
+            SwitchPanel((PanelType) typeId);
         }
     }
 }

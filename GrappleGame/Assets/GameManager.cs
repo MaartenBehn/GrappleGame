@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
     }
-
     
     public void PlayerEnter(int id, string username, Vector3 position, Quaternion rotation)
     {
@@ -42,5 +41,10 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerManager>().id = id;
         player.GetComponent<PlayerManager>().username = username;
         players.Add(id, player.GetComponent<PlayerManager>());
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
