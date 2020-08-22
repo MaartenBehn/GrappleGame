@@ -26,21 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/UI/InGamePanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UI/InGamePanel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UI/PausePanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UI/PausePanel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UI/SettingsPanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UI/SettingsPanel.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Arena.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/StartPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/StartPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/UIPanelType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/UIPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/UIPanelType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/UIPanel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GrappleTest/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GrappleTest/GrapplingGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,9 +41,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49F4E7E7-91CC-4FFF-ACD8-8F729E2B1E4C/44/debdd063/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -109,10 +96,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14104">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="14104" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -130,6 +117,8 @@
       <workItem from="1598007860960" duration="78000" />
       <workItem from="1598007994231" duration="1986000" />
       <workItem from="1598107795565" duration="6943000" />
+      <workItem from="1598118812635" duration="430000" />
+      <workItem from="1598119419906" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="Proper UI System">
       <created>1598046154464</created>
