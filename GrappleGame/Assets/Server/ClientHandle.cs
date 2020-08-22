@@ -50,5 +50,15 @@ namespace Server
             GameManager.players[id].velocity = velocity;
             GameManager.players[id].grounded = grounded;
         }
+        
+        public static void ClientGrappleUpdate(Packet packet)
+        {
+            int id = packet.ReadInt();
+            bool isGrappling = packet.ReadBool();
+            Vector3 position = packet.ReadVector3();
+
+            GameManager.players[id].isGrappling = isGrappling;
+            GameManager.players[id].grapplePoint = position;
+        }
     }
 }

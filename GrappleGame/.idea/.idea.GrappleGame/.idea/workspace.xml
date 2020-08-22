@@ -25,89 +25,35 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="High Definition Render Pipeline">
+    <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="Universal Render Pipeline">
+      <change beforePath="$PROJECT_DIR$/../C4D/Arena 1.c4d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Arena.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Glass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Struckture.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Struckture.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Player.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Server/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/Client.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Server/ClientSend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/ClientSend.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Utility/Kevin Iglesias/Basic Motions Pack/Materials/Basic Motions Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utility/Kevin Iglesias/Basic Motions Pack/Materials/Basic Motions Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Utility/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utility/Packet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Packet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerSend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerSend.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,14 +71,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/GrappleTest/GrappleTestPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utility/Packet.cs" />
         <option value="$PROJECT_DIR$/Assets/Utility/ThreadManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Server/Client.cs" />
-        <option value="$PROJECT_DIR$/Assets/Server/ClientSend.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/UIPanelType.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/StartPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/UIPanel.cs" />
@@ -141,6 +81,13 @@
         <option value="$PROJECT_DIR$/Assets/UI/PausePanel.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/SettingsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utility/Packet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Server/ClientSend.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
+        <option value="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Server/Client.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" />
       </list>
     </option>
   </component>
@@ -207,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598046154464</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Universal Render Pipeline">
+      <created>1598132393814</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598132393814</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +198,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Rider naming conventions." />
     <MESSAGE value="Proper UI System" />
-    <option name="LAST_COMMIT_MESSAGE" value="Proper UI System" />
+    <MESSAGE value="Universal Render Pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="Universal Render Pipeline" />
   </component>
   <component name="WindowStateProjectService">
     <state width="465" height="466" key="DebuggerActiveHint" timestamp="1598113987902">
@@ -323,10 +278,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1941" y="193" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598010121227" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1598046157078">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1598132481829">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598046157078" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598132481829" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1598008787136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

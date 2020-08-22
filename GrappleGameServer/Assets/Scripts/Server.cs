@@ -127,7 +127,8 @@ public static class Server
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
             { (int)ClientPackets.serverConnectionReceived, ServerHandle.ServerConnectionReceived },
-            { (int)ClientPackets.transformUpdate, ServerHandle.TransformUpdate }
+            { (int)ClientPackets.transformUpdate, ServerHandle.TransformUpdate },
+            { (int)ClientPackets.grappleUpdate, ServerHandle.GrappleUpdate }
         };
         Debug.Log("Initialized packets.");
     }

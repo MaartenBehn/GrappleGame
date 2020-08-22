@@ -125,5 +125,17 @@ public static class ServerSend
             SendUdpDataToAll(player.id, packet);
         }
     }
+    
+    public static void ClientGrappleUpdate(Player player)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.clinetGrappleUpdate))
+        {
+            packet.Write(player.id);
+            packet.Write(player.isGrappling);
+            packet.Write(player.grapplePoint);
+            
+            SendUdpDataToAll(player.id, packet);
+        }
+    }
     #endregion
 }

@@ -48,6 +48,17 @@ namespace Server
                 SendUdpData(packet);
             }
         }
+        
+        public static void GrappleUpdate(Vector3 pos, bool isGrappling)
+        {
+            using (Packet packet = new Packet((int)ClientPackets.grappleUpdate))
+            {
+                packet.Write(isGrappling);
+                packet.Write(pos);
+
+                SendUdpData(packet);
+            }
+        }
         #endregion
     }
 }

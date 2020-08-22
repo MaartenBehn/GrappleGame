@@ -25,4 +25,12 @@ public static class ServerHandle
 
         Server.clients[fromClient].player.SetTransform(position, rotation, velocity, grounded);
     }
+    
+    public static void GrappleUpdate(int fromClient, Packet packet)
+    {
+        bool isGrappling = packet.ReadBool();
+        Vector3 position = packet.ReadVector3();
+        
+        Server.clients[fromClient].player.GrappleUpdate(isGrappling, position);
+    }
 }

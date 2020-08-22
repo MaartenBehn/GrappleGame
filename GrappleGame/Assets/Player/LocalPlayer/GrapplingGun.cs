@@ -1,4 +1,5 @@
 ﻿using System;
+using Server;
 using UnityEngine;
 
 namespace Player
@@ -7,33 +8,23 @@ namespace Player
 }
 public class GrapplingGun : MonoBehaviour
 {
-
-    private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     public LayerMask obstructions;
-    public Transform gunTip, gunDirection, player;
+    public Transform gunDirection, player;
     [SerializeField] private float maxDistance = 1000f;
     private SpringJoint joint;
     [SerializeField] float grappleChangeSpeed;
     
     RaycastHit hit;
     public GameObject pointer;
-
     
-    void Awake()
-    {
-        lr = GetComponent<LineRenderer>();
-        lr.positionCount = 0;
-    }
-
     void Update()
     {
         if (Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable) && !IsGrappling())
         {
             grapplePoint = hit.point;
             pointer.transform.position = grapplePoint;
-
         }
 
         if (Input.GetKey(KeyCode.X)) { ChangeMaxDistance(grappleChangeSpeed);}
@@ -53,19 +44,12 @@ public class GrapplingGun : MonoBehaviour
         }*/
         
     }
-
-    //Called after Update
-    void LateUpdate()
-    {
-        DrawRope();
-    }
-
+    
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
     void StartGrapple()
     {
-        
         if (Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable))
         {
             grapplePoint = hit.point;
@@ -83,14 +67,12 @@ public class GrapplingGun : MonoBehaviour
             joint.spring = Single.PositiveInfinity;
             joint.damper = 7f;
             joint.massScale = 4.5f;
-            
-            //renders line
-            lr.positionCount = 2;
-            
-            currentGrapplePosition = gunTip.position;
-            
+
+            GameManager.players[Client.instance.myId].isGrappling = true;
+            GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
             pointer.SetActive(false);
             
+            ClientSend.GrappleUpdate(grapplePoint, true);
         }
     }
 
@@ -100,26 +82,14 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     public void StopGrapple()
     {
-        lr.positionCount = 0;
         Destroy(joint);
         
+        GameManager.players[Client.instance.myId].isGrappling = false;
         pointer.SetActive(true);
 
+        ClientSend.GrappleUpdate(grapplePoint, false);
     }
-
-    private Vector3 currentGrapplePosition;
-
-    void DrawRope()
-    {
-        //If not grappling, don't draw rope
-        if (!joint) return;
-
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
-    }
-
+    
     public bool IsGrappling()
     {
         return joint != null;

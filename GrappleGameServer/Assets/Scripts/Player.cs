@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public string username;
     public Vector3 velocity;
     public bool grounded;
+    public bool isGrappling;
+    public Vector3 grapplePoint;
 
     public void Initialize(int id, string username)
     {
@@ -18,7 +20,6 @@ public class Player : MonoBehaviour
     {
         ServerSend.ClientTransformUpdate(this);
     }
-
     
     public void SetTransform(Vector3 position, Quaternion rotation, Vector3 velocity, bool grounded)
     {
@@ -27,6 +28,14 @@ public class Player : MonoBehaviour
         transform1.rotation = rotation;
         this.velocity = velocity;
         this.grounded = grounded;
+    }
+
+    public void GrappleUpdate(bool isGrappling, Vector3 grapplePoint)
+    {
+        this.isGrappling = isGrappling;
+        this.grapplePoint = grapplePoint;
+
+        ServerSend.ClientGrappleUpdate(this);
     }
 
     public void Disconnect()

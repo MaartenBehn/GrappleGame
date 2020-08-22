@@ -12,14 +12,16 @@ namespace Utility
         serverConnection = 1,
         playerEnter,
         playerLeave,
-        clientTransformUpdate
+        clientTransformUpdate,
+        clinetGrappleUpdate
     }
 
     /// <summary>Sent from client to server.</summary>
     public enum ClientPackets
     {
         serverConnectionReceived = 1,
-        transformUpdate
+        transformUpdate,
+        grappleUpdate
     }
 
     public class Packet : IDisposable

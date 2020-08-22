@@ -303,7 +303,8 @@ namespace Server
                 { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
                 { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
                 { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
-                { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate }
+                { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate },
+                { (int)ServerPackets.clinetGrappleUpdate, ClientHandle.ClientGrappleUpdate }
             };
             Debug.Log("Initialized packets.");
         }
