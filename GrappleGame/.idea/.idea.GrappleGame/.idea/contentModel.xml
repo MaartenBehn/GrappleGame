@@ -10,8 +10,8 @@
         <e p="Player" t="Include">
           <e p="LocalPlayer" t="Include">
             <e p="GrapplingGun.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
           </e>
-          <e p="PlayerController.cs" t="Include" />
           <e p="PlayerManager.cs" t="Include" />
         </e>
         <e p="Server" t="Include">

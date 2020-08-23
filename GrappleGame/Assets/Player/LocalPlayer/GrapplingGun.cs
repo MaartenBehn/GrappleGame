@@ -42,9 +42,10 @@ public class GrapplingGun : MonoBehaviour
         {
             StopGrapple();
         }*/
-        
 
-        
+        if(joint == null) return;
+
+
     }
     
     /// <summary>

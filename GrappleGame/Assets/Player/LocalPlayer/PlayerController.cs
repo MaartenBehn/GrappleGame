@@ -28,11 +28,11 @@ namespace Player
             // Getting movment inputs
             Vector3 input = Vector3.zero;
             if (Input.GetKey(KeyCode.W)) { 
-                input.x += 1;
+                input.z -= 1;
             }
-            if (Input.GetKey(KeyCode.S)) { input.x -= 1; }
-            if (Input.GetKey(KeyCode.A)) { input.z += 1; }
-            if (Input.GetKey(KeyCode.D)) { input.z -= 1; }
+            if (Input.GetKey(KeyCode.S)) { input.z += 1; }
+            if (Input.GetKey(KeyCode.A)) { input.x += 1; }
+            if (Input.GetKey(KeyCode.D)) { input.x -= 1; }
             input = transform.rotation * -input;
 
             // Performing Movment and Rotation
@@ -56,7 +56,7 @@ namespace Player
                 float mouseVertical = -Input.GetAxis("Mouse Y");
                 float mouseHorizontal = Input.GetAxis("Mouse X");
 
-                transform.Rotate(0f, mouseHorizontal * sensitivity * Time.deltaTime, mouseVertical * sensitivity * Time.deltaTime);
+                transform.Rotate(mouseVertical * sensitivity * Time.deltaTime, mouseHorizontal * sensitivity * Time.deltaTime, 0f);
 
                 // Movment in Space
                 Vector3 speed = input * jetpackSpeed;
@@ -76,12 +76,12 @@ namespace Player
         void OnCollisionEnter(Collision collisionInfo)
         {
             SetGroundNormal(collisionInfo);
-            grounded = true;
+            SetGrounded(true);
         }
         void OnCollisionStay(Collision collisionInfo)
         {
             SetGroundNormal(collisionInfo);
-            grounded = true;
+            SetGrounded(true);
         }
 
         void OnTriggerStay(Collider other)
@@ -91,8 +91,7 @@ namespace Player
 
         void OnTriggerExit(Collider other)
         {
-            groundNormal = Vector3.zero;
-            grounded = false;
+            SetGrounded(false);
         }
 
         void SetGroundNormal(Collision collisionInfo)
@@ -104,6 +103,20 @@ namespace Player
             else
             {
                 groundNormal = collisionInfo.contacts[0].normal;
+            }
+        }
+
+        void SetGrounded(bool grounded)
+        {
+            if (grounded)
+            {
+                this.grounded = true;
+            }
+            else
+            {
+                this.grounded = false;
+                groundNormal = Vector3.zero;
+                cinemachineFreeLook.m_YAxis.Value = 0.5f;
             }
         }
     }

@@ -55,7 +55,7 @@
      <Compile Include="Assets\Player\LocalPlayer\GrapplingGun.cs" />
      <Compile Include="Assets\Server\ClientHandle.cs" />
      <Compile Include="Assets\UI\UIPanel.cs" />
-     <Compile Include="Assets\Player\PlayerController.cs" />
+     <Compile Include="Assets\Player\LocalPlayer\PlayerController.cs" />
      <Compile Include="Assets\UI\UIManager.cs" />
      <Compile Include="Assets\UI\StartPanel.cs" />
      <Compile Include="Assets\Server\ClientSend.cs" />
