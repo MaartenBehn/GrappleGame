@@ -26,11 +26,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="Grapple Gun on Server">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena 2.c4d" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Arena 2.c4d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Arena 3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LineShader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LineShader.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +49,7 @@
     <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Player/LocalPlayer/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@8.2.0/Editor/Data/Util/SerializationHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49F4E7E7-91CC-4FFF-ACD8-8F729E2B1E4C/44/debdd063/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -59,12 +67,13 @@
         <option value="$PROJECT_DIR$/Assets/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/SettingsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Utility/Packet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/ClientSend.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/Client.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -100,10 +109,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2804">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="2804" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -123,6 +132,8 @@
       <workItem from="1598107795565" duration="6943000" />
       <workItem from="1598118812635" duration="430000" />
       <workItem from="1598119419906" duration="72000" />
+      <workItem from="1598199298657" duration="464000" />
+      <workItem from="1598202700652" duration="2096000" />
     </task>
     <task id="LOCAL-00001" summary="Proper UI System">
       <created>1598046154464</created>
@@ -152,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598140545362</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="New Arena with lights">
+      <created>1598199607453</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598199607453</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,45 +209,46 @@
     <MESSAGE value="Proper UI System" />
     <MESSAGE value="Universal Render Pipeline" />
     <MESSAGE value="Grapple Gun on Server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Grapple Gun on Server" />
+    <MESSAGE value="New Arena with lights" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Arena with lights" />
   </component>
   <component name="WindowStateProjectService">
     <state width="465" height="466" key="DebuggerActiveHint" timestamp="1598113987902">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="465" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598113987902" />
-    <state width="1877" height="142" key="GridCell.Tab.0.bottom" timestamp="1598141631928">
+    <state width="1877" height="142" key="GridCell.Tab.0.bottom" timestamp="1598202741662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631928" />
-    <state width="1877" height="142" key="GridCell.Tab.0.center" timestamp="1598141631928">
+    <state width="1877" height="142" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202741662" />
+    <state width="1877" height="142" key="GridCell.Tab.0.center" timestamp="1598202741662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631928" />
-    <state width="1877" height="142" key="GridCell.Tab.0.left" timestamp="1598141631928">
+    <state width="1877" height="142" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202741662" />
+    <state width="1877" height="142" key="GridCell.Tab.0.left" timestamp="1598202741661">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631928" />
-    <state width="1877" height="142" key="GridCell.Tab.0.right" timestamp="1598141631928">
+    <state width="1877" height="142" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202741661" />
+    <state width="1877" height="142" key="GridCell.Tab.0.right" timestamp="1598202741662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631928" />
-    <state width="1877" height="142" key="GridCell.Tab.1.bottom" timestamp="1598141631929">
+    <state width="1877" height="142" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202741662" />
+    <state width="1877" height="142" key="GridCell.Tab.1.bottom" timestamp="1598202742828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631929" />
-    <state width="1877" height="142" key="GridCell.Tab.1.center" timestamp="1598141631928">
+    <state width="1877" height="142" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202742828" />
+    <state width="1877" height="142" key="GridCell.Tab.1.center" timestamp="1598202742828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631928" />
-    <state width="1877" height="142" key="GridCell.Tab.1.left" timestamp="1598141631928">
+    <state width="1877" height="142" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202742828" />
+    <state width="1877" height="142" key="GridCell.Tab.1.left" timestamp="1598202742828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631928" />
-    <state width="1877" height="142" key="GridCell.Tab.1.right" timestamp="1598141631929">
+    <state width="1877" height="142" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202742828" />
+    <state width="1877" height="142" key="GridCell.Tab.1.right" timestamp="1598202742828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="142" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631929" />
+    <state width="1877" height="142" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598202742828" />
     <state width="1877" height="142" key="GridCell.Tab.2.bottom" timestamp="1598141631929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -262,6 +281,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="142" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598141631929" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1598199697812">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598199697812" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1598199703556">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598199703556" />
     <state x="725" y="243" key="RiderGenerateDialog" timestamp="1598109768293">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -270,10 +297,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1941" y="193" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598010121227" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1598140549598">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1598199749937">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598140549598" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598199749937" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1598008787136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
