@@ -26,34 +26,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="Universal Render Pipeline">
-      <change beforePath="$PROJECT_DIR$/../C4D/Arena 1.c4d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Glass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Struckture.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Struckture.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Server/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Server/ClientSend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/ClientSend.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Utility/Kevin Iglesias/Basic Motions Pack/Materials/Basic Motions Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utility/Kevin Iglesias/Basic Motions Pack/Materials/Basic Motions Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Utility/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utility/Packet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Packet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Server.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerSend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerSend.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorShader.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorShader.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,10 +44,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@8.2.0/Editor/Data/Util/SerializationHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49F4E7E7-91CC-4FFF-ACD8-8F729E2B1E4C/44/debdd063/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -84,10 +61,10 @@
         <option value="$PROJECT_DIR$/Assets/Utility/Packet.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/ClientSend.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/Client.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
       </list>
     </option>
   </component>
@@ -146,6 +123,7 @@
       <workItem from="1598107795565" duration="6943000" />
       <workItem from="1598118812635" duration="430000" />
       <workItem from="1598119419906" duration="72000" />
+      <workItem from="1598183061238" duration="2101000" />
     </task>
     <task id="LOCAL-00001" summary="Proper UI System">
       <created>1598046154464</created>

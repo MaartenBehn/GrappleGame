@@ -42,6 +42,8 @@ public class GrapplingGun : MonoBehaviour
         {
             StopGrapple();
         }*/
+        GameManager.players[Client.instance.myId].lr.material.SetFloat("Mix",Vector3.Distance(player.position, grapplePoint) / joint.maxDistance);
+
         
     }
     
