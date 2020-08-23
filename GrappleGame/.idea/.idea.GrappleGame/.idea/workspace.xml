@@ -25,17 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="Universal Render Pipeline">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorShader.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/VertexColorShader.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" afterDir="false" />
-    </list>
+    <list default="true" id="d5819f96-3833-4577-a1b5-7343f6973f1b" name="Default Changelist" comment="Universal Render Pipeline" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +113,7 @@
       <workItem from="1598107795565" duration="6943000" />
       <workItem from="1598118812635" duration="430000" />
       <workItem from="1598119419906" duration="72000" />
-      <workItem from="1598183061238" duration="2101000" />
+      <workItem from="1598183061238" duration="2372000" />
     </task>
     <task id="LOCAL-00001" summary="Proper UI System">
       <created>1598046154464</created>
