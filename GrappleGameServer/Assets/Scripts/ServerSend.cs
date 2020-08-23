@@ -133,6 +133,7 @@ public static class ServerSend
             packet.Write(player.id);
             packet.Write(player.isGrappling);
             packet.Write(player.grapplePoint);
+            packet.Write(player.distanceFromGrapple);
             
             SendUdpDataToAll(player.id, packet);
         }

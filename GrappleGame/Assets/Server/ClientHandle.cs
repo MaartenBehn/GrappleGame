@@ -56,9 +56,12 @@ namespace Server
             int id = packet.ReadInt();
             bool isGrappling = packet.ReadBool();
             Vector3 position = packet.ReadVector3();
+            float maxDistanceFromGrapple = packet.ReadFloat();
 
             GameManager.players[id].isGrappling = isGrappling;
             GameManager.players[id].grapplePoint = position;
+            GameManager.players[id].maxDistanceFromGrapple = maxDistanceFromGrapple;
+
         }
     }
 }

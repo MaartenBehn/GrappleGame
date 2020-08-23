@@ -18,6 +18,7 @@ namespace Player
         public Transform grappleTip;
         public bool isGrappling = false;
         public Vector3 grapplePoint;
+        public float maxDistanceFromGrapple;
         
         private void FixedUpdate()
         {
@@ -39,7 +40,7 @@ namespace Player
                 lr.positionCount = 0;
                 return;
             }
-            
+            lr.material.SetFloat("Mix",Vector3.Distance(grappleTip.position, grapplePoint) / maxDistanceFromGrapple);
             lr.positionCount = 2;
             lr.SetPosition(0, grappleTip.position);
             lr.SetPosition(1, grapplePoint);

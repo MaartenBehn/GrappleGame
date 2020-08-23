@@ -42,7 +42,7 @@ public class GrapplingGun : MonoBehaviour
         {
             StopGrapple();
         }*/
-        GameManager.players[Client.instance.myId].lr.material.SetFloat("Mix",Vector3.Distance(player.position, grapplePoint) / joint.maxDistance);
+        
 
         
     }
@@ -72,9 +72,10 @@ public class GrapplingGun : MonoBehaviour
 
             GameManager.players[Client.instance.myId].isGrappling = true;
             GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
+            GameManager.players[Client.instance.myId].maxDistanceFromGrapple = distanceFromPoint;
             pointer.SetActive(false);
             
-            ClientSend.GrappleUpdate(grapplePoint, true);
+            ClientSend.GrappleUpdate(grapplePoint, true, distanceFromPoint);
         }
     }
 
@@ -89,7 +90,7 @@ public class GrapplingGun : MonoBehaviour
         GameManager.players[Client.instance.myId].isGrappling = false;
         pointer.SetActive(true);
 
-        ClientSend.GrappleUpdate(grapplePoint, false);
+        ClientSend.GrappleUpdate(grapplePoint, false, 1);
     }
     
     public bool IsGrappling()

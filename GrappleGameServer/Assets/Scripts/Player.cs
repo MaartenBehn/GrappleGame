@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public bool grounded;
     public bool isGrappling;
     public Vector3 grapplePoint;
+    public float distanceFromGrapple;
 
     public void Initialize(int id, string username)
     {
@@ -30,10 +31,11 @@ public class Player : MonoBehaviour
         this.grounded = grounded;
     }
 
-    public void GrappleUpdate(bool isGrappling, Vector3 grapplePoint)
+    public void GrappleUpdate(bool isGrappling, Vector3 grapplePoint, float distanceFromGrapple)
     {
         this.isGrappling = isGrappling;
         this.grapplePoint = grapplePoint;
+        this.distanceFromGrapple = distanceFromGrapple;
 
         ServerSend.ClientGrappleUpdate(this);
     }

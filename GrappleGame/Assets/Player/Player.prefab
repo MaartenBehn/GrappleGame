@@ -1944,6 +1944,7 @@ MonoBehaviour:
   grappleTip: {fileID: 2148792034819784654}
   isGrappling: 0
   grapplePoint: {x: 0, y: 0, z: 0}
+  maxDistanceFromGrapple: 0
 --- !u!120 &2910342807744550513
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1963,7 +1964,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8dbea2dc1ab9a07478a9f856e847ae6a, type: 2}
+  - {fileID: 2100000, guid: 5b1cb0894b64b6be990fec31a693b7a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

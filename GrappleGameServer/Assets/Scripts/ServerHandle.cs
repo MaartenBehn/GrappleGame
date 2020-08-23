@@ -30,7 +30,8 @@ public static class ServerHandle
     {
         bool isGrappling = packet.ReadBool();
         Vector3 position = packet.ReadVector3();
+        float distanceFromGrapple = packet.ReadFloat();
         
-        Server.clients[fromClient].player.GrappleUpdate(isGrappling, position);
+        Server.clients[fromClient].player.GrappleUpdate(isGrappling, position, distanceFromGrapple);
     }
 }
