@@ -686,6 +686,7 @@ MonoBehaviour:
   grappleTip: {fileID: 7145996192402744856}
   isGrappling: 0
   grapplePoint: {x: 0, y: 0, z: 0}
+  maxDistanceFromGrapple: 0
 --- !u!114 &8234832931886378642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,7 +708,7 @@ MonoBehaviour:
   gunDirection: {fileID: 7145996192402744856}
   player: {fileID: 3312469328267287309}
   maxDistance: 100
-  grappleChangeSpeed: 0.01
+  grappleChangeSpeed: 0.1
   pointer: {fileID: 5596967698216539127}
 --- !u!120 &3883511767952025922
 LineRenderer:

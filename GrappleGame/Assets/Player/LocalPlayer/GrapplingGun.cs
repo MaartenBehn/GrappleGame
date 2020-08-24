@@ -43,8 +43,6 @@ public class GrapplingGun : MonoBehaviour
             StopGrapple();
         }*/
 
-        if(joint == null) return;
-
 
     }
     
@@ -60,23 +58,23 @@ public class GrapplingGun : MonoBehaviour
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = grapplePoint;
 
-            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+            
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint;
+            joint.maxDistance = Vector3.Distance(player.position, grapplePoint);
             joint.minDistance = 0;
 
             //Adjust these values to fit your game.
-            joint.spring = Single.PositiveInfinity;
+            joint.spring = 10000;
             joint.damper = 7f;
             joint.massScale = 4.5f;
 
             GameManager.players[Client.instance.myId].isGrappling = true;
             GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
-            GameManager.players[Client.instance.myId].maxDistanceFromGrapple = distanceFromPoint;
+            GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
             pointer.SetActive(false);
             
-            ClientSend.GrappleUpdate(grapplePoint, true, distanceFromPoint);
+            ClientSend.GrappleUpdate(grapplePoint, true, joint.maxDistance);
         }
     }
 
@@ -112,5 +110,8 @@ public class GrapplingGun : MonoBehaviour
         {
             joint.maxDistance = 1;
         }
+        
+        GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
+        ClientSend.GrappleUpdate(grapplePoint, GameManager.players[Client.instance.myId].isGrappling, joint.maxDistance);
     }
 }
