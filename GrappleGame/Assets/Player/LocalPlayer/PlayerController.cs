@@ -1,28 +1,43 @@
 ﻿using Cinemachine;
 using Server;
 using UnityEngine;
+using Utility;
 
 namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] CinemachineFreeLook cinemachineFreeLook;
         PlayerManager playerManager;
         new Rigidbody rigidbody;
-        void Start()
+        private new CapsuleCollider collider;
+        void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
             playerManager = GetComponent<PlayerManager>();
+            collider = GetComponent<CapsuleCollider>();
         }
-
-        bool grounded = false;
+        
+        public bool grounded = false;
+        bool nearGround = false;
         Vector3 groundNormal;
 
+        [SerializeField] CinemachineFreeLook cinemachineFreeLook;
+        [SerializeField] private LayerMask groundLayers;
         [SerializeField] float sensitivity = 100f;
         [SerializeField] float jetpackSpeed = 1f;
         [SerializeField] float magnetBootsForce = 10f;
         [SerializeField] float walkSpeed = 10f;
-        
+        [SerializeField] private int groundCheckDirections = 20;
+        [SerializeField] private float groundCheckMaxDistance = 0.2f;
+        [SerializeField] private float nearGroundCheckMaxDistance = 0.5f;
+
+        private void Start()
+        {
+            float height = collider.height;
+            groundCheckMaxDistance += height / 2;
+            nearGroundCheckMaxDistance += height / 2;
+        }
+
         void FixedUpdate()
         {
             // Getting movment inputs
@@ -34,6 +49,25 @@ namespace Player
             if (Input.GetKey(KeyCode.A)) { input.x += 1; }
             if (Input.GetKey(KeyCode.D)) { input.x -= 1; }
             input = transform.rotation * -input;
+            
+            // Update Grounded, nearGround and groundNormal
+            grounded = false;
+            nearGround = false;
+            groundNormal = Vector3.zero;
+            float shortestDistance = 100.0f;
+
+            foreach (Vector3 direction in GrappleMath.GetSphereDirections(groundCheckDirections))
+            {
+                if (!Physics.Raycast(transform.position, direction, out RaycastHit groundHitInfo,
+                    nearGroundCheckMaxDistance, groundLayers)) continue;
+                
+                nearGround = true;
+                if (groundHitInfo.distance < groundCheckMaxDistance) { grounded = true; }
+                
+                if (groundHitInfo.distance >= shortestDistance) continue;
+                shortestDistance = groundHitInfo.distance;
+                groundNormal = groundHitInfo.normal;
+            }
 
             // Performing Movment and Rotation
             if (grounded)
@@ -63,6 +97,11 @@ namespace Player
                 rigidbody.AddForce(speed);
             }
 
+            if (nearGround)
+            {
+                rigidbody.AddForce(-groundNormal * magnetBootsForce);
+            }
+            
             // Updating depending varibles
             cinemachineFreeLook.m_YAxis.m_InputAxisName = grounded ? "Mouse Y" : "";
 
@@ -71,53 +110,6 @@ namespace Player
 
             // Sending transform to Server
             ClientSend.TransformUpdate();
-        }
-
-        void OnCollisionEnter(Collision collisionInfo)
-        {
-            SetGroundNormal(collisionInfo);
-            SetGrounded(true);
-        }
-        void OnCollisionStay(Collision collisionInfo)
-        {
-            SetGroundNormal(collisionInfo);
-            SetGrounded(true);
-        }
-
-        void OnTriggerStay(Collider other)
-        {
-            rigidbody.AddForce(-groundNormal * magnetBootsForce);
-        }
-
-        void OnTriggerExit(Collider other)
-        {
-            SetGrounded(false);
-        }
-
-        void SetGroundNormal(Collision collisionInfo)
-        {
-            if (collisionInfo.gameObject.transform.tag.Equals("InverseSpehere"))
-            {
-                groundNormal = ((collisionInfo.gameObject.transform.position - transform.position).normalized);
-            }
-            else
-            {
-                groundNormal = collisionInfo.contacts[0].normal;
-            }
-        }
-
-        void SetGrounded(bool grounded)
-        {
-            if (grounded)
-            {
-                this.grounded = true;
-            }
-            else
-            {
-                this.grounded = false;
-                groundNormal = Vector3.zero;
-                cinemachineFreeLook.m_YAxis.Value = 0.5f;
-            }
         }
     }
 }

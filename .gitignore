@@ -4,6 +4,7 @@
 ## GrappleGame:
 GrappleGame/.vscode/*
 GrappleGame/.vs/*
+GrappleGame/.idea/*
 GrappleGame/Library/*
 GrappleGame/Logs/*
 GrappleGame/Temp/*
@@ -13,6 +14,7 @@ GrappleGame/Build/*
 ## GrappleGameServer:
 GrappleGameServer/.vscode/*
 GrappleGameServer/.vs/*
+GrappleGameServer/.idea/*
 GrappleGameServer/Library/*
 GrappleGameServer/Logs/*
 GrappleGameServer/Temp/*
