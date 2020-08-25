@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312469327053286706}
-  m_LocalRotation: {x: 0.0015814621, y: -0.1512815, z: 0.00024203182, w: 0.98848945}
-  m_LocalPosition: {x: -0.6026312, y: 0.03826818, z: -4.023689}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.7, y: 0, z: -4.612112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3312469328267287309}
@@ -205,7 +205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312469327796612426}
-  m_LocalRotation: {x: 0.0049464446, y: -0.1302468, z: 0.0006498021, w: 0.9914691}
+  m_LocalRotation: {x: 3.761582e-37, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0
   m_VerticalDamping: 0
-  m_ScreenX: 0.6
+  m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 0
-    m_WaitTime: 1
+    m_WaitTime: 0
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Offset: {x: -0.7, y: 0, z: 0}
-  m_ApplyAfter: 0
+  m_ApplyAfter: 1
   m_PreserveComposition: 0
 --- !u!1 &3312469328267287308
 GameObject:
@@ -576,7 +576,6 @@ GameObject:
   - component: {fileID: 3312469328267287304}
   - component: {fileID: 920580767820814610}
   - component: {fileID: 1012446226397902936}
-  - component: {fileID: 8234832931886378642}
   - component: {fileID: 3883511767952025922}
   m_Layer: 8
   m_Name: LocalPlayer
@@ -599,7 +598,7 @@ Transform:
   - {fileID: 3312469327759788667}
   - {fileID: 3312469328185043042}
   - {fileID: 3312469327053286702}
-  - {fileID: 1232377294427204747}
+  - {fileID: 5287810559662756420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -679,29 +678,6 @@ MonoBehaviour:
   isGrappling: 0
   grapplePoint: {x: 0, y: 0, z: 0}
   maxDistanceFromGrapple: 0
---- !u!114 &8234832931886378642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3312469328267287308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33aabb72220e5274ab3201fec7d98c38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGrappleable:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  obstructions:
-    serializedVersion: 2
-    m_Bits: 0
-  gunDirection: {fileID: 7145996192402744856}
-  player: {fileID: 3312469328267287309}
-  maxDistance: 100
-  grappleChangeSpeed: 0.1
-  pointer: {fileID: 5596967698216539127}
 --- !u!120 &3883511767952025922
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -824,7 +800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312469328307470178}
-  m_LocalRotation: {x: 0.004945355, y: -0.12856482, z: 0.00064112735, w: 0.9916886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -991,7 +967,7 @@ MonoBehaviour:
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0
   m_VerticalDamping: 0
-  m_ScreenX: 0.6
+  m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0.1
   m_DeadZoneHeight: 0
@@ -1117,8 +1093,8 @@ MonoBehaviour:
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0
   m_VerticalDamping: 0
-  m_ScreenX: 0.61827654
-  m_ScreenY: 0.50487804
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.6
@@ -1150,7 +1126,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312469329069251410}
-  m_LocalRotation: {x: 0.0015814619, y: -0.15128149, z: 0.00024203182, w: 0.98848945}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1200,6 +1176,61 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3312469328975054681}
+--- !u!1 &4058007431136250053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5287810559662756420}
+  - component: {fileID: 3414342555409361522}
+  m_Layer: 8
+  m_Name: GrapplingGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5287810559662756420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058007431136250053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1232377294427204747}
+  m_Father: {fileID: 3312469328267287309}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3414342555409361522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058007431136250053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33aabb72220e5274ab3201fec7d98c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDirection: {fileID: 3312469327053286702}
+  player: {fileID: 3312469328267287309}
+  pointer: {fileID: 5596967698216539127}
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 512
+  obstructions:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxDistance: 100
+  grappleChangeSpeed: 0.1
 --- !u!1 &5596967698216539127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1243,7 @@ GameObject:
   - component: {fileID: 105309962809167592}
   - component: {fileID: 3391533087458637634}
   m_Layer: 8
-  m_Name: Sphere
+  m_Name: GarpplePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1226,11 +1257,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5596967698216539127}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 3312469328267287309}
-  m_RootOrder: 3
+  m_Father: {fileID: 5287810559662756420}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &105309962809167592
 MeshFilter:

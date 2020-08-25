@@ -54,6 +54,7 @@
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Player\LocalPlayer\GrapplingGun.cs" />
      <Compile Include="Assets\Server\ClientHandle.cs" />
+     <Compile Include="Assets\Utility\GrappleMath.cs" />
      <Compile Include="Assets\UI\UIPanel.cs" />
      <Compile Include="Assets\Player\LocalPlayer\PlayerController.cs" />
      <Compile Include="Assets\UI\UIManager.cs" />
@@ -65,7 +66,6 @@
      <Compile Include="Assets\Player\PlayerManager.cs" />
      <Compile Include="Assets\UI\PausePanel.cs" />
      <Compile Include="Assets\Utility\Packet.cs" />
-     <Compile Include="Assets\Utility\GrappleMath.cs" />
      <None Include="Assets\Utility\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Utility\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Utility\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

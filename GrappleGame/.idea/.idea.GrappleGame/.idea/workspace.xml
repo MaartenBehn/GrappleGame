@@ -27,11 +27,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b50e07ed-1338-4092-ba09-d0ec0730eb05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Arena.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +65,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/PlayerController.cs" />
       </list>
     </option>
@@ -90,10 +98,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17776">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="17776" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -108,8 +116,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598314760170</updated>
-      <workItem from="1598314762080" duration="48000" />
+      <workItem from="1598314762080" duration="125000" />
+      <workItem from="1598360151186" duration="3926000" />
     </task>
+    <task id="LOCAL-00001" summary="cinemachine bug fix">
+      <created>1598314837396</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598314837396</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +160,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="cinemachine bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="cinemachine bug fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2320" y="223" width="630" height="598" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1598271312615">
@@ -153,38 +172,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="456" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598308731692" />
-    <state width="1877" height="29" key="GridCell.Tab.0.bottom" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.0.bottom" timestamp="1598364162194">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.0.center" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364162194" />
+    <state width="1877" height="29" key="GridCell.Tab.0.center" timestamp="1598364162194">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.0.left" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364162194" />
+    <state width="1877" height="29" key="GridCell.Tab.0.left" timestamp="1598364162194">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.0.right" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364162194" />
+    <state width="1877" height="29" key="GridCell.Tab.0.right" timestamp="1598364162194">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.1.bottom" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364162194" />
+    <state width="1877" height="29" key="GridCell.Tab.1.bottom" timestamp="1598364189517">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.1.center" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364189517" />
+    <state width="1877" height="29" key="GridCell.Tab.1.center" timestamp="1598364189516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.1.left" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364189516" />
+    <state width="1877" height="29" key="GridCell.Tab.1.left" timestamp="1598364189516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
-    <state width="1877" height="29" key="GridCell.Tab.1.right" timestamp="1598314702177">
+    <state width="1877" height="29" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364189516" />
+    <state width="1877" height="29" key="GridCell.Tab.1.right" timestamp="1598364189516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="29" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702177" />
+    <state width="1877" height="29" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598364189516" />
     <state width="1877" height="29" key="GridCell.Tab.2.bottom" timestamp="1598314702178">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -217,6 +236,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="29" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702178" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1598314839080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314839080" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598314594186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

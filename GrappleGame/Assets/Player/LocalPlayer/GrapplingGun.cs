@@ -1,46 +1,55 @@
-﻿using Server;
+﻿using System;
+using Server;
 using UnityEngine;
 
 namespace Player.LocalPlayer
 {
     public class GrapplingGun : MonoBehaviour
     {
+        
+        
+        [SerializeField] private Transform gunDirection, player;
+        [SerializeField] private GameObject pointer;
+        [SerializeField] private LayerMask whatIsGrappleable, obstructions;
+        [SerializeField] private float maxDistance = 1000f, grappleChangeSpeed;
+
         private Vector3 grapplePoint;
-        public LayerMask whatIsGrappleable;
-        public LayerMask obstructions;
-        public Transform gunDirection, player;
-        [SerializeField] private float maxDistance = 1000f;
+        private bool grappling;
+
+        private RaycastHit hit;
+        private bool hitting;
         private SpringJoint joint;
-        [SerializeField] float grappleChangeSpeed;
-    
-        RaycastHit hit;
-        public GameObject pointer;
-    
-        void Update()
+
+        private void Update()
         {
-            if (Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable) && !IsGrappling())
-            {
-                grapplePoint = hit.point;
-                pointer.transform.position = grapplePoint;
-            }
+            hitting = Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance,
+                whatIsGrappleable);
 
             if (Input.GetKey(KeyCode.X)) { ChangeMaxDistance(grappleChangeSpeed);}
             if (Input.GetKey(KeyCode.Y)) { ChangeMaxDistance(-grappleChangeSpeed);}
         
-            if (Input.GetMouseButtonDown(0) && !IsGrappling())
+            if (Input.GetMouseButtonDown(0) && !grappling)
             {
                 StartGrapple();
             }
-            else if (Input.GetMouseButtonDown(0) && IsGrappling())
+            else if (Input.GetMouseButtonDown(0) && grappling)
             {
                 StopGrapple();
             }
             /*else if (Physics.Linecast(gunTip.position,grapplePoint,obstructions))
-        {
-            StopGrapple();
-        }*/
+            {
+                StopGrapple();
+            }*/
 
-
+            if (!grappling && hitting)
+            {
+                pointer.SetActive(true);
+                pointer.transform.position = hit.point;
+            }
+            else
+            {
+                pointer.SetActive(false);
+            }
         }
     
         /// <summary>
@@ -48,31 +57,25 @@ namespace Player.LocalPlayer
         /// </summary>
         void StartGrapple()
         {
-            if (Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable))
-            {
-                grapplePoint = hit.point;
-                joint = player.gameObject.AddComponent<SpringJoint>();
-                joint.autoConfigureConnectedAnchor = false;
-                joint.connectedAnchor = grapplePoint;
-
+            if(!hitting) return;
             
-
-                //The distance grapple will try to keep from grapple point. 
-                joint.maxDistance = Vector3.Distance(player.position, grapplePoint);
-                joint.minDistance = 0;
-
-                //Adjust these values to fit your game.
-                joint.spring = 10000;
-                joint.damper = 7f;
-                joint.massScale = 4.5f;
-
-                GameManager.players[Client.instance.myId].isGrappling = true;
-                GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
-                GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
-                pointer.SetActive(false);
+            joint = player.gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            grapplePoint = hit.point;
+            joint.connectedAnchor = hit.point;
             
-                ClientSend.GrappleUpdate(grapplePoint, true, joint.maxDistance);
-            }
+            //The distance grapple will try to keep from grapple point. 
+            joint.maxDistance = Vector3.Distance(player.position, grapplePoint);
+            joint.minDistance = 0;
+
+            //Adjust these values to fit your game.
+            joint.spring = 10000;
+            joint.damper = 7f;
+            joint.massScale = 4.5f;
+            
+            grappling = true;
+            
+            UpdateServer();
         }
 
 
@@ -82,23 +85,11 @@ namespace Player.LocalPlayer
         public void StopGrapple()
         {
             Destroy(joint);
-        
-            GameManager.players[Client.instance.myId].isGrappling = false;
-            pointer.SetActive(true);
+            grappling = false;
+            grapplePoint = Vector3.zero;
 
-            ClientSend.GrappleUpdate(grapplePoint, false, 1);
+            UpdateServer();
         }
-    
-        public bool IsGrappling()
-        {
-            return joint != null;
-        }
-
-        public Vector3 GetGrapplePoint()
-        {
-            return grapplePoint;
-        }
-
         public void ChangeMaxDistance(float addMaxDistance)
         {
             joint.maxDistance += addMaxDistance;
@@ -107,9 +98,17 @@ namespace Player.LocalPlayer
             {
                 joint.maxDistance = 1;
             }
-        
+            
+            UpdateServer();
+        }
+
+        public void UpdateServer()
+        {
+            GameManager.players[Client.instance.myId].isGrappling = grappling;
+            GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
             GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
-            ClientSend.GrappleUpdate(grapplePoint, GameManager.players[Client.instance.myId].isGrappling, joint.maxDistance);
+
+            ClientSend.GrappleUpdate(grapplePoint, grappling, joint.maxDistance);
         }
     }
 }
