@@ -101,7 +101,11 @@ namespace Player
             {
                 rigidbody.AddForce(-groundNormal * magnetBootsForce);
             }
-            
+            else
+            {
+                cinemachineFreeLook.m_YAxis.Value = 0.5f;
+            }
+
             // Updating depending varibles
             cinemachineFreeLook.m_YAxis.m_InputAxisName = grounded ? "Mouse Y" : "";
 
