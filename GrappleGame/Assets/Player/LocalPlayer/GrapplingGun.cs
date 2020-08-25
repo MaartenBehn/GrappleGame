@@ -84,17 +84,27 @@ namespace Player.LocalPlayer
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             grapplePoint = hit.point;
-            joint.connectedAnchor = hit.point;
+            
+            //set anchor depending on target
+            if (snappingGrapplePoint || playerGrapplePoint)
+            {
+                joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
+                grapplePoint = hit.rigidbody.position;
+            }
+            else
+            {
+                joint.connectedAnchor = hit.point;
+            }
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = Vector3.Distance(player.position, grapplePoint);
+            joint.maxDistance = Vector3.Distance(player.position, grapplePoint) + 1;
             joint.minDistance = 0;
 
             //Adjust these values to fit your game.
             joint.spring = 10000;
             joint.damper = 7f;
             joint.massScale = 4.5f;
-            
+
             grappling = true;
             
             UpdateServer();
@@ -130,6 +140,10 @@ namespace Player.LocalPlayer
             {
                 GameManager.players[Client.instance.myId].isGrappling = grappling;
                 GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
+
+                GameManager.players[Client.instance.myId].isSnapGrappling = true;
+                GameManager.players[Client.instance.myId].grappleSnapPoint = hit.transform.name;
+
                 
                 ClientSend.GrappleUpdate(hit.transform.name, grappling, joint.maxDistance);
                 return;
@@ -139,7 +153,11 @@ namespace Player.LocalPlayer
                 GameManager.players[Client.instance.myId].isGrappling = grappling;
                 GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
 
-                ClientSend.GrappleUpdate(hit.transform.GetComponentInParent<PlayerManager>().id.ToString(), grappling, joint.maxDistance);
+                GameManager.players[Client.instance.myId].isSnapGrappling = true;
+                GameManager.players[Client.instance.myId].grappleSnapPoint = hit.transform.GetComponentInParent<PlayerManager>().id.ToString();
+
+                
+                ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].grappleSnapPoint, grappling, joint.maxDistance);
                 return;
             }
             GameManager.players[Client.instance.myId].isGrappling = grappling;

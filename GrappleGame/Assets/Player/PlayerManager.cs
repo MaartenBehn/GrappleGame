@@ -47,6 +47,7 @@ namespace Player
             if (isSnapGrappling)
             {
                 grapplePoint = ArenaData.instance.GETId(grappleSnapPoint).transform.position;
+                
             }
             
             lr.material.SetFloat("Mix",Vector3.Distance(grappleTip.position, grapplePoint) / maxDistanceFromGrapple);
