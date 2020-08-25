@@ -25,27 +25,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b50e07ed-1338-4092-ba09-d0ec0730eb05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/indexLayout.xml" afterDir="false" />
+    <list default="true" id="b50e07ed-1338-4092-ba09-d0ec0730eb05" name="Default Changelist" comment="added easy grapplable points, with server support.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GrappleGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arena/Arena 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arena/Arena 3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ArenaData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArenaData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Server/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Server/ClientSend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Server/ClientSend.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Utility/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Utility/Packet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/.idea/.idea.GrappleGameServer/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Packet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/Server.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerSend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GrappleGameServer/Assets/Scripts/ServerSend.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/LocalPlayer/LocalPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Player.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +48,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@8.2.0/Editor/Data/Util/SerializationHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/LocalPlayer/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/niko4u/Dokumente/code/Unity/GrappleGame/GrappleGame/Assets/Arena/Arena 3.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -72,10 +58,10 @@
         <option value="$PROJECT_DIR$/Assets/Server/ClientSend.cs" />
         <option value="$PROJECT_DIR$/Assets/Utility/Packet.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/Client.cs" />
-        <option value="$PROJECT_DIR$/Assets/ArenaData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
         <option value="$PROJECT_DIR$/Assets/Server/ClientHandle.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/PlayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/LocalPlayer/GrapplingGun.cs" />
+        <option value="$PROJECT_DIR$/Assets/ArenaData.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +116,7 @@
       <updated>1598314760170</updated>
       <workItem from="1598314762080" duration="125000" />
       <workItem from="1598360151186" duration="3926000" />
-      <workItem from="1598367583641" duration="6725000" />
+      <workItem from="1598367583641" duration="10592000" />
     </task>
     <task id="LOCAL-00001" summary="cinemachine bug fix">
       <created>1598314837396</created>
@@ -139,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598314837396</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added easy grapplable points, with server support.">
+      <created>1598377482199</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598377482199</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +182,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="cinemachine bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="cinemachine bug fix" />
+    <MESSAGE value="added easy grapplable points, with server support." />
+    <option name="LAST_COMMIT_MESSAGE" value="added easy grapplable points, with server support." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2320" y="223" width="630" height="598" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1598271312615">
@@ -280,10 +274,11 @@
     </state>
     <state width="1877" height="29" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314702178" />
     <state width="1858" height="369" key="GridCell.Tab.3.right/1680.0.1920.1080/0.31.1680.1019@1680.0.1920.1080" timestamp="1598377192549" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1598314839080">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2232" y="226" width="1000" height="698" key="Vcs.Push.Dialog.v2" timestamp="1598377493132">
+      <screen x="1680" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598314839080" />
+    <state x="2232" y="226" width="1000" height="698" key="Vcs.Push.Dialog.v2/1680.0.1920.1080/0.31.1680.1019@1680.0.1920.1080" timestamp="1598377493132" />
     <state width="960" height="543" key="XDebugger.FullValuePopup" timestamp="1598367674185">
       <screen x="1680" y="0" width="1920" height="1080" />
     </state>

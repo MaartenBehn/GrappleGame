@@ -20,6 +20,7 @@ namespace Player.LocalPlayer
         private bool hitting;
         private SpringJoint joint;
         private bool snappingGrapplePoint;
+        private bool playerGrapplePoint;
 
         private void Update()
         {
@@ -30,6 +31,11 @@ namespace Player.LocalPlayer
                 {
                     hit.point = hit.transform.position;
                     snappingGrapplePoint = true;
+                }
+                else if(hit.transform.CompareTag("Player")) 
+                {
+                    hit.point = hit.transform.position;
+                    playerGrapplePoint = true;
                 }
             }
             catch (Exception e)
@@ -65,6 +71,7 @@ namespace Player.LocalPlayer
                 pointer.SetActive(false);
             }
             snappingGrapplePoint = false;
+            playerGrapplePoint = false;
         }
     
         /// <summary>
@@ -125,6 +132,14 @@ namespace Player.LocalPlayer
                 GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
                 
                 ClientSend.GrappleUpdate(hit.transform.name, grappling, joint.maxDistance);
+                return;
+            }
+            else if (playerGrapplePoint)
+            {
+                GameManager.players[Client.instance.myId].isGrappling = grappling;
+                GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
+
+                ClientSend.GrappleUpdate(hit.transform.GetComponentInParent<PlayerManager>().id.ToString(), grappling, joint.maxDistance);
                 return;
             }
             GameManager.players[Client.instance.myId].isGrappling = grappling;

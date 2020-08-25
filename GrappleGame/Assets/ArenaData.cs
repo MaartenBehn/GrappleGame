@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 
@@ -29,6 +30,10 @@ public class ArenaData : MonoBehaviour
             {
                 return point;
             }
+        }
+
+        if (int.TryParse(name, out int id)) {
+            return GameManager.players[id].gameObject;
         }
 
         return null;
