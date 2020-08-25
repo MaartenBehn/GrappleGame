@@ -128,11 +128,24 @@ public static class ServerSend
     
     public static void ClientGrappleUpdate(Player player)
     {
-        using (Packet packet = new Packet((int)ServerPackets.clinetGrappleUpdate))
+        using (Packet packet = new Packet((int)ServerPackets.clientGrappleUpdate))
         {
             packet.Write(player.id);
             packet.Write(player.isGrappling);
             packet.Write(player.grapplePoint);
+            packet.Write(player.distanceFromGrapple);
+            
+            SendUdpDataToAll(player.id, packet);
+        }
+    }
+    
+    public static void ClientSnapGrappleUpdate(Player player)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.clientSnapGrappleUpdate))
+        {
+            packet.Write(player.id);
+            packet.Write(player.isGrappling);
+            packet.Write(player.snapGrapplePoint);
             packet.Write(player.distanceFromGrapple);
             
             SendUdpDataToAll(player.id, packet);

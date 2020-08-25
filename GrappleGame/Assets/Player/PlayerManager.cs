@@ -17,7 +17,9 @@ namespace Player
         public LineRenderer lr;
         public Transform grappleTip;
         public bool isGrappling = false;
+        public bool isSnapGrappling = false;
         public Vector3 grapplePoint;
+        public string grappleSnapPoint;
         public float maxDistanceFromGrapple;
         
         private void FixedUpdate()
@@ -38,8 +40,15 @@ namespace Player
             if (!isGrappling)
             {
                 lr.positionCount = 0;
+                isSnapGrappling = false;
                 return;
             }
+
+            if (isSnapGrappling)
+            {
+                grapplePoint = ArenaData.instance.GETId(grappleSnapPoint).transform.position;
+            }
+            
             lr.material.SetFloat("Mix",Vector3.Distance(grappleTip.position, grapplePoint) / maxDistanceFromGrapple);
             lr.positionCount = 2;
             lr.SetPosition(0, grappleTip.position);

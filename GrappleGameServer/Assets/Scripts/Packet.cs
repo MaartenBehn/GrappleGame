@@ -10,7 +10,8 @@ public enum ServerPackets
     playerEnter,
     playerLeave,
     clientTransformUpdate,
-    clinetGrappleUpdate
+    clientGrappleUpdate,
+    clientSnapGrappleUpdate
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -18,7 +19,8 @@ public enum ClientPackets
 {
     serverConnectionReceived = 1,
     transformUpdate,
-    grappleUpdate
+    grappleUpdate,
+    snapGrappleUpdate
 }
 
 public class Packet : IDisposable
