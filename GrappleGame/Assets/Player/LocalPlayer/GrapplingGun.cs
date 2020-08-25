@@ -24,7 +24,6 @@ namespace Player.LocalPlayer
         {
             hitting = Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance,
                 whatIsGrappleable);
-
             if (Input.GetKey(KeyCode.X)) { ChangeMaxDistance(grappleChangeSpeed);}
             if (Input.GetKey(KeyCode.Y)) { ChangeMaxDistance(-grappleChangeSpeed);}
         

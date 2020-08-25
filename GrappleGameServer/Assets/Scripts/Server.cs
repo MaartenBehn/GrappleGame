@@ -9,19 +9,28 @@ public static class Server
     public static int MaxPlayers { get; private set; }
     public static int Port { get; private set; }
     public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
+    public static int conectedClinets;
     public delegate void PacketHandler(int fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
+    public static string ip;
+    
+
     /// <summary>Starts the server.</summary>
     /// <param name="maxPlayers">The maximum players that can be connected simultaneously.</param>
     /// <param name="port">The port to start the server on.</param>
     public static void Start(int maxPlayers, int port)
     {
+        ip = IPManager.GetIPAddress();
+        
+        Debug.Log(ip);
+        
         MaxPlayers = maxPlayers;
         Port = port;
+        conectedClinets = 0;
 
         Debug.Log("Starting server...");
         InitializeServerData();

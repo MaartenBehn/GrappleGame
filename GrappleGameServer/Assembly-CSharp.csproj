@@ -58,6 +58,22 @@
      <Compile Include="Assets\Scripts\Packet.cs" />
      <Compile Include="Assets\Scripts\Client.cs" />
      <Compile Include="Assets\Scripts\Server.cs" />
+     <Compile Include="Assets\Scripts\Database.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseError.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseRoot.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Sample\MoveControl.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseManager.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Sample\AutoRotate.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseQueue.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\miniJSON.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseParam.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseObserver.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Sample\SampleScript.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\DataSnapshot.cs" />
+     <Compile Include="Assets\SimpleFirebaseUnity\Scripts\Firebase.cs" />
+     <Compile Include="Assets\Scripts\IpManager.cs" />
+     <None Include="Assets\JsonDotNet\link.xml" />
+     <None Include="Assets\SimpleFirebaseUnity\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -273,6 +289,9 @@
  </Reference>
  <Reference Include="UnityEditor">
  <HintPath>H:/Programms/Program Files/Unity/2019.3.3f1/2020.1.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>H:/Programms/Program Files/Unity/2019.3.3f1/2020.1.2f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

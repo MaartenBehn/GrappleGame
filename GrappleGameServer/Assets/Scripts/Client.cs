@@ -214,6 +214,9 @@ public class Client
     {
         player = NetworkManager.instance.InstantiatePlayer();
         player.Initialize(id, playerName);
+        
+        Server.conectedClinets++;
+        Database.Instance.UpdateServer();
 
         // Send all players to the new player
         foreach (Client client in Server.clients.Values)
@@ -241,7 +244,10 @@ public class Client
     private void Disconnect()
     {
         Debug.Log($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
-
+        
+        Server.conectedClinets--;
+        Database.Instance.UpdateServer();
+        
         ThreadManager.ExecuteOnMainThread(() =>
         {
             UnityEngine.Object.Destroy(player.gameObject);
