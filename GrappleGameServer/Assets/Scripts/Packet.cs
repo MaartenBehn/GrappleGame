@@ -10,7 +10,8 @@ public enum ServerPackets
     playerEnter,
     playerLeave,
     clientTransformUpdate,
-    clinetGrappleUpdate
+    clientGrappleUpdate,
+    clientSnapGrappleUpdate
 }
 
 /// <summary>Sent from client to server.</summary>

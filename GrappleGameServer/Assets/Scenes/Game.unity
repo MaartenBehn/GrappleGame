@@ -370,8 +370,9 @@ GameObject:
   - component: {fileID: 1902706400}
   - component: {fileID: 1902706399}
   - component: {fileID: 1902706398}
+  - component: {fileID: 1902706401}
   m_Layer: 0
-  m_Name: NetworkManager
+  m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4187005777591049097, guid: 28356974c7337f046a4d87eaf2777d62, type: 3}
+  name: Stroby Server
 --- !u!4 &1902706400
 Transform:
   m_ObjectHideFlags: 0
@@ -416,3 +418,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902706401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902706397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818fc7dc36e44931ad8fb5834162679d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webAdress: https://grapplegame-6f115.firebaseio.com/

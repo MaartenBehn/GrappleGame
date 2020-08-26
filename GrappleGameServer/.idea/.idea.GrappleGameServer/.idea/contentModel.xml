@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\maart\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\maart\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_GrappleGameServer.-1149343014.00" t="ExcludeRecursive" />
-    <e p="H:\dev\GrappleGame\GrappleGameServer" t="IncludeRecursive">
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_GrappleGameServer.-1739065970.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Client.cs" t="Include" />
+          <e p="Database.cs" t="Include" />
+          <e p="IpManager.cs" t="Include" />
           <e p="NetworkManager.cs" t="Include" />
           <e p="Packet.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="Server.cs" t="Include" />
+          <e p="ServerData.cs" t="Include" />
+          <e p="ServerDatabase.cs" t="Include" />
           <e p="ServerHandle.cs" t="Include" />
           <e p="ServerSend.cs" t="Include" />
           <e p="ThreadManager.cs" t="Include" />
         </e>
+        <e p="SimpleFirebaseUnity" t="Include">
+          <e p="Plugins" t="Include">
+            <e p="Android" t="Include">
+              <e p="AndroidManifest.xml" t="Include" />
+            </e>
+          </e>
+          <e p="Sample" t="Include">
+            <e p="AutoRotate.cs" t="Include" />
+            <e p="MoveControl.cs" t="Include" />
+            <e p="SampleScript.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="DataSnapshot.cs" t="Include" />
+            <e p="Firebase.cs" t="Include" />
+            <e p="FirebaseError.cs" t="Include" />
+            <e p="FirebaseManager.cs" t="Include" />
+            <e p="FirebaseObserver.cs" t="Include" />
+            <e p="FirebaseParam.cs" t="Include" />
+            <e p="FirebaseQueue.cs" t="Include" />
+            <e p="FirebaseRoot.cs" t="Include" />
+            <e p="miniJSON.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="GrappleGameServer.sln" t="IncludeFlat" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>

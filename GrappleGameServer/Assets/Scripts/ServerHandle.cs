@@ -29,9 +29,10 @@ public static class ServerHandle
     public static void GrappleUpdate(int fromClient, Packet packet)
     {
         bool isGrappling = packet.ReadBool();
+        string objectId = packet.ReadString();
         Vector3 position = packet.ReadVector3();
         float distanceFromGrapple = packet.ReadFloat();
         
-        Server.clients[fromClient].player.GrappleUpdate(isGrappling, position, distanceFromGrapple);
+        Server.clients[fromClient].player.GrappleUpdate(objectId, isGrappling, position, distanceFromGrapple);
     }
 }

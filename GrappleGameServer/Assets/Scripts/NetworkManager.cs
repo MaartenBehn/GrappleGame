@@ -21,17 +21,22 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
+    public string name;
+    
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 50;
-
+        
         Server.Start(50, 17685);
+        
+        ServerDatabase.UpdateServer();
     }
 
     private void OnApplicationQuit()
     {
         Server.Stop();
+        ServerDatabase.DeleteServer();
     }
 
     public Player InstantiatePlayer()

@@ -22,6 +22,8 @@ namespace Server
         private delegate void PacketHandler(Packet packet);
         private static Dictionary<int, PacketHandler> packetHandlers;
 
+        public List<ServerData> serverDatas;
+
         private void Awake()
         {
             if (instance == null)
@@ -33,6 +35,8 @@ namespace Server
                 Debug.Log("Instance already exists, destroying object!");
                 Destroy(this);
             }
+            
+            serverDatas = new List<ServerData>();
         }
 
         private void Start()
@@ -304,7 +308,7 @@ namespace Server
                 { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
                 { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
                 { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate },
-                { (int)ServerPackets.clinetGrappleUpdate, ClientHandle.ClientGrappleUpdate }
+                { (int)ServerPackets.clientGrappleUpdate, ClientHandle.ClientGrappleUpdate }
             };
             Debug.Log("Initialized packets.");
         }

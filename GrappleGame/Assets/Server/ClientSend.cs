@@ -49,11 +49,12 @@ namespace Server
             }
         }
         
-        public static void GrappleUpdate(Vector3 pos, bool isGrappling, float distanceFromPoint)
+        public static void GrappleUpdate(string objectId, Vector3 pos, bool isGrappling, float distanceFromPoint)
         {
             using (Packet packet = new Packet((int)ClientPackets.grappleUpdate))
             {
                 packet.Write(isGrappling);
+                packet.Write(objectId);
                 packet.Write(pos);
                 packet.Write(distanceFromPoint);
 

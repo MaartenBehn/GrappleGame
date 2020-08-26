@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
     public string username;
     public Vector3 velocity;
     public bool grounded;
+    
     public bool isGrappling;
+    public string grappleObjectId;
     public Vector3 grapplePoint;
     public float distanceFromGrapple;
 
@@ -31,9 +33,10 @@ public class Player : MonoBehaviour
         this.grounded = grounded;
     }
 
-    public void GrappleUpdate(bool isGrappling, Vector3 grapplePoint, float distanceFromGrapple)
+    public void GrappleUpdate(string grappleObjectId, bool isGrappling, Vector3 grapplePoint, float distanceFromGrapple)
     {
         this.isGrappling = isGrappling;
+        this.grappleObjectId = grappleObjectId;
         this.grapplePoint = grapplePoint;
         this.distanceFromGrapple = distanceFromGrapple;
 
