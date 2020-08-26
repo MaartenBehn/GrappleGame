@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Server;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace UI
     public class UIManager : MonoBehaviour
     {
         public static UIManager instance;
+        public static GameSettings gameSettings;
 
         List<UIPanel> panelList;
         UIPanel lastActivePanel;
@@ -27,6 +29,7 @@ namespace UI
             if (instance == null)
             {
                 instance = this;
+                gameSettings = new GameSettings();
             }
             else if (instance != this)
             {
@@ -40,6 +43,8 @@ namespace UI
             panelList = GetComponentsInChildren<UIPanel>().ToList();
             panelList.ForEach(x => x.gameObject.SetActive(false));
             SwitchPanel(PanelType.startPanel);
+            
+            ReadFile();
         }
 
         private void Update()
@@ -79,6 +84,21 @@ namespace UI
         public void SwitchPanel(int typeId)
         {
             SwitchPanel((PanelType) typeId);
+        }
+        
+        public void WritFile()
+        {
+            File.WriteAllText(Application.dataPath + "/settings.json",JsonUtility.ToJson(gameSettings));
+        }
+
+        public void ReadFile()
+        {
+            if (File.Exists(Application.dataPath + "/settings.json"))
+            {
+                gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.dataPath + "/settings.json"));
+                return;
+            }
+            WritFile();
         }
     }
 }
