@@ -24,6 +24,8 @@ namespace Player.LocalPlayer
 
         private void Update()
         {
+            snappingGrapplePoint = false;
+            playerGrapplePoint = false;
             hitting = Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable);
             try
             {
@@ -40,7 +42,7 @@ namespace Player.LocalPlayer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Debug.Log(e);
             }
             
             GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
@@ -70,8 +72,6 @@ namespace Player.LocalPlayer
             {
                 pointer.SetActive(false);
             }
-            snappingGrapplePoint = false;
-            playerGrapplePoint = false;
         }
     
         /// <summary>
@@ -136,34 +136,20 @@ namespace Player.LocalPlayer
 
         public void UpdateServer()
         {
+            GameManager.players[Client.instance.myId].isGrappling = grappling;
+            GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
+            GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
+            
             if (snappingGrapplePoint)
             {
-                GameManager.players[Client.instance.myId].isGrappling = grappling;
-                GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
-
-                GameManager.players[Client.instance.myId].isSnapGrappling = true;
-                GameManager.players[Client.instance.myId].grappleSnapPoint = hit.transform.name;
-
-                
-                ClientSend.GrappleUpdate(hit.transform.name, grappling, joint.maxDistance);
-                return;
+                GameManager.players[Client.instance.myId].grappleObjectId = hit.transform.name;
             }
             else if (playerGrapplePoint)
             {
-                GameManager.players[Client.instance.myId].isGrappling = grappling;
-                GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
-
-                GameManager.players[Client.instance.myId].isSnapGrappling = true;
-                GameManager.players[Client.instance.myId].grappleSnapPoint = hit.transform.GetComponentInParent<PlayerManager>().id.ToString();
-
-                
-                ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].grappleSnapPoint, grappling, joint.maxDistance);
-                return;
+                GameManager.players[Client.instance.myId].grappleObjectId = "player "+ hit.transform.GetComponentInParent<PlayerManager>().id;
             }
-            GameManager.players[Client.instance.myId].isGrappling = grappling;
-            GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
-
-            ClientSend.GrappleUpdate(grapplePoint, grappling, joint.maxDistance);
+            
+            ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].grappleObjectId, grapplePoint, grappling, joint.maxDistance);
         }
     }
 }

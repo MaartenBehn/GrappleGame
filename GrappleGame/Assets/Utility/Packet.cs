@@ -22,8 +22,7 @@ namespace Utility
     {
         serverConnectionReceived = 1,
         transformUpdate,
-        grappleUpdate,
-        snapGrappleUpdate
+        grappleUpdate
     }
 
     public class Packet : IDisposable

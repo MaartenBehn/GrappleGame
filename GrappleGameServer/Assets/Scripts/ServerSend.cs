@@ -144,8 +144,8 @@ public static class ServerSend
         using (Packet packet = new Packet((int)ServerPackets.clientSnapGrappleUpdate))
         {
             packet.Write(player.id);
+            packet.Write(player.grappleObjectId);
             packet.Write(player.isGrappling);
-            packet.Write(player.snapGrapplePoint);
             packet.Write(player.distanceFromGrapple);
             
             SendUdpDataToAll(player.id, packet);

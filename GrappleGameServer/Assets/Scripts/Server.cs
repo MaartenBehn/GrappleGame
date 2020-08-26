@@ -137,8 +137,7 @@ public static class Server
         {
             { (int)ClientPackets.serverConnectionReceived, ServerHandle.ServerConnectionReceived },
             { (int)ClientPackets.transformUpdate, ServerHandle.TransformUpdate },
-            { (int)ClientPackets.grappleUpdate, ServerHandle.GrappleUpdate },
-            { (int)ClientPackets.snapGrappleUpdate, ServerHandle.SnapGrappleUpdate }
+            { (int)ClientPackets.grappleUpdate, ServerHandle.GrappleUpdate }
         };
         Debug.Log("Initialized packets.");
     }

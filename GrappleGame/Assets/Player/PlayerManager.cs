@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Arena;
+using UnityEngine;
 
 namespace Player
 {
@@ -17,9 +18,8 @@ namespace Player
         public LineRenderer lr;
         public Transform grappleTip;
         public bool isGrappling = false;
-        public bool isSnapGrappling = false;
+        public string grappleObjectId; // <type id>
         public Vector3 grapplePoint;
-        public string grappleSnapPoint;
         public float maxDistanceFromGrapple;
         
         private void FixedUpdate()
@@ -40,20 +40,28 @@ namespace Player
             if (!isGrappling)
             {
                 lr.positionCount = 0;
-                isSnapGrappling = false;
                 return;
             }
 
-            if (isSnapGrappling)
+            Vector3 absGrapplePoint = Vector3.zero;
+            string[] parts = grappleObjectId.Split(' ');
+            switch (parts[0])
             {
-                grapplePoint = ArenaData.instance.GETId(grappleSnapPoint).transform.position;
-                
+                case "snap":
+                    absGrapplePoint = ArenaData.instance.snappingObjects[int.Parse(parts[1])].transform.position + grapplePoint;
+                    break;
+                case "player":
+                    absGrapplePoint = GameManager.players[int.Parse(parts[1])].transform.position + grapplePoint;
+                    break;
+                default:
+                    absGrapplePoint = grapplePoint;
+                    break;
             }
-            
+
             lr.material.SetFloat("Mix",Vector3.Distance(grappleTip.position, grapplePoint) / maxDistanceFromGrapple);
             lr.positionCount = 2;
             lr.SetPosition(0, grappleTip.position);
-            lr.SetPosition(1, grapplePoint);
+            lr.SetPosition(1, absGrapplePoint);
         }
     }
 }
