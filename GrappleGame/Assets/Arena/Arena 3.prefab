@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 5815089423198492143}
   - component: {fileID: 6433730889666097362}
   - component: {fileID: 486443697456323654}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: EasyGrapple
   m_Icon: {fileID: 0}

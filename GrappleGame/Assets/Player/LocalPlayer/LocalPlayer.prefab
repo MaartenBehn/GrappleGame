@@ -1227,7 +1227,7 @@ MonoBehaviour:
   pointer: {fileID: 5596967698216539127}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1792
   obstructions:
     serializedVersion: 2
     m_Bits: 4294967295
