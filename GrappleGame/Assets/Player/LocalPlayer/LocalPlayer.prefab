@@ -676,7 +676,9 @@ MonoBehaviour:
   lr: {fileID: 3883511767952025922}
   grappleTip: {fileID: 7145996192402744856}
   isGrappling: 0
+  isSnapGrappling: 0
   grapplePoint: {x: 0, y: 0, z: 0}
+  grappleSnapPoint: 
   maxDistanceFromGrapple: 0
 --- !u!120 &3883511767952025922
 LineRenderer:
@@ -1225,7 +1227,7 @@ MonoBehaviour:
   pointer: {fileID: 5596967698216539127}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1792
   obstructions:
     serializedVersion: 2
     m_Bits: 4294967295

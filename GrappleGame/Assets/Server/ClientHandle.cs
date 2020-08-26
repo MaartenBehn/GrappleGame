@@ -63,5 +63,19 @@ namespace Server
             GameManager.players[id].maxDistanceFromGrapple = maxDistanceFromGrapple;
 
         }
+        
+        public static void ClientSnapGrappleUpdate(Packet packet)
+        {
+            int id = packet.ReadInt();
+            bool isGrappling = packet.ReadBool();
+            string position = packet.ReadString();
+            float maxDistanceFromGrapple = packet.ReadFloat();
+
+            GameManager.players[id].isGrappling = isGrappling;
+            GameManager.players[id].isSnapGrappling = true;
+            GameManager.players[id].grappleSnapPoint = position;
+            GameManager.players[id].maxDistanceFromGrapple = maxDistanceFromGrapple;
+
+        }
     }
 }

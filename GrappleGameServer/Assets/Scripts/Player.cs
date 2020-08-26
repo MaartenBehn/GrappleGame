@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     public Vector3 velocity;
     public bool grounded;
     public bool isGrappling;
+    public bool isSnapGrappling;
     public Vector3 grapplePoint;
+    public string snapGrapplePoint;
     public float distanceFromGrapple;
 
     public void Initialize(int id, string username)
@@ -38,6 +40,18 @@ public class Player : MonoBehaviour
         this.distanceFromGrapple = distanceFromGrapple;
 
         ServerSend.ClientGrappleUpdate(this);
+        if (!isGrappling) { this.isSnapGrappling = false; }
+    }
+    
+    public void SnapGrappleUpdate(bool isGrappling, string grapplePoint, float distanceFromGrapple)
+    {
+        this.isGrappling = isGrappling;
+        this.isSnapGrappling = true;
+        this.snapGrapplePoint = grapplePoint;
+        this.distanceFromGrapple = distanceFromGrapple;
+
+        ServerSend.ClientSnapGrappleUpdate(this);
+        if (!isGrappling) { this.isSnapGrappling = false; }
     }
 
     public void Disconnect()

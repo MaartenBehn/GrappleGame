@@ -60,6 +60,18 @@ namespace Server
                 SendUdpData(packet);
             }
         }
+        
+        public static void GrappleUpdate(string pos, bool isGrappling, float distanceFromPoint)
+        {
+            using (Packet packet = new Packet((int)ClientPackets.snapGrappleUpdate))
+            {
+                packet.Write(isGrappling);
+                packet.Write(pos);
+                packet.Write(distanceFromPoint);
+
+                SendUdpData(packet);
+            }
+        }
         #endregion
     }
 }

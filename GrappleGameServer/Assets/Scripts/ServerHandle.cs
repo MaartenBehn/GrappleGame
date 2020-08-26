@@ -34,4 +34,13 @@ public static class ServerHandle
         
         Server.clients[fromClient].player.GrappleUpdate(isGrappling, position, distanceFromGrapple);
     }
+    
+    public static void SnapGrappleUpdate(int fromClient, Packet packet)
+    {
+        bool isGrappling = packet.ReadBool();
+        string position = packet.ReadString();
+        float distanceFromGrapple = packet.ReadFloat();
+        
+        Server.clients[fromClient].player.SnapGrappleUpdate(isGrappling, position, distanceFromGrapple);
+    }
 }

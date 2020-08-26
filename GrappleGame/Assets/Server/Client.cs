@@ -308,7 +308,8 @@ namespace Server
                 { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
                 { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
                 { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate },
-                { (int)ServerPackets.clinetGrappleUpdate, ClientHandle.ClientGrappleUpdate }
+                { (int)ServerPackets.clientGrappleUpdate, ClientHandle.ClientGrappleUpdate },
+                { (int)ServerPackets.clientSnapGrappleUpdate, ClientHandle.ClientSnapGrappleUpdate }
             };
             Debug.Log("Initialized packets.");
         }
