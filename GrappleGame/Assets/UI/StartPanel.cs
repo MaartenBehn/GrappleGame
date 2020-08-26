@@ -39,16 +39,16 @@ namespace UI
 
 		public void UpdateServers()
 		{
-			Database.instance.Request();
+			ClientDatabase.UpdateServers();
 		}
 
 		private void Update()
 		{
-			if(Database.instance.serverDatas == null) return;
+			if(Client.instance.serverDatas == null) return;
 			
 			serverDropdown.options.Clear();
 
-			foreach (ServerData serverData in Database.instance.serverDatas)
+			foreach (ServerData serverData in Client.instance.serverDatas)
 			{
 				serverDropdown.options.Add(new TMP_Dropdown.OptionData(serverData.name));
 			}
@@ -57,7 +57,7 @@ namespace UI
 		/// <summary>Attempts to connect to the server.</summary>
 		public void ConnectToServer()
 		{
-			Client.instance.ip = Database.instance.serverDatas[serverDropdown.value].ip;
+			Client.instance.ip = Client.instance.serverDatas[serverDropdown.value].ip;
 			
 			UIManager.instance.SwitchPanel(PanelType.inGamePanel);
 			usernameField.interactable = false;

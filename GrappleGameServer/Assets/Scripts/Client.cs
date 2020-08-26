@@ -216,7 +216,7 @@ public class Client
         player.Initialize(id, playerName);
         
         Server.conectedClinets++;
-        Database.Instance.UpdateServer();
+        ServerDatabase.UpdateServer();
 
         // Send all players to the new player
         foreach (Client client in Server.clients.Values)
@@ -246,7 +246,7 @@ public class Client
         Debug.Log($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
         
         Server.conectedClinets--;
-        Database.Instance.UpdateServer();
+        ServerDatabase.UpdateServer();
         
         ThreadManager.ExecuteOnMainThread(() =>
         {

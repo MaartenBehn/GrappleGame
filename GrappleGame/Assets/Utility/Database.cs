@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json.Linq;
 using Server;
 using SimpleFirebaseUnity;
 using UnityEditor;
@@ -11,32 +10,54 @@ namespace Utility
 {
     public class Database : MonoBehaviour
     {
-        public static Database instance;
+        public static Database instance { get; private set; }
     
-        [SerializeField] private string webAdress;
-        public string WebAdress => webAdress;
+        public string webAdress;
     
-        private Firebase firebase;
+        public Firebase firebase;
         private FirebaseQueue firebaseQueue;
 
-        public List<ServerData> serverDatas;
-
+        private List<Action<String>> onGetFunctions;
+    
         private void Awake()
         {
             instance = this;
 
             firebase = Firebase.CreateNew(webAdress);
             firebaseQueue = new FirebaseQueue(true);
-        
-            firebase.OnGetSuccess += OnGet;
+            
+            onGetFunctions = new List<Action<String>>();
         }
-        
-        public void Request()
+
+        public void AddGetAction(Action<String> action)
         {
-            firebaseQueue.AddQueueGet(firebase);
+            onGetFunctions.Add(action);
+        }
+    
+        public void Request(Firebase firebasePos)
+        {
+            firebasePos.OnGetSuccess += OnGet;
+            firebaseQueue.AddQueueGet(firebasePos);
         }
 
         void OnGet(Firebase inputFirebase, DataSnapshot snapshot)
+        {
+            if(onGetFunctions.Count == 0) return;
+            onGetFunctions[0](snapshot.RawJson);
+            onGetFunctions.RemoveAt(0);
+        }
+
+        public void Push(String json, Firebase firebasePos)
+        {
+            firebaseQueue.AddQueuePush(firebasePos,json, true);
+        }
+
+        public void Delete(Firebase firebasePos)
+        {
+            firebaseQueue.AddQueueDelete(firebasePos);
+        }
+
+        /*void OnGet(Firebase inputFirebase, DataSnapshot snapshot)
         {
             serverDatas = new List<ServerData>();
             
@@ -53,6 +74,6 @@ namespace Utility
                 serverDatas.Add(server);
             }
 
-        }
+        }*/
     }
 }

@@ -30,13 +30,13 @@ public class NetworkManager : MonoBehaviour
         
         Server.Start(50, 17685);
         
-        Database.Instance.UpdateServer();
+        ServerDatabase.UpdateServer();
     }
 
     private void OnApplicationQuit()
     {
         Server.Stop();
-        Database.Instance.DeleteServer();
+        ServerDatabase.DeleteServer();
     }
 
     public Player InstantiatePlayer()

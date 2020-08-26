@@ -16,6 +16,7 @@
         </e>
         <e p="Server" t="Include">
           <e p="Client.cs" t="Include" />
+          <e p="ClientDatabase.cs" t="Include" />
           <e p="ClientHandle.cs" t="Include" />
           <e p="ClientSend.cs" t="Include" />
           <e p="ServerData.cs" t="Include" />
