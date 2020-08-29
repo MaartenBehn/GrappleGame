@@ -23,7 +23,7 @@ namespace UI
 			}
 
 			panelType = PanelType.settingsPanel;
-
+			
 			
 			fullScreenModes = new List<FullScreenMode>
 			{
@@ -51,24 +51,30 @@ namespace UI
 
 		private List<FullScreenMode> fullScreenModes;
 		private List<Resolution> resolutions;
-		public Resolution currentResolution;
 
 		public override void OnLoad()
 		{
-			fullscreenModeDropdown.value = fullScreenModes.IndexOf(Screen.fullScreenMode);
+			fullscreenModeDropdown.value = UIManager.gameSettings.fullScreen ? 0 : 1;
 			
 			for (int i = 0; i < resolutions.Count; i++)
 			{
-				if (resolutions[i].height != Screen.height) continue;
-				currentResolution = resolutions[i];
+				if (resolutions[i].height != UIManager.gameSettings.currentResolution.y) continue;
 				resolutionDropdown.value = i;
 			}
 		}
 
 		public override void OnUnload()
 		{
-			currentResolution = resolutions[resolutionDropdown.value];
-			Screen.SetResolution(currentResolution.width, currentResolution.height, fullScreenModes[fullscreenModeDropdown.value]);
+			UIManager.gameSettings.currentResolution = new Vector2Int(
+				resolutions[resolutionDropdown.value].height, 
+				resolutions[resolutionDropdown.value].width);
+
+			UIManager.gameSettings.fullScreen = fullscreenModeDropdown.value == 0;
+			
+			Screen.SetResolution(
+				UIManager.gameSettings.currentResolution.x, 
+				UIManager.gameSettings.currentResolution.y,
+				UIManager.gameSettings.fullScreen);
 		}
 	}
 }

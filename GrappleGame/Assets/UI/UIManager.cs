@@ -29,13 +29,14 @@ namespace UI
             if (instance == null)
             {
                 instance = this;
-                gameSettings = new GameSettings();
             }
             else if (instance != this)
             {
                 Debug.Log("Instance already exists, destroying object!");
                 Destroy(this);
             }
+            
+            gameSettings = new GameSettings();
         }
 
         private void Start()
@@ -45,6 +46,11 @@ namespace UI
             SwitchPanel(PanelType.startPanel);
             
             ReadFile();
+            
+            Screen.SetResolution(
+                gameSettings.currentResolution.x,
+                gameSettings.currentResolution.y,
+                gameSettings.fullScreen);
         }
 
         private void Update()
@@ -96,7 +102,6 @@ namespace UI
             if (File.Exists(Application.dataPath + "/settings.json"))
             {
                 gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.dataPath + "/settings.json"));
-                return;
             }
             WritFile();
         }
