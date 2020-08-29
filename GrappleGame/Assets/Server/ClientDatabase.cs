@@ -16,10 +16,10 @@ namespace Server
 	            {
 		            Client.instance.serverDatas.Clear();
 		            JObject jo = JObject.Parse(json);
-		            JToken jServers = jo.First;
+		            JToken jServers = jo;
 		            foreach (JToken jServer in jServers)
 		            {
-			            ServerData serverData = JsonUtility.FromJson<ServerData>(jServer.First.First.ToString());
+			            ServerData serverData = JsonUtility.FromJson<ServerData>(jServer.First.First.First.ToString());
 			            Client.instance.serverDatas.Add(serverData);
 		            }
 	            }
