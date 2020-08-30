@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
 
+    public new GameObject camera;
+
     private void Awake()
     {
         if (instance == null)

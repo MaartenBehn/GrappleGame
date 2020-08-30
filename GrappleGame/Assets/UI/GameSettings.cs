@@ -9,7 +9,7 @@ namespace UI
 	[Serializable]
 	public class GameSettings
 	{
-		public Vector2Int currentResolution = new Vector2Int(1280, 720);
+		public Vector2Int currentResolution = new Vector2Int(1024, 768);
 		public bool fullScreen = false;
 
 		public List<ServerData> favServers = new List<ServerData>()

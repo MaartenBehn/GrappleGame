@@ -8,4 +8,5 @@ public class ServerData
 	public string name;
 	public int maxPlayers;
 	public int players;
+	public string version;
 }

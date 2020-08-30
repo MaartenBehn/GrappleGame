@@ -32,18 +32,29 @@ namespace UI
 			Cursor.lockState = CursorLockMode.None;
 			usernameField.text = UIManager.gameSettings.playerName;
 			UpdateServers();
+			UpdateServerList();
+			SelectedServerChanged();
 		}
 
 		[SerializeField] public TMP_InputField usernameField;
+		[SerializeField] public TMP_InputField passwordField;
 		[SerializeField] private TMP_Dropdown serverDropdown;
 
 		public void UpdateServers()
 		{
 			ClientDatabase.UpdateServers();
 		}
+		
+		public void SelectedServerChanged()
+		{
+			currentSelectedServer = serverDropdown.value < UIManager.gameSettings.favServers.Count ? 
+				UIManager.gameSettings.favServers[serverDropdown.value]
+				: Client.instance.serverDatas[serverDropdown.value - UIManager.gameSettings.favServers.Count];
+			
+			passwordField.text = currentSelectedServer.password;
+		}
 
-		// TODO: This is fucking retarded but it will always be up to date. Please fix this tis wastes a lot of performance.
-		private void Update()
+		private void UpdateServerList()
 		{
 			serverDropdown.options.Clear();
 			
@@ -58,22 +69,31 @@ namespace UI
 			{
 				serverDropdown.options.Add(new TMP_Dropdown.OptionData(serverData.name));
 			}
+			
+			currentlyShownOnlineServers = Client.instance.serverDatas.ToArray();
+		}
+
+		private ServerData[] currentlyShownOnlineServers;
+		public ServerData currentSelectedServer;
+		private void Update()
+		{
+			if (currentlyShownOnlineServers != Client.instance.serverDatas.ToArray())
+			{
+				UpdateServerList();
+			}
 		}
 
 		/// <summary>Attempts to connect to the server.</summary>
 		public void ConnectToServer()
 		{
-			Client.instance.ip = serverDropdown.value < UIManager.gameSettings.favServers.Count ? 
-					UIManager.gameSettings.favServers[serverDropdown.value].ip
-				: Client.instance.serverDatas[serverDropdown.value - UIManager.gameSettings.favServers.Count].ip;
-			
-			UIManager.instance.SwitchPanel(PanelType.inGamePanel);
-			usernameField.interactable = false;
-			Client.instance.ConnectToServer();
-
 			UIManager.gameSettings.playerName = usernameField.text;
-			
+			currentSelectedServer.password = passwordField.text;
 			UIManager.WritSettingsFile();
+
+			Client.instance.ip = currentSelectedServer.ip;
+			
+			UIManager.instance.SwitchPanel(PanelType.connectingPanel);
+			Client.instance.ConnectToServer();
 		}
 	}
 }

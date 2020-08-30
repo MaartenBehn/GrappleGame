@@ -7,12 +7,15 @@ public static class ServerDatabase
 		ThreadManager.ExecuteOnMainThread(() =>
 		{
 			DeleteServer();
-			
-			ServerData serverData = new ServerData();
-			serverData.ip = Server.ip;
-			serverData.name = NetworkManager.instance.name;
-			serverData.maxPlayers = Server.MaxPlayers;
-			serverData.players = Server.conectedClinets;
+
+			ServerData serverData = new ServerData()
+			{
+				ip = Server.ip,
+				name = NetworkManager.instance.name,
+				maxPlayers = Server.MaxPlayers,
+				players = Server.conectedClinets,
+				version = Application.version
+			};
 			
 			Database.instance.Push(JsonUtility.ToJson(serverData), Database.instance.firebase.Child("Servers").Child(NetworkManager.instance.name));
 		});

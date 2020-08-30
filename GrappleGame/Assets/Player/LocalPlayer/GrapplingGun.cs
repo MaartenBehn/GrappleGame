@@ -6,13 +6,13 @@ namespace Player.LocalPlayer
 {
     public class GrapplingGun : MonoBehaviour
     {
-        
-        
-        [SerializeField] private Transform gunDirection, player;
+        [SerializeField] private Transform player;
         [SerializeField] private GameObject pointer;
         [SerializeField] private LayerMask whatIsGrappleable, obstructions;
         [SerializeField] private float maxDistance = 1000f, grappleChangeSpeed;
 
+        private Transform gunDirection;
+        
         private Vector3 grapplePoint;
         private bool grappling;
 
@@ -22,28 +22,16 @@ namespace Player.LocalPlayer
         private bool snappingGrapplePoint;
         private bool playerGrapplePoint;
 
+        private void Start()
+        {
+            gunDirection = GameManager.instance.camera.transform;    
+        }
+
         private void Update()
         {
             snappingGrapplePoint = false;
             playerGrapplePoint = false;
             hitting = Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable);
-            try
-            {
-                if (hit.transform.CompareTag("EasyGrapple"))
-                {
-                    hit.point = hit.transform.position;
-                    snappingGrapplePoint = true;
-                }
-                else if(hit.transform.CompareTag("Player")) 
-                {
-                    hit.point = hit.transform.position;
-                    playerGrapplePoint = true;
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-            }
             
             GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
 
@@ -62,7 +50,21 @@ namespace Player.LocalPlayer
             {
                 StopGrapple();
             }*/
-
+            
+            if (hitting)
+            {
+                if (hit.transform.CompareTag("EasyGrapple"))
+                {
+                    hit.point = hit.transform.position;
+                    snappingGrapplePoint = true;
+                }
+                else if(hit.transform.CompareTag("Player")) 
+                {
+                    hit.point = hit.transform.position;
+                    playerGrapplePoint = true;
+                }
+            }
+            
             if (!grappling && hitting)
             {
                 pointer.SetActive(true);
@@ -137,7 +139,6 @@ namespace Player.LocalPlayer
         public void UpdateServer()
         {
             GameManager.players[Client.instance.myId].isGrappling = grappling;
-            GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
             GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
             
             if (snappingGrapplePoint)

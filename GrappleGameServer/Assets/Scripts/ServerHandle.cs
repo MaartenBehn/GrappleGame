@@ -3,16 +3,34 @@ using UnityEngine;
 
 public static class ServerHandle
 {
-    public static void ServerConnectionReceived(int fromClient, Packet packet)
+    public static void GameEnterReqest(int fromClient, Packet packet)
     {
         int clientIdCheck = packet.ReadInt();
         string username = packet.ReadString();
+        string password = packet.ReadString();
 
-        Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
+        if (NetworkManager.instance.password != "" && NetworkManager.instance.password != password)
+        {
+            Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
+            ServerSend.GameEnterRejected(fromClient, "Wrong Password!");
+            return;
+        }
+        
+        if (Server.conectedClinets >= Server.MaxPlayers)
+        {
+            Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
+            ServerSend.GameEnterRejected(fromClient, "Server full");
+            return;
+        }
+        
         if (fromClient != clientIdCheck)
         {
             Debug.Log($"Player \"{username}\" (ID: {fromClient}) has assumed the wrong client ID ({clientIdCheck})!");
+            ServerSend.GameEnterRejected(fromClient, "Your Id does not match the server Id!");
+            return;
         }
+        Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
+        
         Server.clients[fromClient].SendIntoGame(username);
     }
 

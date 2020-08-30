@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using UI;
 using UnityEngine;
 using Utility;
 
@@ -8,15 +9,23 @@ namespace Server
     {
         public static void ServerConnection(Packet packet)
         {
-            string msg = packet.ReadString();
             int myId = packet.ReadInt();
 
-            Debug.Log($"Message from server: {msg}");
+            Debug.Log("Established TCP connection");
             Client.instance.myId = myId;
             ClientSend.ServerConnectionReceived();
 
             // Now that we have the client's id, connect UDP
             Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        }
+        
+        public static void GameEnterRejected(Packet packet)
+        {
+            string message = packet.ReadString();
+            Debug.Log(message);
+            
+            Client.instance.Disconnect();
+            UIManager.instance.SwitchPanel(PanelType.startPanel);
         }
 
         public static void PlayerEnter(Packet packet)

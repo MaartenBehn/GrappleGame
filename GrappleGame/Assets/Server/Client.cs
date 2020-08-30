@@ -38,13 +38,7 @@ namespace Server
             
             serverDatas = new List<ServerData>();
         }
-
-        private void Start()
-        {
-            tcp = new Tcp();
-            udp = new Udp();
-        }
-
+        
         private void OnApplicationQuit()
         {
             Disconnect(); // Disconnect when the game is closed
@@ -53,6 +47,9 @@ namespace Server
         /// <summary>Attempts to connect to the server.</summary>
         public void ConnectToServer()
         {
+            tcp = new Tcp();
+            udp = new Udp();
+            
             InitializeClientData();
 
             isConnected = true;
@@ -305,6 +302,7 @@ namespace Server
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
                 { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
+                { (int)ServerPackets.gameEnterRejected, ClientHandle.GameEnterRejected },
                 { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
                 { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
                 { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate },
@@ -314,7 +312,7 @@ namespace Server
         }
 
         /// <summary>Disconnects from the server and stops all network traffic.</summary>
-        private void Disconnect()
+        public void Disconnect()
         {
             if (!isConnected) return;
             

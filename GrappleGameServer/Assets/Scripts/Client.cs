@@ -50,7 +50,7 @@ public class Client
 
             stream.BeginRead(receiveBuffer, 0, DataBufferSize, ReceiveCallback, null);
 
-            ServerSend.ServerConnection(id, "Welcome to the server!");
+            ServerSend.ServerConnection(id);
         }
 
         /// <summary>Sends data to the client via TCP.</summary>
@@ -241,10 +241,17 @@ public class Client
     }
 
     /// <summary>Disconnects the client and stops all network traffic.</summary>
-    private void Disconnect()
+    public void Disconnect()
     {
         Debug.Log($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
         
+        tcp.Disconnect();
+        udp.Disconnect();
+
+        if (player == null) return;
+        
+        player.Disconnect();
+            
         Server.conectedClinets--;
         ServerDatabase.UpdateServer();
         
@@ -253,10 +260,5 @@ public class Client
             UnityEngine.Object.Destroy(player.gameObject);
             player = null;
         });
-
-        tcp.Disconnect();
-        udp.Disconnect();
-
-        player.Disconnect();
     }
 }

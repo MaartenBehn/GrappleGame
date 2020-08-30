@@ -61,6 +61,8 @@
      <Compile Include="Assets\Scripts\ThreadManager.cs" />
      <Compile Include="Assets\Scripts\Packet.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Sample\AutoRotate.cs" />
+     <Compile Include="Assets\Scripts\ServerData.cs" />
+     <Compile Include="Assets\Scripts\ServerDatabase.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseQueue.cs" />
      <Compile Include="Assets\Scripts\Database.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\miniJSON.cs" />
@@ -72,8 +74,6 @@
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\DataSnapshot.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\Firebase.cs" />
      <Compile Include="Assets\Scripts\IpManager.cs" />
-     <Compile Include="Assets\Scripts\ServerDatabase.cs" />
-     <Compile Include="Assets\Scripts\ServerData.cs" />
      <None Include="Assets\SimpleFirebaseUnity\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

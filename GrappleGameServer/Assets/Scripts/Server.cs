@@ -7,6 +7,7 @@ using UnityEngine;
 public static class Server
 {
     public static int MaxPlayers { get; private set; }
+    private const int clientSocketsOverlap = 10;
     public static int Port { get; private set; }
     public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
     public static int conectedClinets;
@@ -17,7 +18,6 @@ public static class Server
     private static UdpClient udpListener;
 
     public static string ip;
-    
 
     /// <summary>Starts the server.</summary>
     /// <param name="maxPlayers">The maximum players that can be connected simultaneously.</param>
@@ -52,13 +52,11 @@ public static class Server
         tcpListener.BeginAcceptTcpClient(TcpConnectCallback, null);
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
-        for (int i = 1; i <= MaxPlayers; i++)
+        for (int i = 1; i <= MaxPlayers + clientSocketsOverlap; i++)
         {
-            if (clients[i].tcp.socket == null)
-            {
-                clients[i].tcp.Connect(client);
-                return;
-            }
+            if (clients[i].tcp.socket != null) continue;
+            clients[i].tcp.Connect(client);
+            return;
         }
 
         Debug.Log($"{client.Client.RemoteEndPoint} failed to connect: Server full!");
@@ -128,14 +126,14 @@ public static class Server
     /// <summary>Initializes all necessary server data.</summary>
     private static void InitializeServerData()
     {
-        for (int i = 1; i <= MaxPlayers; i++)
+        for (int i = 1; i <= MaxPlayers + clientSocketsOverlap; i++)
         {
             clients.Add(i, new Client(i));
         }
 
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ClientPackets.serverConnectionReceived, ServerHandle.ServerConnectionReceived },
+            { (int)ClientPackets.gameEnterRequest, ServerHandle.GameEnterReqest },
             { (int)ClientPackets.transformUpdate, ServerHandle.TransformUpdate },
             { (int)ClientPackets.grappleUpdate, ServerHandle.GrappleUpdate }
         };

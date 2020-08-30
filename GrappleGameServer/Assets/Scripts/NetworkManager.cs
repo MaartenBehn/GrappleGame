@@ -22,6 +22,7 @@ public class NetworkManager : MonoBehaviour
     }
 
     public string name;
+    public string password;
     
     private void Start()
     {

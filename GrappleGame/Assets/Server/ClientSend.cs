@@ -26,10 +26,11 @@ namespace Server
         /// <summary>Lets the server know that the welcome message was received.</summary>
         public static void ServerConnectionReceived()
         {
-            using (Packet packet = new Packet((int)ClientPackets.serverConnectionReceived))
+            using (Packet packet = new Packet((int)ClientPackets.gameEnterRequest))
             {
                 packet.Write(Client.instance.myId);
                 packet.Write(UIManager.gameSettings.playerName);
+                packet.Write(StartPanel.instance.currentSelectedServer.password);
 
                 SendTcpData(packet);
             }

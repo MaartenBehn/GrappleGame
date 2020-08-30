@@ -75,13 +75,22 @@ public static class ServerSend
     #region Packets
 
     /// <summary>Sends a welcome message to the given client.</summary>
-    public static void ServerConnection(int toClient, string msg)
+    public static void ServerConnection(int toClient)
     {
         using (Packet packet = new Packet((int)ServerPackets.serverConnection))
         {
-            packet.Write(msg);
             packet.Write(toClient);
 
+            SendTcpData(toClient, packet);
+        }
+    }
+    
+    public static void GameEnterRejected(int toClient, string message)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.gameEnterRejected))
+        {
+            packet.Write(message);
+            
             SendTcpData(toClient, packet);
         }
     }
@@ -133,19 +142,6 @@ public static class ServerSend
             packet.Write(player.id);
             packet.Write(player.isGrappling);
             packet.Write(player.grapplePoint);
-            packet.Write(player.distanceFromGrapple);
-            
-            SendUdpDataToAll(player.id, packet);
-        }
-    }
-    
-    public static void ClientSnapGrappleUpdate(Player player)
-    {
-        using (Packet packet = new Packet((int)ServerPackets.clientSnapGrappleUpdate))
-        {
-            packet.Write(player.id);
-            packet.Write(player.grappleObjectId);
-            packet.Write(player.isGrappling);
             packet.Write(player.distanceFromGrapple);
             
             SendUdpDataToAll(player.id, packet);

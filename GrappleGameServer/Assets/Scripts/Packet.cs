@@ -7,17 +7,18 @@ using UnityEngine;
 public enum ServerPackets
 {
     serverConnection = 1,
+    gameEnterRejected,
     playerEnter,
     playerLeave,
     clientTransformUpdate,
-    clientGrappleUpdate,
-    clientSnapGrappleUpdate
+    clientGrappleUpdate
+
 }
 
 /// <summary>Sent from client to server.</summary>
 public enum ClientPackets
 {
-    serverConnectionReceived = 1,
+    gameEnterRequest = 1,
     transformUpdate,
     grappleUpdate
 }

@@ -13,7 +13,8 @@ namespace UI
         startPanel = 0,
         inGamePanel = 1,
         pausePanel = 2,
-        settingsPanel = 3
+        settingsPanel = 3,
+        connectingPanel = 4
     }
 
     public class UIManager : MonoBehaviour
