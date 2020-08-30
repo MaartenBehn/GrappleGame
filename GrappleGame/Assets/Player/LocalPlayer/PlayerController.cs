@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using Server;
+using UI;
 using UnityEngine;
 using Utility;
 
@@ -37,18 +38,29 @@ namespace Player
             groundCheckMaxDistance += height / 2;
             nearGroundCheckMaxDistance += height / 2;
         }
-
+        
         void FixedUpdate()
         {
-            // Getting movment inputs
             Vector3 input = Vector3.zero;
-            if (Input.GetKey(KeyCode.W)) { 
-                input.z -= 1;
+            float mouseVertical = 0.0f;
+            float mouseHorizontal = 0.0f;
+            
+            if (UIManager.instance.lastActivePanel.panelType == PanelType.inGamePanel)
+            {
+                // Getting movment inputs only if in Game
+                input = Vector3.zero;
+                if (Input.GetKey(KeyCode.W)) { 
+                    input.z -= 1;
+                }
+                if (Input.GetKey(KeyCode.S)) { input.z += 1; }
+                if (Input.GetKey(KeyCode.A)) { input.x += 1; }
+                if (Input.GetKey(KeyCode.D)) { input.x -= 1; }
+                input = transform.rotation * -input;
+                
+                mouseVertical = -Input.GetAxis("Mouse Y");
+                mouseHorizontal = Input.GetAxis("Mouse X");
             }
-            if (Input.GetKey(KeyCode.S)) { input.z += 1; }
-            if (Input.GetKey(KeyCode.A)) { input.x += 1; }
-            if (Input.GetKey(KeyCode.D)) { input.x -= 1; }
-            input = transform.rotation * -input;
+            
             
             // Update Grounded, nearGround and groundNormal
             grounded = false;
@@ -73,8 +85,6 @@ namespace Player
             if (grounded)
             {
                 // Rotation on Ground
-                float mouseHorizontal = Input.GetAxis("Mouse X");
-
                 var rotation = transform.rotation;
                 rotation = Quaternion.FromToRotation(rotation * Vector3.up, groundNormal) * rotation;
                 transform.rotation = rotation;
@@ -87,9 +97,6 @@ namespace Player
             else
             {
                 // Rotaion in Space
-                float mouseVertical = -Input.GetAxis("Mouse Y");
-                float mouseHorizontal = Input.GetAxis("Mouse X");
-
                 transform.Rotate(mouseVertical * sensitivity * Time.deltaTime, mouseHorizontal * sensitivity * Time.deltaTime, 0f);
 
                 // Movment in Space
@@ -107,8 +114,15 @@ namespace Player
             }
             
             // Updating depending varibles
-            cinemachineFreeLook.m_YAxis.m_InputAxisName = grounded ? "Mouse Y" : "";
+            
+            cinemachineFreeLook.m_YAxis.m_InputAxisName = 
+                grounded && 
+                UIManager.instance.lastActivePanel.panelType == PanelType.inGamePanel ? 
+                    "Mouse Y" : "";
             cinemachineFreeLook.m_YAxisRecentering.m_enabled = !nearGround;
+            
+            
+            
 
             playerManager.grounded = grounded;
             playerManager.velocity = rigidbody.velocity;

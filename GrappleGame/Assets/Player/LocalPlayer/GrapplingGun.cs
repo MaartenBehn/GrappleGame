@@ -83,21 +83,21 @@ namespace Player.LocalPlayer
             
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
-            grapplePoint = hit.point;
-            
+
             //set anchor depending on target
             if (snappingGrapplePoint || playerGrapplePoint)
             {
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
-                grapplePoint = hit.rigidbody.position;
+                grapplePoint = hit.point - hit.transform.position;
             }
             else
             {
                 joint.connectedAnchor = hit.point;
+                grapplePoint = hit.point;
             }
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = Vector3.Distance(player.position, grapplePoint) + 1;
+            joint.maxDistance = Vector3.Distance(player.position, hit.point) + 1;
             joint.minDistance = 0;
 
             //Adjust these values to fit your game.
@@ -147,6 +147,10 @@ namespace Player.LocalPlayer
             else if (playerGrapplePoint)
             {
                 GameManager.players[Client.instance.myId].grappleObjectId = "player "+ hit.transform.GetComponentInParent<PlayerManager>().id;
+            }
+            else
+            {
+                GameManager.players[Client.instance.myId].grappleObjectId = "default";
             }
             
             ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].grappleObjectId, grapplePoint, grappling, joint.maxDistance);

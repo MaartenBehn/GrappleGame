@@ -29,7 +29,7 @@ namespace Server
             using (Packet packet = new Packet((int)ClientPackets.serverConnectionReceived))
             {
                 packet.Write(Client.instance.myId);
-                packet.Write(StartPanel.instance.usernameField.text);
+                packet.Write(UIManager.gameSettings.playerName);
 
                 SendTcpData(packet);
             }

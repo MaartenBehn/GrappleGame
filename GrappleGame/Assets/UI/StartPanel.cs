@@ -30,8 +30,8 @@ namespace UI
 		public override void OnLoad()
 		{
 			Cursor.lockState = CursorLockMode.None;
+			usernameField.text = UIManager.gameSettings.playerName;
 			UpdateServers();
-
 		}
 
 		[SerializeField] public TMP_InputField usernameField;
@@ -70,6 +70,10 @@ namespace UI
 			UIManager.instance.SwitchPanel(PanelType.inGamePanel);
 			usernameField.interactable = false;
 			Client.instance.ConnectToServer();
+
+			UIManager.gameSettings.playerName = usernameField.text;
+			
+			UIManager.WritSettingsFile();
 		}
 	}
 }

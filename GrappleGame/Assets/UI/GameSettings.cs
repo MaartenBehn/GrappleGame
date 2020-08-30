@@ -20,6 +20,8 @@ namespace UI
 				ip = "127.0.0.1"
 			}
 		};
+
+		public string playerName = "new player";
 	}
 	
 }

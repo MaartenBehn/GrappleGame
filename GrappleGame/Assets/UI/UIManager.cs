@@ -22,7 +22,7 @@ namespace UI
         public static GameSettings gameSettings;
 
         List<UIPanel> panelList;
-        UIPanel lastActivePanel;
+        public UIPanel lastActivePanel;
 
         private void Awake()
         {
@@ -37,6 +37,7 @@ namespace UI
             }
             
             gameSettings = new GameSettings();
+            ReadSettingsFile();
         }
 
         private void Start()
@@ -44,9 +45,7 @@ namespace UI
             panelList = GetComponentsInChildren<UIPanel>().ToList();
             panelList.ForEach(x => x.gameObject.SetActive(false));
             SwitchPanel(PanelType.startPanel);
-            
-            ReadFile();
-            
+
             Screen.SetResolution(
                 gameSettings.currentResolution.x,
                 gameSettings.currentResolution.y,
@@ -92,18 +91,18 @@ namespace UI
             SwitchPanel((PanelType) typeId);
         }
         
-        public void WritFile()
+        public static void WritSettingsFile()
         {
             File.WriteAllText(Application.dataPath + "/settings.json",JsonUtility.ToJson(gameSettings));
         }
 
-        public void ReadFile()
+        public static void ReadSettingsFile()
         {
             if (File.Exists(Application.dataPath + "/settings.json"))
             {
                 gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.dataPath + "/settings.json"));
             }
-            WritFile();
+            WritSettingsFile();
         }
     }
 }

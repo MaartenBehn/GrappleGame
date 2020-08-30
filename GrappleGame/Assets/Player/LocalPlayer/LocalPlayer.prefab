@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312469327053286706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 0, z: -4.612112}
+  m_LocalPosition: {x: 0, y: 0, z: -110.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3312469328267287309}
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 769
+    m_Bits: 513
   m_IgnoreTag: 
   m_TransparentLayers:
     serializedVersion: 2
@@ -676,9 +676,8 @@ MonoBehaviour:
   lr: {fileID: 3883511767952025922}
   grappleTip: {fileID: 7145996192402744856}
   isGrappling: 0
-  isSnapGrappling: 0
+  grappleObjectId: 
   grapplePoint: {x: 0, y: 0, z: 0}
-  grappleSnapPoint: 
   maxDistanceFromGrapple: 0
 --- !u!120 &3883511767952025922
 LineRenderer:
@@ -1037,9 +1036,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 0, z: -6}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.2
+  m_YDamping: 0.2
+  m_ZDamping: 0.2
   m_AngularDampingMode: 0
   m_PitchDamping: 0.5
   m_YawDamping: 0.5
