@@ -1,4 +1,5 @@
 ﻿
+using SharedFiles.Utility;
 using UnityEngine;
 
 public static class ServerHandle
@@ -9,14 +10,14 @@ public static class ServerHandle
         string username = packet.ReadString();
         string password = packet.ReadString();
 
-        if (NetworkManager.instance.password != "" && NetworkManager.instance.password != password)
+        if (ServerManager.instance.password != "" && ServerManager.instance.password != password)
         {
             Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
             ServerSend.GameEnterRejected(fromClient, "Wrong Password!");
             return;
         }
         
-        if (Server.conectedClinets >= Server.MaxPlayers)
+        if (ServerManager.instance.clinetsInGame.Count >= Server.MaxPlayers)
         {
             Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
             ServerSend.GameEnterRejected(fromClient, "Server full");
@@ -31,7 +32,7 @@ public static class ServerHandle
         }
         Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
         
-        Server.clients[fromClient].SendIntoGame(username);
+        ServerSend.LobbyChange(fromClient);
     }
 
     public static void TransformUpdate(int fromClient, Packet packet)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using SharedFiles.Utility;
 using UnityEngine;
 
 public static class Server
@@ -10,7 +11,6 @@ public static class Server
     private const int clientSocketsOverlap = 10;
     public static int Port { get; private set; }
     public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
-    public static int conectedClinets;
     public delegate void PacketHandler(int fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
@@ -30,7 +30,6 @@ public static class Server
         
         MaxPlayers = maxPlayers;
         Port = port;
-        conectedClinets = 0;
 
         Debug.Log("Starting server...");
         InitializeServerData();

@@ -1,4 +1,4 @@
-﻿using Arena;
+﻿using SharedFiles.Lobby;
 using UnityEngine;
 
 namespace Player
@@ -48,7 +48,7 @@ namespace Player
             switch (parts[0])
             {
                 case "snap":
-                    absGrapplePoint = ArenaData.instance.snappingObjects[int.Parse(parts[1])].transform.position + grapplePoint;
+                    absGrapplePoint = LobbyData.instance.snappingObjects[int.Parse(parts[1])].transform.position + grapplePoint;
                     break;
                 case "player":
                     absGrapplePoint = GameManager.players[int.Parse(parts[1])].transform.position + grapplePoint;

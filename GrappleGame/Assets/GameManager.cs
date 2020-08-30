@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Player;
 using Server;
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
 
     public new GameObject camera;
+    
+    public List<GameObject> lobbyPreFabList;
+    public GameObject currentLobby;
 
     private void Awake()
     {
@@ -26,6 +30,17 @@ public class GameManager : MonoBehaviour
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
+    }
+
+    public void LobbyChange(String name)
+    {
+        if (currentLobby != null)
+        {
+            Destroy(currentLobby);
+        }
+        
+        GameObject newLobbyPreFab = lobbyPreFabList.Find(gameObject => gameObject.name == name);
+        currentLobby = Instantiate(newLobbyPreFab);
     }
     
     public void PlayerEnter(int id, string username, Vector3 position, Quaternion rotation)

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SharedFiles.Utility;
 using UnityEngine;
 
 public static class ServerSend
@@ -84,12 +85,20 @@ public static class ServerSend
             SendTcpData(toClient, packet);
         }
     }
-    
     public static void GameEnterRejected(int toClient, string message)
     {
         using (Packet packet = new Packet((int)ServerPackets.gameEnterRejected))
         {
             packet.Write(message);
+            
+            SendTcpData(toClient, packet);
+        }
+    }
+    public static void LobbyChange(int toClient)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.lobbyChange))
+        {
+            packet.Write(ServerManager.instance.currentLobbyPreFabName);
             
             SendTcpData(toClient, packet);
         }

@@ -1,7 +1,7 @@
 ﻿using System.Net;
+using SharedFiles.Utility;
 using UI;
 using UnityEngine;
-using Utility;
 
 namespace Server
 {
@@ -26,6 +26,13 @@ namespace Server
             
             Client.instance.Disconnect();
             UIManager.instance.SwitchPanel(PanelType.startPanel);
+        }
+        
+        public static void LobbyChange(Packet packet)
+        {
+            string lobbyName = packet.ReadString();
+            
+            GameManager.instance.LobbyChange(lobbyName);
         }
 
         public static void PlayerEnter(Packet packet)

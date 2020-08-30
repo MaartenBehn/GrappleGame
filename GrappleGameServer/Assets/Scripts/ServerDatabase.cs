@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SharedFiles.Utility;
+using UnityEngine;
 
 public static class ServerDatabase
 {
@@ -11,18 +12,18 @@ public static class ServerDatabase
 			ServerData serverData = new ServerData()
 			{
 				ip = Server.ip,
-				name = NetworkManager.instance.name,
+				name = ServerManager.instance.name,
 				maxPlayers = Server.MaxPlayers,
-				players = Server.conectedClinets,
+				players = ServerManager.instance.clinetsInGame.Count,
 				version = Application.version
 			};
 			
-			Database.instance.Push(JsonUtility.ToJson(serverData), Database.instance.firebase.Child("Servers").Child(NetworkManager.instance.name));
+			Database.instance.Push(JsonUtility.ToJson(serverData), Database.instance.firebase.Child("Servers").Child(ServerManager.instance.name));
 		});
 	}
     
 	public static  void DeleteServer()
 	{
-		Database.instance.Delete(Database.instance.firebase.Child("Servers").Child(NetworkManager.instance.name));
+		Database.instance.Delete(Database.instance.firebase.Child("Servers").Child(ServerManager.instance.name));
 	}
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using SharedFiles.Utility;
 using UnityEngine;
-using Utility;
 
 namespace Server
 {
@@ -303,6 +303,7 @@ namespace Server
             {
                 { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
                 { (int)ServerPackets.gameEnterRejected, ClientHandle.GameEnterRejected },
+                { (int)ServerPackets.lobbyChange, ClientHandle.LobbyChange },
                 { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
                 { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
                 { (int)ServerPackets.clientTransformUpdate, ClientHandle.ClientTransformUpdate },

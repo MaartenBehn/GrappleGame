@@ -8,17 +8,25 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Client.cs" t="Include" />
-          <e p="Database.cs" t="Include" />
           <e p="IpManager.cs" t="Include" />
-          <e p="NetworkManager.cs" t="Include" />
-          <e p="Packet.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="Server.cs" t="Include" />
           <e p="ServerData.cs" t="Include" />
           <e p="ServerDatabase.cs" t="Include" />
           <e p="ServerHandle.cs" t="Include" />
+          <e p="ServerManager.cs" t="Include" />
           <e p="ServerSend.cs" t="Include" />
-          <e p="ThreadManager.cs" t="Include" />
+        </e>
+        <e p="SharedFiles" t="Include">
+          <e p="Lobby" t="Include">
+            <e p="LobbyData.cs" t="Include" />
+          </e>
+          <e p="Utility" t="Include">
+            <e p="Database.cs" t="Include" />
+            <e p="GrappleMath.cs" t="Include" />
+            <e p="Packet.cs" t="Include" />
+            <e p="ThreadManager.cs" t="Include" />
+          </e>
         </e>
         <e p="SimpleFirebaseUnity" t="Include">
           <e p="Plugins" t="Include">

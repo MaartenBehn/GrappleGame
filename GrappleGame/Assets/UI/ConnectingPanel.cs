@@ -1,4 +1,4 @@
-using System;
+
 using Server;
 using UnityEngine;
 
@@ -25,16 +25,16 @@ namespace UI
 
 		public override void OnLoad()
 		{
-			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.lockState = CursorLockMode.None;
 		}
 
 		float timer = 0.0f;
 		[SerializeField] private float serverTimeOutTime; // in sec
 		private void Update()
 		{
-			if (GameManager.players.ContainsKey(Client.instance.myId))
+			if (GameManager.instance.currentLobby != null)
 			{
-				UIManager.instance.SwitchPanel(PanelType.inGamePanel);
+				UIManager.instance.SwitchPanel(PanelType.lobbyPanel);
 				return;
 			}
 			

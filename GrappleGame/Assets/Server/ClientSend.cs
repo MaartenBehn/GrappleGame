@@ -1,6 +1,6 @@
-﻿using UI;
+﻿using SharedFiles.Utility;
+using UI;
 using UnityEngine;
-using Utility;
 
 namespace Server
 {

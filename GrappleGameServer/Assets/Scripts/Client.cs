@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using SharedFiles.Utility;
 using UnityEngine;
 
 public class Client
 {
     private const int DataBufferSize = 4096;
 
-    private readonly int id;
+    public readonly int id;
     public Player player;
     public readonly Tcp tcp;
     public readonly Udp udp;
@@ -212,10 +213,9 @@ public class Client
     /// <param name="playerName">The username of the new player.</param>
     public void SendIntoGame(string playerName)
     {
-        player = NetworkManager.instance.InstantiatePlayer();
+        player = ServerManager.instance.InstantiatePlayer();
         player.Initialize(id, playerName);
         
-        Server.conectedClinets++;
         ServerDatabase.UpdateServer();
 
         // Send all players to the new player
@@ -249,10 +249,11 @@ public class Client
         udp.Disconnect();
 
         if (player == null) return;
+
+        ServerManager.instance.clinetsInGame.Remove(this);
         
         player.Disconnect();
-            
-        Server.conectedClinets--;
+
         ServerDatabase.UpdateServer();
         
         ThreadManager.ExecuteOnMainThread(() =>
