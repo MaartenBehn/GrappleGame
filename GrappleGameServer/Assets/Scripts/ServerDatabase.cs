@@ -14,7 +14,7 @@ public static class ServerDatabase
 				ip = Server.ip,
 				name = ServerManager.instance.name,
 				maxPlayers = Server.MaxPlayers,
-				players = ServerManager.instance.clinetsInGame.Count,
+				players = ServerManager.instance.players.Count,
 				version = Application.version
 			};
 			

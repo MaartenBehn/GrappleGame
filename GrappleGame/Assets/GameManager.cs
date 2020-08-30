@@ -43,21 +43,13 @@ public class GameManager : MonoBehaviour
         currentLobby = Instantiate(newLobbyPreFab);
     }
     
-    public void PlayerEnter(int id, string username, Vector3 position, Quaternion rotation)
+    public void PlayerEnter(int id, string username)
     {
-        GameObject player;
-        if (id == Client.instance.myId)
+        players.Add(id, new PlayerManager()
         {
-            player = Instantiate(localPlayerPrefab, position, rotation);
-        }
-        else
-        {
-            player = Instantiate(playerPrefab, position, rotation);
-        }
-
-        player.GetComponent<PlayerManager>().id = id;
-        player.GetComponent<PlayerManager>().username = username;
-        players.Add(id, player.GetComponent<PlayerManager>());
+            id = id,
+            username = username
+        });
     }
 
     public void QuitGame()

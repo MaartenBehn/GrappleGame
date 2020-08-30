@@ -6,6 +6,8 @@ using System.Net.Sockets;
 using SharedFiles.Utility;
 using UnityEngine;
 
+
+
 public class Client
 {
     private const int DataBufferSize = 4096;
@@ -211,11 +213,15 @@ public class Client
 
     /// <summary>Sends the client into the game and informs other clients of the new player.</summary>
     /// <param name="playerName">The username of the new player.</param>
-    public void SendIntoGame(string playerName)
+    public void EnterPlayer(string playerName)
     {
-        player = ServerManager.instance.InstantiatePlayer();
-        player.Initialize(id, playerName);
-        
+        player = new Player()
+        {
+            username = playerName,
+            client = this
+        };
+
+        ServerManager.instance.players.Add(player);
         ServerDatabase.UpdateServer();
 
         // Send all players to the new player
@@ -250,16 +256,12 @@ public class Client
 
         if (player == null) return;
 
-        ServerManager.instance.clinetsInGame.Remove(this);
+        ServerManager.instance.players.Remove(player);
         
         player.Disconnect();
 
         ServerDatabase.UpdateServer();
         
-        ThreadManager.ExecuteOnMainThread(() =>
-        {
-            UnityEngine.Object.Destroy(player.gameObject);
-            player = null;
-        });
+        player = null;
     }
 }

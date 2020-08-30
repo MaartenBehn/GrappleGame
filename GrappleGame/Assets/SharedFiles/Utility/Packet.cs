@@ -12,10 +12,9 @@ namespace SharedFiles.Utility
         gameEnterRejected,
         lobbyChange,
         playerEnter,
-        playerLeave,
         clientTransformUpdate,
-        clientGrappleUpdate
-
+        clientGrappleUpdate,
+        playerLeave
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -24,6 +23,12 @@ namespace SharedFiles.Utility
         gameEnterRequest = 1,
         transformUpdate,
         grappleUpdate
+    }
+    
+    public enum PlayerState{
+        inGame,
+        spectator,
+        loadingScreen
     }
 
     public class Packet : IDisposable

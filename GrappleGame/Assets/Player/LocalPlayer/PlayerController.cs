@@ -8,13 +8,13 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        PlayerManager playerManager;
+        private Trooper trooper;
         new Rigidbody rigidbody;
         private new CapsuleCollider collider;
         void Awake()
         {
+            trooper = GetComponent<Trooper>();
             rigidbody = GetComponent<Rigidbody>();
-            playerManager = GetComponent<PlayerManager>();
             collider = GetComponent<CapsuleCollider>();
         }
         
@@ -121,11 +121,8 @@ namespace Player
                     "Mouse Y" : "";
             cinemachineFreeLook.m_YAxisRecentering.m_enabled = !nearGround;
             
-            
-            
-
-            playerManager.grounded = grounded;
-            playerManager.velocity = rigidbody.velocity;
+            trooper.grounded = grounded;
+            trooper.velocity = rigidbody.velocity;
 
             // Sending transform to Server
             ClientSend.TransformUpdate();

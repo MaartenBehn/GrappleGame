@@ -1,7 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using SharedFiles.Lobby;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+
+public enum LobbyType
+{
+    enter,
+    respawn,
+    locked
+}
 
 public class ServerManager : MonoBehaviour
 {
@@ -19,19 +28,24 @@ public class ServerManager : MonoBehaviour
             Destroy(this);
         }
         
-        clinetsInGame = new List<Client>();
+        players = new List<Player>();
     }
 
+    
+    
     public string name;
     public string password;
     public GameObject playerPrefab;
     public List<GameObject> lobbyPreFabList;
+    
     [SerializeField] private GameObject startLobby;
-    public GameObject currentLobby;
-    public string currentLobbyPreFabName;
-
-    public List<Client> clinetsInGame;
-
+    [SerializeField] LobbyType startLobbyType;
+    
+    [HideInInspector] public LobbyData currentLobbyData;
+    [HideInInspector] public string currentLobbyPreFabName;
+    public List<Player> players;
+    [HideInInspector] public LobbyType lobbyType;
+    
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
@@ -44,31 +58,26 @@ public class ServerManager : MonoBehaviour
         LoadLobby(startLobby.name);
     }
 
-    private void OnApplicationQuit()
-    {
-        Server.Stop();
-        ServerDatabase.DeleteServer();
-    }
-    
     public void LoadLobby(string name)
     {
-        if (currentLobby != null)
+        if (currentLobbyData != null)
         {
-            Destroy(currentLobby);
+            Destroy(currentLobbyData.gameObject);
         }
         
         GameObject newLobbyPreFab = lobbyPreFabList.Find(gameObject => gameObject.name == name);
         currentLobbyPreFabName = newLobbyPreFab.name;
-        currentLobby = Instantiate(newLobbyPreFab);
+        currentLobbyData = Instantiate(newLobbyPreFab).GetComponent<LobbyData>();
 
-        foreach (Client client in clinetsInGame)
+        foreach (Player player in players)
         {
-            ServerSend.LobbyChange(client.id);
+            ServerSend.LobbyChange(player.client.id);
         }
     }
-
-    public Player InstantiatePlayer()
+    
+    private void OnApplicationQuit()
     {
-        return Instantiate(playerPrefab, new Vector3(0f, 0.5f, 0f), Quaternion.identity).GetComponent<Player>();
+        Server.Stop();
+        ServerDatabase.DeleteServer();
     }
 }

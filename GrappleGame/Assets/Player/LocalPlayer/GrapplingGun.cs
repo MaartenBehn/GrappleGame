@@ -33,7 +33,7 @@ namespace Player.LocalPlayer
             playerGrapplePoint = false;
             hitting = Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable);
             
-            GameManager.players[Client.instance.myId].grapplePoint = grapplePoint;
+            GameManager.players[Client.instance.myId].trooper.grapplePoint = grapplePoint;
 
             if (Input.GetKey(KeyCode.X)) { ChangeMaxDistance(grappleChangeSpeed);}
             if (Input.GetKey(KeyCode.Y)) { ChangeMaxDistance(-grappleChangeSpeed);}
@@ -138,23 +138,24 @@ namespace Player.LocalPlayer
 
         public void UpdateServer()
         {
-            GameManager.players[Client.instance.myId].isGrappling = grappling;
-            GameManager.players[Client.instance.myId].maxDistanceFromGrapple = joint.maxDistance;
+            GameManager.players[Client.instance.myId].trooper.isGrappling = grappling;
+            GameManager.players[Client.instance.myId].trooper.maxDistanceFromGrapple = joint.maxDistance;
             
             if (snappingGrapplePoint)
             {
-                GameManager.players[Client.instance.myId].grappleObjectId = hit.transform.name;
+                GameManager.players[Client.instance.myId].trooper.grappleObjectId = hit.transform.name;
             }
             else if (playerGrapplePoint)
             {
-                GameManager.players[Client.instance.myId].grappleObjectId = "player "+ hit.transform.GetComponentInParent<PlayerManager>().id;
+                GameManager.players[Client.instance.myId].trooper.grappleObjectId = 
+                    "player "+ hit.transform.GetComponentInParent<Trooper>().player.id;
             }
             else
             {
-                GameManager.players[Client.instance.myId].grappleObjectId = "default";
+                GameManager.players[Client.instance.myId].trooper.grappleObjectId = "default";
             }
             
-            ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].grappleObjectId, grapplePoint, grappling, joint.maxDistance);
+            ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].trooper.grappleObjectId, grapplePoint, grappling, joint.maxDistance);
         }
     }
 }

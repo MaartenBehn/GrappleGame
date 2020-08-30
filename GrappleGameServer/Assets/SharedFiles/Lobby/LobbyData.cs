@@ -4,7 +4,6 @@ namespace SharedFiles.Lobby
 {
     public class LobbyData : MonoBehaviour
     {
-        [SerializeField] public GameObject[] snappingObjects;
         public static LobbyData instance;
         private void Awake()
         {
@@ -24,5 +23,7 @@ namespace SharedFiles.Lobby
                 snappingObjects[i].name = "snap " + i;
             }
         }
+        
+        public GameObject[] snappingObjects;
     }
 }

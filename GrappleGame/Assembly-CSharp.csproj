@@ -74,7 +74,6 @@
      <Compile Include="Assets\External Libs\SimpleFirebaseUnity\Scripts\FirebaseQueue.cs" />
      <Compile Include="Assets\UI\InGamePanel.cs" />
      <Compile Include="Assets\UI\SettingsPanel.cs" />
-     <Compile Include="Assets\Player\PlayerManager.cs" />
      <Compile Include="Assets\UI\PausePanel.cs" />
      <Compile Include="Assets\External Libs\SimpleFirebaseUnity\Scripts\miniJSON.cs" />
      <Compile Include="Assets\External Libs\SimpleFirebaseUnity\Scripts\FirebaseParam.cs" />
@@ -85,6 +84,9 @@
      <Compile Include="Assets\External Libs\SimpleFirebaseUnity\Scripts\Firebase.cs" />
      <Compile Include="Assets\SharedFiles\Utility\Packet.cs" />
      <Compile Include="Assets\UI\LobbyPanel.cs" />
+     <Compile Include="Assets\Player\PlayerManager.cs" />
+     <Compile Include="Assets\Player\Trooper.cs" />
+     <Compile Include="Assets\Player\Spectator.cs" />
      <None Include="Assets\External Libs\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\External Libs\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\External Libs\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

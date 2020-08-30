@@ -41,10 +41,10 @@ namespace Server
         {
             using (Packet packet = new Packet((int)ClientPackets.transformUpdate))
             {
-                packet.Write(GameManager.players[Client.instance.myId].transform.position);
-                packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
-                packet.Write(GameManager.players[Client.instance.myId].velocity);
-                packet.Write(GameManager.players[Client.instance.myId].grounded);
+                packet.Write(GameManager.players[Client.instance.myId].trooper.transform.position);
+                packet.Write(GameManager.players[Client.instance.myId].trooper.transform.rotation);
+                packet.Write(GameManager.players[Client.instance.myId].trooper.velocity);
+                packet.Write(GameManager.players[Client.instance.myId].trooper.grounded);
 
                 SendUdpData(packet);
             }

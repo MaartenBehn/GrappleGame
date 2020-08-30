@@ -39,17 +39,14 @@ namespace Server
         {
             int id = packet.ReadInt();
             string username = packet.ReadString();
-            Vector3 position = packet.ReadVector3();
-            Quaternion rotation = packet.ReadQuaternion();
-
-            GameManager.instance.PlayerEnter(id, username, position, rotation);
+            
+            GameManager.instance.PlayerEnter(id, username);
         }
 
         public static void PlayerLeave(Packet packet)
         {
             int id = packet.ReadInt();
-
-            Destroy(GameManager.players[id].gameObject);
+            
             GameManager.players.Remove(id);
         }
 
@@ -61,10 +58,10 @@ namespace Server
             Vector3 velocity = packet.ReadVector3();
             bool grounded = packet.ReadBool();
 
-            GameManager.players[id].transform.position = position;
-            GameManager.players[id].transform.rotation = rotation;
-            GameManager.players[id].velocity = velocity;
-            GameManager.players[id].grounded = grounded;
+            GameManager.players[id].trooper.transform.position = position;
+            GameManager.players[id].trooper.transform.rotation = rotation;
+            GameManager.players[id].trooper.velocity = velocity;
+            GameManager.players[id].trooper.grounded = grounded;
         }
         
         public static void ClientGrappleUpdate(Packet packet)
@@ -75,10 +72,10 @@ namespace Server
             Vector3 position = packet.ReadVector3();
             float maxDistanceFromGrapple = packet.ReadFloat();
 
-            GameManager.players[id].isGrappling = isGrappling;
-            GameManager.players[id].grappleObjectId = objectId;
-            GameManager.players[id].grapplePoint = position;
-            GameManager.players[id].maxDistanceFromGrapple = maxDistanceFromGrapple;
+            GameManager.players[id].trooper.isGrappling = isGrappling;
+            GameManager.players[id].trooper.grappleObjectId = objectId;
+            GameManager.players[id].trooper.grapplePoint = position;
+            GameManager.players[id].trooper.maxDistanceFromGrapple = maxDistanceFromGrapple;
 
         }
     }

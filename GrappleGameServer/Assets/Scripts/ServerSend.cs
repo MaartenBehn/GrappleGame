@@ -111,12 +111,10 @@ public static class ServerSend
     {
         using (Packet packet = new Packet((int)ServerPackets.playerEnter))
         {
-            packet.Write(player.id);
+            packet.Write(player.client.id);
             packet.Write(player.username);
-            packet.Write(player.transform.position);
-            packet.Write(player.transform.rotation);
 
-            SendTcpData(toClient, packet);
+            SendTcpData(player.client.id, packet);
         }
     }
 
@@ -124,9 +122,9 @@ public static class ServerSend
     {
         using (Packet packet = new Packet((int)ServerPackets.playerLeave))
         {
-            packet.Write(player.id);
+            packet.Write(player.client.id);
 
-            SendTcpDataToAll(player.id, packet);
+            SendTcpDataToAll(player.client.id, packet);
         }
     }
 
@@ -134,13 +132,13 @@ public static class ServerSend
     {
         using (Packet packet = new Packet((int)ServerPackets.clientTransformUpdate))
         {
-            packet.Write(player.id);
-            packet.Write(player.transform.position);
-            packet.Write(player.transform.rotation);
-            packet.Write(player.velocity);
-            packet.Write(player.grounded);
+            packet.Write(player.client.id);
+            packet.Write(player.trooper.transform.position);
+            packet.Write(player.trooper.transform.rotation);
+            packet.Write(player.trooper.velocity);
+            packet.Write(player.trooper.grounded);
 
-            SendUdpDataToAll(player.id, packet);
+            SendUdpDataToAll(player.client.id, packet);
         }
     }
     
@@ -148,12 +146,12 @@ public static class ServerSend
     {
         using (Packet packet = new Packet((int)ServerPackets.clientGrappleUpdate))
         {
-            packet.Write(player.id);
-            packet.Write(player.isGrappling);
-            packet.Write(player.grapplePoint);
-            packet.Write(player.distanceFromGrapple);
+            packet.Write(player.client.id);
+            packet.Write(player.trooper.isGrappling);
+            packet.Write(player.trooper.grapplePoint);
+            packet.Write(player.trooper.distanceFromGrapple);
             
-            SendUdpDataToAll(player.id, packet);
+            SendUdpDataToAll(player.client.id, packet);
         }
     }
     #endregion

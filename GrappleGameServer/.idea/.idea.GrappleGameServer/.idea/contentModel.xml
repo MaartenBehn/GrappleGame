@@ -16,6 +16,7 @@
           <e p="ServerHandle.cs" t="Include" />
           <e p="ServerManager.cs" t="Include" />
           <e p="ServerSend.cs" t="Include" />
+          <e p="Trooper.cs" t="Include" />
         </e>
         <e p="SharedFiles" t="Include">
           <e p="Lobby" t="Include">

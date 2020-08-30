@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6574823444410646575}
-  - component: {fileID: 1920120271202843960}
+  - component: {fileID: 4268295556859569237}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1920120271202843960
+--- !u!114 &4268295556859569237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,9 +122,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4187005777591049097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a3aab0770abde4b94f5c2dbbb4ec43, type: 3}
+  m_Script: {fileID: 11500000, guid: 31e6a07cfe75449795deb3d686b44dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  username: 
-  controller: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  grounded: 0
+  isGrappling: 0
+  grappleObjectId: 
+  grapplePoint: {x: 0, y: 0, z: 0}
+  distanceFromGrapple: 0

@@ -17,7 +17,7 @@ public static class ServerHandle
             return;
         }
         
-        if (ServerManager.instance.clinetsInGame.Count >= Server.MaxPlayers)
+        if (ServerManager.instance.players.Count >= Server.MaxPlayers)
         {
             Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
             ServerSend.GameEnterRejected(fromClient, "Server full");
@@ -33,6 +33,7 @@ public static class ServerHandle
         Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
         
         ServerSend.LobbyChange(fromClient);
+        Server.clients[fromClient].EnterPlayer(username);
     }
 
     public static void TransformUpdate(int fromClient, Packet packet)
@@ -42,7 +43,7 @@ public static class ServerHandle
         Vector3 velocity = packet.ReadVector3();
         bool grounded = packet.ReadBool();
 
-        Server.clients[fromClient].player.SetTransform(position, rotation, velocity, grounded);
+        Server.clients[fromClient].player.trooper.SetTransform(position, rotation, velocity, grounded);
     }
     
     public static void GrappleUpdate(int fromClient, Packet packet)
@@ -52,6 +53,6 @@ public static class ServerHandle
         Vector3 position = packet.ReadVector3();
         float distanceFromGrapple = packet.ReadFloat();
         
-        Server.clients[fromClient].player.GrappleUpdate(objectId, isGrappling, position, distanceFromGrapple);
+        Server.clients[fromClient].player.trooper.GrappleUpdate(objectId, isGrappling, position, distanceFromGrapple);
     }
 }
