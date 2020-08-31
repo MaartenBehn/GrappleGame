@@ -1,4 +1,6 @@
-﻿using SharedFiles.Utility;
+﻿using Player;
+using Player.Trooper;
+using SharedFiles.Utility;
 using UI;
 using UnityEngine;
 
@@ -37,27 +39,27 @@ namespace Server
         }
 
         /// <summary>Sends player input to the server.</summary>
-        public static void TransformUpdate()
+        public static void TrooperTransformUpdate(Trooper trooper)
         {
-            using (Packet packet = new Packet((int)ClientPackets.transformUpdate))
+            using (Packet packet = new Packet((int)ClientPackets.trooperTransformUpdate))
             {
-                packet.Write(GameManager.players[Client.instance.myId].trooper.transform.position);
-                packet.Write(GameManager.players[Client.instance.myId].trooper.transform.rotation);
-                packet.Write(GameManager.players[Client.instance.myId].trooper.velocity);
-                packet.Write(GameManager.players[Client.instance.myId].trooper.grounded);
+                packet.Write(trooper.transform.position);
+                packet.Write(trooper.transform.rotation);
+                packet.Write(trooper.velocity);
+                packet.Write(trooper.grounded);
 
                 SendUdpData(packet);
             }
         }
         
-        public static void GrappleUpdate(string objectId, Vector3 pos, bool isGrappling, float distanceFromPoint)
+        public static void TrooperGrappleUpdate(Trooper trooper)
         {
-            using (Packet packet = new Packet((int)ClientPackets.grappleUpdate))
+            using (Packet packet = new Packet((int)ClientPackets.trooperGrappleUpdate))
             {
-                packet.Write(isGrappling);
-                packet.Write(objectId);
-                packet.Write(pos);
-                packet.Write(distanceFromPoint);
+                packet.Write(trooper.isGrappling);
+                packet.Write(trooper.grappleObjectId);
+                packet.Write(trooper.grapplePoint);
+                packet.Write(trooper.maxDistanceFromGrapple);
 
                 SendUdpData(packet);
             }

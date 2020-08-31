@@ -12,8 +12,9 @@ namespace SharedFiles.Utility
         gameEnterRejected,
         lobbyChange,
         playerEnter,
-        clientTransformUpdate,
-        clientGrappleUpdate,
+        playerState,
+        trooperTransformUpdate,
+        trooperGrappleUpdate,
         playerLeave
     }
 
@@ -21,12 +22,12 @@ namespace SharedFiles.Utility
     public enum ClientPackets
     {
         gameEnterRequest = 1,
-        transformUpdate,
-        grappleUpdate
+        trooperTransformUpdate,
+        trooperGrappleUpdate
     }
     
-    public enum PLayerState{
-        inGame,
+    public enum PlayerState{
+        inGame = 1,
         spectator,
         loadingScreen
     }

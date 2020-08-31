@@ -30,8 +30,6 @@ public class ServerManager : MonoBehaviour
         
         players = new List<Player>();
     }
-
-    
     
     public string name;
     public string password;

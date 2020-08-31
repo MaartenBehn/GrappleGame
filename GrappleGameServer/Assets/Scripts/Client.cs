@@ -218,7 +218,8 @@ public class Client
         player = new Player()
         {
             username = playerName,
-            client = this
+            client = this,
+            state = PlayerState.loadingScreen
         };
 
         ServerManager.instance.players.Add(player);
@@ -231,7 +232,7 @@ public class Client
             {
                 if (client.id != id)
                 {
-                    ServerSend.PlayerEnter(id, client.player);
+                    ServerSend.PlayerEnter(client.player);
                 }
             }
         }
@@ -241,7 +242,7 @@ public class Client
         {
             if (client.player != null)
             {
-                ServerSend.PlayerEnter(client.id, player);
+                ServerSend.PlayerEnter(player);
             }
         }
     }

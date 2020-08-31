@@ -10,20 +10,16 @@ public class Trooper : MonoBehaviour
 	public string grappleObjectId;
 	public Vector3 grapplePoint;
 	public float distanceFromGrapple;
-		
-	/// <summary>Processes player input and moves the player.</summary>
-	public void FixedUpdate()
-	{
-		ServerSend.ClientTransformUpdate(player);
-	}
-    
-	public void SetTransform(Vector3 position, Quaternion rotation, Vector3 velocity, bool grounded)
+
+	public void UpdateTransform(Vector3 position, Quaternion rotation, Vector3 velocity, bool grounded)
 	{
 		Transform transform1 = transform;
 		transform1.position = position;
 		transform1.rotation = rotation;
 		this.velocity = velocity;
 		this.grounded = grounded;
+		
+		ServerSend.TrooperTransformUpdate(this);
 	}
 
 	public void GrappleUpdate(string grappleObjectId, bool isGrappling, Vector3 grapplePoint, float distanceFromGrapple)
@@ -33,6 +29,6 @@ public class Trooper : MonoBehaviour
 		this.grapplePoint = grapplePoint;
 		this.distanceFromGrapple = distanceFromGrapple;
 
-		ServerSend.ClientGrappleUpdate(player);
+		ServerSend.TrooperGrappleUpdate(this);
 	}
 }

@@ -7,7 +7,7 @@ namespace Player
 		public int id;
 		public string username;
 		public PlayerState state = PlayerState.loadingScreen;
-		public Trooper trooper;
+		public Trooper.Trooper trooper;
 		public Spectator spectator;
 	}
 }

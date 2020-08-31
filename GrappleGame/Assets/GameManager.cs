@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Player;
+using Player.Trooper;
 using Server;
+using SharedFiles.Utility;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,8 +13,8 @@ public class GameManager : MonoBehaviour
 
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 
-    public GameObject localPlayerPrefab;
-    public GameObject playerPrefab;
+    public GameObject localTrooperPrefab;
+    public GameObject trooperPrefab;
 
     public new GameObject camera;
     
@@ -48,8 +50,46 @@ public class GameManager : MonoBehaviour
         players.Add(id, new PlayerManager()
         {
             id = id,
-            username = username
+            username = username      
         });
+    }
+    
+    public void PlayerStateChanged(int id, PlayerState state)
+    {
+        PlayerManager player = players[id];
+        
+        if(player.state == state) return;
+        player.state = state;
+
+        switch (state)
+        {
+            case PlayerState.loadingScreen:
+                if (player.trooper != null)
+                {
+                    Destroy(player.trooper.gameObject);
+                }
+                if (player.spectator != null)
+                {
+                    Destroy(player.spectator.gameObject);
+                }
+                break;
+            case PlayerState.inGame:
+                if (player.spectator != null)
+                {
+                    Destroy(player.spectator.gameObject);
+                }
+
+                player.trooper = id == Client.instance.myId ? 
+                    Instantiate(localTrooperPrefab).GetComponent<Trooper>() : 
+                    Instantiate(trooperPrefab).GetComponent<Trooper>();
+                break;
+            case PlayerState.spectator:
+                if (player.trooper != null)
+                {
+                    Destroy(player.trooper.gameObject);
+                }
+                break;
+        }
     }
 
     public void QuitGame()

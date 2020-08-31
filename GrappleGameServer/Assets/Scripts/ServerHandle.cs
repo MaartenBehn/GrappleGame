@@ -36,17 +36,17 @@ public static class ServerHandle
         Server.clients[fromClient].EnterPlayer(username);
     }
 
-    public static void TransformUpdate(int fromClient, Packet packet)
+    public static void TrooperTransformUpdate(int fromClient, Packet packet)
     {
         Vector3 position = packet.ReadVector3();
         Quaternion rotation = packet.ReadQuaternion();
         Vector3 velocity = packet.ReadVector3();
         bool grounded = packet.ReadBool();
 
-        Server.clients[fromClient].player.trooper.SetTransform(position, rotation, velocity, grounded);
+        Server.clients[fromClient].player.trooper.UpdateTransform(position, rotation, velocity, grounded);
     }
     
-    public static void GrappleUpdate(int fromClient, Packet packet)
+    public static void TrooperGrappleUpdate(int fromClient, Packet packet)
     {
         bool isGrappling = packet.ReadBool();
         string objectId = packet.ReadString();

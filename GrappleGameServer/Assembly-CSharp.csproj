@@ -52,16 +52,21 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ServerManager.cs" />
+     <Compile Include="Assets\SharedFiles\Utility\GrappleMath.cs" />
+     <Compile Include="Assets\SharedFiles\Lobby\LobbyData.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseError.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseRoot.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Sample\MoveControl.cs" />
      <Compile Include="Assets\Scripts\ServerSend.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseManager.cs" />
      <Compile Include="Assets\Scripts\ServerHandle.cs" />
+     <Compile Include="Assets\SharedFiles\Utility\Database.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Sample\AutoRotate.cs" />
      <Compile Include="Assets\Scripts\ServerData.cs" />
      <Compile Include="Assets\Scripts\ServerDatabase.cs" />
+     <Compile Include="Assets\SharedFiles\Utility\ThreadManager.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseQueue.cs" />
+     <Compile Include="Assets\Scripts\Trooper.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\miniJSON.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseParam.cs" />
      <Compile Include="Assets\Scripts\Client.cs" />
@@ -71,45 +76,19 @@
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\DataSnapshot.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\Firebase.cs" />
      <Compile Include="Assets\Scripts\IpManager.cs" />
-     <Compile Include="Assets\SharedFiles\Lobby\LobbyData.cs" />
-     <Compile Include="Assets\SharedFiles\Utility\GrappleMath.cs" />
-     <Compile Include="Assets\SharedFiles\Utility\Database.cs" />
-     <Compile Include="Assets\SharedFiles\Utility\ThreadManager.cs" />
      <Compile Include="Assets\SharedFiles\Utility\Packet.cs" />
-     <Compile Include="Assets\Scripts\Trooper.cs" />
      <None Include="Assets\SimpleFirebaseUnity\Plugins\Android\AndroidManifest.xml" />
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Shaders">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VSCode.Editor">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
@@ -117,23 +96,44 @@
  <Reference Include="Unity.RenderPipelines.Core.Runtime">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Runtime">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Searcher.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Timeline">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Rider.Editor">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualStudio.Editor">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ShaderGraph.Editor">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>H:/Programms/Program Files/Unity/2019.3.3f1/2020.1.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

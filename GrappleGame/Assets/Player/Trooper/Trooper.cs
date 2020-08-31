@@ -1,7 +1,7 @@
 using SharedFiles.Lobby;
 using UnityEngine;
 
-namespace Player
+namespace Player.Trooper
 {
 	public class Trooper : MonoBehaviour
     {

@@ -133,8 +133,8 @@ public static class Server
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
             { (int)ClientPackets.gameEnterRequest, ServerHandle.GameEnterReqest },
-            { (int)ClientPackets.transformUpdate, ServerHandle.TransformUpdate },
-            { (int)ClientPackets.grappleUpdate, ServerHandle.GrappleUpdate }
+            { (int)ClientPackets.trooperTransformUpdate, ServerHandle.TrooperTransformUpdate },
+            { (int)ClientPackets.trooperGrappleUpdate, ServerHandle.TrooperGrappleUpdate }
         };
         Debug.Log("Initialized packets.");
     }

@@ -1,8 +1,7 @@
-﻿using System;
-using Server;
+﻿using Server;
 using UnityEngine;
 
-namespace Player.LocalPlayer
+namespace Player.Trooper.LocalTrooper
 {
     public class GrapplingGun : MonoBehaviour
     {
@@ -109,7 +108,7 @@ namespace Player.LocalPlayer
 
             grappling = true;
             
-            UpdateServer();
+            UpdateTrooper();
         }
 
 
@@ -122,7 +121,7 @@ namespace Player.LocalPlayer
             grappling = false;
             grapplePoint = Vector3.zero;
 
-            UpdateServer();
+            UpdateTrooper();
         }
         public void ChangeMaxDistance(float addMaxDistance)
         {
@@ -133,10 +132,10 @@ namespace Player.LocalPlayer
                 joint.maxDistance = 1;
             }
             
-            UpdateServer();
+            UpdateTrooper();
         }
 
-        public void UpdateServer()
+        public void UpdateTrooper()
         {
             GameManager.players[Client.instance.myId].trooper.isGrappling = grappling;
             GameManager.players[Client.instance.myId].trooper.maxDistanceFromGrapple = joint.maxDistance;
@@ -148,14 +147,14 @@ namespace Player.LocalPlayer
             else if (playerGrapplePoint)
             {
                 GameManager.players[Client.instance.myId].trooper.grappleObjectId = 
-                    "player "+ hit.transform.GetComponentInParent<Trooper>().player.id;
+                    "player "+ hit.transform.GetComponentInParent<Player.Trooper.Trooper>().player.id;
             }
             else
             {
                 GameManager.players[Client.instance.myId].trooper.grappleObjectId = "default";
             }
             
-            ClientSend.GrappleUpdate(GameManager.players[Client.instance.myId].trooper.grappleObjectId, grapplePoint, grappling, joint.maxDistance);
+            ClientSend.TrooperGrappleUpdate(GameManager.players[Client.instance.myId].trooper);
         }
     }
 }

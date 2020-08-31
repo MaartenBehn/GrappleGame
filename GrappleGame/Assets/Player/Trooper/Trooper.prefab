@@ -1903,7 +1903,7 @@ GameObject:
   - component: {fileID: 2910342807744550513}
   - component: {fileID: 6905869758445479487}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Trooper
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1917,7 +1917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677484484946083636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 321.8996, y: 107.521034, z: -300.09445}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2537644958995153011}
@@ -1933,20 +1933,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7677484484946083636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b93d13cb73807341b5d81681ed1db8e, type: 3}
+  m_Script: {fileID: 11500000, guid: fd3575910be141fd8555bf7f61548d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3310983333873905823}
-  id: 0
-  username: 
   velocity: {x: 0, y: 0, z: 0}
   grounded: 0
   lr: {fileID: 2910342807744550513}
-  grappleTip: {fileID: 2148792034819784654}
+  grappleTip: {fileID: 2537644958995153011}
   isGrappling: 0
-  isSnapGrappling: 0
+  grappleObjectId: 
   grapplePoint: {x: 0, y: 0, z: 0}
-  grappleSnapPoint: 
   maxDistanceFromGrapple: 0
 --- !u!120 &2910342807744550513
 LineRenderer:

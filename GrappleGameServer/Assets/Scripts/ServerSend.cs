@@ -107,7 +107,7 @@ public static class ServerSend
     /// <summary>Tells a client to spawn a player.</summary>
     /// <param name="toClient">The client that should spawn the player.</param>
     /// <param name="player">The player to spawn.</param>
-    public static void PlayerEnter(int toClient, Player player)
+    public static void PlayerEnter(Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerEnter))
         {
@@ -127,31 +127,43 @@ public static class ServerSend
             SendTcpDataToAll(player.client.id, packet);
         }
     }
-
-    public static void ClientTransformUpdate(Player player)
+    
+    public static void PlayerState(Player player)
     {
-        using (Packet packet = new Packet((int)ServerPackets.clientTransformUpdate))
+        using (Packet packet = new Packet((int)ServerPackets.playerState))
         {
             packet.Write(player.client.id);
-            packet.Write(player.trooper.transform.position);
-            packet.Write(player.trooper.transform.rotation);
-            packet.Write(player.trooper.velocity);
-            packet.Write(player.trooper.grounded);
+            packet.Write((int) player.state);
 
-            SendUdpDataToAll(player.client.id, packet);
+            SendTcpDataToAll(packet);
+        }
+    }
+
+    public static void TrooperTransformUpdate(Trooper trooper)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.trooperTransformUpdate))
+        {
+            packet.Write(trooper.player.client.id);
+            packet.Write(trooper.transform.position);
+            packet.Write(trooper.transform.rotation);
+            packet.Write(trooper.velocity);
+            packet.Write(trooper.grounded);
+
+            SendUdpDataToAll(trooper.player.client.id, packet);
         }
     }
     
-    public static void ClientGrappleUpdate(Player player)
+    public static void TrooperGrappleUpdate(Trooper trooper)
     {
-        using (Packet packet = new Packet((int)ServerPackets.clientGrappleUpdate))
+        using (Packet packet = new Packet((int)ServerPackets.trooperGrappleUpdate))
         {
-            packet.Write(player.client.id);
-            packet.Write(player.trooper.isGrappling);
-            packet.Write(player.trooper.grapplePoint);
-            packet.Write(player.trooper.distanceFromGrapple);
+            packet.Write(trooper.player.client.id);
+            packet.Write(trooper.isGrappling);
+            packet.Write(trooper.grappleObjectId);
+            packet.Write(trooper.grapplePoint);
+            packet.Write(trooper.distanceFromGrapple);
             
-            SendUdpDataToAll(player.client.id, packet);
+            SendUdpDataToAll(trooper.player.client.id, packet);
         }
     }
     #endregion

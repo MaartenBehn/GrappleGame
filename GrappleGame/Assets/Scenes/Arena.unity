@@ -1907,8 +1907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c880809460fc849b7d4aa9246cbfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localPlayerPrefab: {fileID: 3312469328267287308, guid: d3f7e5bc993dff6449c86e20538f6450, type: 3}
-  playerPrefab: {fileID: 7677484484946083636, guid: 557e9a3a3d9ee014087f779a676d456f, type: 3}
+  localTrooperPrefab: {fileID: 0}
+  trooperPrefab: {fileID: 0}
   camera: {fileID: 1048683556}
   lobbyPreFabList:
   - {fileID: 1597208937453549524, guid: b13ac1f7e28e3a846b9e56ce0f8e6819, type: 3}

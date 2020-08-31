@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace Player
 {
-	public class Spectator
+	public class Spectator : MonoBehaviour
 	{
 		
 	}

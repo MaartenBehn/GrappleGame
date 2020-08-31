@@ -39,7 +39,7 @@ namespace Server
         {
             int id = packet.ReadInt();
             string username = packet.ReadString();
-            
+
             GameManager.instance.PlayerEnter(id, username);
         }
 
@@ -49,8 +49,16 @@ namespace Server
             
             GameManager.players.Remove(id);
         }
+        
+        public static void PlayerState(Packet packet)
+        {
+            int id = packet.ReadInt();
+            PlayerState state = (PlayerState) packet.ReadInt();
 
-        public static void ClientTransformUpdate(Packet packet)
+            GameManager.instance.PlayerStateChanged(id, state);
+        }
+
+        public static void TrooperTransformUpdate(Packet packet)
         {
             int id = packet.ReadInt();
             Vector3 position = packet.ReadVector3();
@@ -64,7 +72,7 @@ namespace Server
             GameManager.players[id].trooper.grounded = grounded;
         }
         
-        public static void ClientGrappleUpdate(Packet packet)
+        public static void TrooperGrappleUpdate(Packet packet)
         {
             int id = packet.ReadInt();
             bool isGrappling = packet.ReadBool();
