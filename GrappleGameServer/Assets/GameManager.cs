@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameModes;
 using SharedFiles.Lobby;
+using SharedFiles.Utility;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public enum LobbyType
-{
-    enter,
-    respawn,
-    locked
-}
 
-public class ServerManager : MonoBehaviour
+
+public class GameManager : MonoBehaviour
 {
-    public static ServerManager instance;
+    public static GameManager instance;
 
     private void Awake()
     {
@@ -29,6 +27,8 @@ public class ServerManager : MonoBehaviour
         }
         
         players = new List<Player>();
+        
+        
     }
     
     public string name;
@@ -37,12 +37,12 @@ public class ServerManager : MonoBehaviour
     public List<GameObject> lobbyPreFabList;
     
     [SerializeField] private GameObject startLobby;
-    [SerializeField] LobbyType startLobbyType;
-    
+
     [HideInInspector] public LobbyData currentLobbyData;
     [HideInInspector] public string currentLobbyPreFabName;
     public List<Player> players;
-    [HideInInspector] public LobbyType lobbyType;
+
+    public GameMode currentGameMode;
     
     private void Start()
     {
@@ -52,8 +52,18 @@ public class ServerManager : MonoBehaviour
         Server.Start(50, 17685);
 
         ServerDatabase.UpdateServer();
+
+        currentGameMode = new Waiting();
+    }
+
+    private void Update()
+    {
         
-        LoadLobby(startLobby.name);
+    }
+
+    public void ChangeGameMode(GameMode gameMode)
+    {
+        
     }
 
     public void LoadLobby(string name)

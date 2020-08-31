@@ -10,14 +10,14 @@ public static class ServerHandle
         string username = packet.ReadString();
         string password = packet.ReadString();
 
-        if (ServerManager.instance.password != "" && ServerManager.instance.password != password)
+        if (GameManager.instance.password != "" && GameManager.instance.password != password)
         {
             Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
             ServerSend.GameEnterRejected(fromClient, "Wrong Password!");
             return;
         }
         
-        if (ServerManager.instance.players.Count >= Server.MaxPlayers)
+        if (GameManager.instance.players.Count >= Server.MaxPlayers)
         {
             Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} has entered a wrong password!");
             ServerSend.GameEnterRejected(fromClient, "Server full");

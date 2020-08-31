@@ -222,7 +222,7 @@ public class Client
             state = PlayerState.loadingScreen
         };
 
-        ServerManager.instance.players.Add(player);
+        GameManager.instance.players.Add(player);
         ServerDatabase.UpdateServer();
 
         // Send all players to the new player
@@ -257,7 +257,7 @@ public class Client
 
         if (player == null) return;
 
-        ServerManager.instance.players.Remove(player);
+        GameManager.instance.players.Remove(player);
         
         player.Disconnect();
 

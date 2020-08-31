@@ -50,33 +50,36 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\ServerManager.cs" />
+     <Compile Include="Assets\Player\Player.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\SharedFiles\Utility\GrappleMath.cs" />
      <Compile Include="Assets\SharedFiles\Lobby\LobbyData.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseError.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseRoot.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Sample\MoveControl.cs" />
-     <Compile Include="Assets\Scripts\ServerSend.cs" />
+     <Compile Include="Assets\Server\ServerSend.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseManager.cs" />
-     <Compile Include="Assets\Scripts\ServerHandle.cs" />
+     <Compile Include="Assets\Server\ServerHandle.cs" />
      <Compile Include="Assets\SharedFiles\Utility\Database.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Sample\AutoRotate.cs" />
-     <Compile Include="Assets\Scripts\ServerData.cs" />
-     <Compile Include="Assets\Scripts\ServerDatabase.cs" />
+     <Compile Include="Assets\Server\ServerData.cs" />
+     <Compile Include="Assets\Server\ServerDatabase.cs" />
      <Compile Include="Assets\SharedFiles\Utility\ThreadManager.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseQueue.cs" />
-     <Compile Include="Assets\Scripts\Trooper.cs" />
+     <Compile Include="Assets\Player\Trooper.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\miniJSON.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseParam.cs" />
-     <Compile Include="Assets\Scripts\Client.cs" />
-     <Compile Include="Assets\Scripts\Server.cs" />
+     <Compile Include="Assets\Server\Client.cs" />
+     <Compile Include="Assets\Server\Server.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\FirebaseObserver.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Sample\SampleScript.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\DataSnapshot.cs" />
      <Compile Include="Assets\SimpleFirebaseUnity\Scripts\Firebase.cs" />
-     <Compile Include="Assets\Scripts\IpManager.cs" />
+     <Compile Include="Assets\Server\IpManager.cs" />
      <Compile Include="Assets\SharedFiles\Utility\Packet.cs" />
+     <Compile Include="Assets\GameModes\GameMode.cs" />
+     <Compile Include="Assets\GameModes\LastManStandingGameMode.cs" />
+     <Compile Include="Assets\GameModes\Waiting.cs" />
      <None Include="Assets\SimpleFirebaseUnity\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
  <HintPath>H:/dev/GrappleGame/GrappleGameServer/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>

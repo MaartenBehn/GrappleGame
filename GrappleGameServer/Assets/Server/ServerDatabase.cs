@@ -12,18 +12,18 @@ public static class ServerDatabase
 			ServerData serverData = new ServerData()
 			{
 				ip = Server.ip,
-				name = ServerManager.instance.name,
+				name = GameManager.instance.name,
 				maxPlayers = Server.MaxPlayers,
-				players = ServerManager.instance.players.Count,
+				players = GameManager.instance.players.Count,
 				version = Application.version
 			};
 			
-			Database.instance.Push(JsonUtility.ToJson(serverData), Database.instance.firebase.Child("Servers").Child(ServerManager.instance.name));
+			Database.instance.Push(JsonUtility.ToJson(serverData), Database.instance.firebase.Child("Servers").Child(GameManager.instance.name));
 		});
 	}
     
 	public static  void DeleteServer()
 	{
-		Database.instance.Delete(Database.instance.firebase.Child("Servers").Child(ServerManager.instance.name));
+		Database.instance.Delete(Database.instance.firebase.Child("Servers").Child(GameManager.instance.name));
 	}
 }

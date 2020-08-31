@@ -6,17 +6,24 @@
     <e p="H:\dev\GrappleGame\GrappleGameServer" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Scripts" t="Include">
+        <e p="GameManager.cs" t="Include" />
+        <e p="GameModes" t="Include">
+          <e p="GameMode.cs" t="Include" />
+          <e p="LastManStandingGameMode.cs" t="Include" />
+          <e p="Waiting.cs" t="Include" />
+        </e>
+        <e p="Player" t="Include">
+          <e p="Player.cs" t="Include" />
+          <e p="Trooper.cs" t="Include" />
+        </e>
+        <e p="Server" t="Include">
           <e p="Client.cs" t="Include" />
           <e p="IpManager.cs" t="Include" />
-          <e p="Player.cs" t="Include" />
           <e p="Server.cs" t="Include" />
           <e p="ServerData.cs" t="Include" />
           <e p="ServerDatabase.cs" t="Include" />
           <e p="ServerHandle.cs" t="Include" />
-          <e p="ServerManager.cs" t="Include" />
           <e p="ServerSend.cs" t="Include" />
-          <e p="Trooper.cs" t="Include" />
         </e>
         <e p="SharedFiles" t="Include">
           <e p="Lobby" t="Include">

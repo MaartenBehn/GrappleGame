@@ -98,7 +98,7 @@ public static class ServerSend
     {
         using (Packet packet = new Packet((int)ServerPackets.lobbyChange))
         {
-            packet.Write(ServerManager.instance.currentLobbyPreFabName);
+            packet.Write(GameManager.instance.currentLobbyPreFabName);
             
             SendTcpData(toClient, packet);
         }

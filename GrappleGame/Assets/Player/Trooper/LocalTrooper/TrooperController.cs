@@ -4,16 +4,16 @@ using SharedFiles.Utility;
 using UI;
 using UnityEngine;
 
-namespace Player
+namespace Player.Trooper.LocalTrooper
 {
-    public class PlayerController : MonoBehaviour
+    public class TrooperController : MonoBehaviour
     {
-        private Trooper trooper;
+        private Player.Trooper.Trooper trooper;
         new Rigidbody rigidbody;
         private new CapsuleCollider collider;
         void Awake()
         {
-            trooper = GetComponent<Trooper>();
+            trooper = GetComponent<Player.Trooper.Trooper>();
             rigidbody = GetComponent<Rigidbody>();
             collider = GetComponent<CapsuleCollider>();
         }
@@ -125,7 +125,7 @@ namespace Player
             trooper.velocity = rigidbody.velocity;
 
             // Sending transform to Server
-            ClientSend.TransformUpdate();
+            ClientSend.TrooperTransformUpdate(trooper);
         }
     }
 }
