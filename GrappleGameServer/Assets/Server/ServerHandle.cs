@@ -32,7 +32,7 @@ public static class ServerHandle
         }
         Debug.Log($"{Server.clients[fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
         
-        ServerSend.LobbyChange(fromClient);
+        ServerSend.GameStateChange(fromClient);
         Server.clients[fromClient].EnterPlayer(username);
     }
 

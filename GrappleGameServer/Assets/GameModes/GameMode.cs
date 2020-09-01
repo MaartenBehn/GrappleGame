@@ -1,8 +1,12 @@
-﻿using UnityEngine.SceneManagement;
+﻿using SharedFiles.Utility;
 
-public class GameMode
+namespace GameModes
 {
-	public virtual void OnLoad() { }
-	public virtual void OnUnload() { }
-	public virtual void Update() { }
+	public class GameMode
+	{
+		public GameModeType gameModeType;
+		public virtual void OnLoad() { }
+		public virtual void OnUnload() { }
+		public virtual void Update() { }
+	}
 }

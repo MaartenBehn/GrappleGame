@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     
     public List<GameObject> lobbyPreFabList;
     public GameObject currentLobby;
-
+    public GameModeType gameModeType;
+    
     private void Awake()
     {
         if (instance == null)

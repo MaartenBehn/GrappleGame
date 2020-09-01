@@ -1,15 +1,16 @@
-﻿
-using SharedFiles.Utility;
-using UnityEngine;
+﻿using SharedFiles.Utility;
 
-public class Player
+namespace Player
 {
-    public string username;
-    public Client client;
-    public PlayerState state;
-    public Trooper trooper;
-    public void Disconnect()
+    public class Player
     {
-        ServerSend.PlayerLeave(this);
+        public string username;
+        public Client client;
+        public PlayerState state;
+        public Trooper trooper;
+        public void Disconnect()
+        {
+            ServerSend.PlayerLeave(this);
+        }
     }
 }

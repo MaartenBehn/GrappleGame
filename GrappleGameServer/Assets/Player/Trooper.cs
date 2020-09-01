@@ -2,7 +2,7 @@
 
 public class Trooper : MonoBehaviour
 {
-	public Player player;
+	public Player.Player player;
 	public Vector3 velocity;
 	public bool grounded;
     

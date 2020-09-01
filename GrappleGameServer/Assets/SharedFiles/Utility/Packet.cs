@@ -10,7 +10,7 @@ namespace SharedFiles.Utility
     {
         serverConnection = 1,
         gameEnterRejected,
-        lobbyChange,
+        gameState,
         playerEnter,
         playerState,
         trooperTransformUpdate,
@@ -30,6 +30,19 @@ namespace SharedFiles.Utility
         inGame = 1,
         spectator,
         loadingScreen
+    }
+    
+    public enum GameModeType{
+        waiting = 1,
+        lastManStanding,
+        teams
+    }
+    
+    public struct PlayerVote
+    {
+        public int id;
+        public GameModeType gameModeType;
+        public string lobbyName;
     }
 
     public class Packet : IDisposable
