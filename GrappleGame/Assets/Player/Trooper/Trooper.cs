@@ -49,9 +49,6 @@ namespace Player.Trooper
                 case "snap":
                     absGrapplePoint = LobbyData.instance.snappingObjects[int.Parse(parts[1])].transform.position + grapplePoint;
                     break;
-                case "player":
-                    absGrapplePoint = GameManager.players[int.Parse(parts[1])].trooper.transform.position + grapplePoint;
-                    break;
                 default:
                     absGrapplePoint = grapplePoint;
                     break;

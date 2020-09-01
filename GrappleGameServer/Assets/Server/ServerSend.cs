@@ -94,10 +94,11 @@ public static class ServerSend
             SendTcpData(toClient, packet);
         }
     }
-    public static void LobbyChange(int toClient)
+    public static void GameStateChange(int toClient)
     {
-        using (Packet packet = new Packet((int)ServerPackets.lobbyChange))
+        using (Packet packet = new Packet((int)ServerPackets.gameState))
         {
+            packet.Write((int) GameManager.instance.currentGameMode.gameModeType);
             packet.Write(GameManager.instance.currentLobbyPreFabName);
             
             SendTcpData(toClient, packet);
@@ -107,7 +108,7 @@ public static class ServerSend
     /// <summary>Tells a client to spawn a player.</summary>
     /// <param name="toClient">The client that should spawn the player.</param>
     /// <param name="player">The player to spawn.</param>
-    public static void PlayerEnter(Player player)
+    public static void PlayerEnter(Player.Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerEnter))
         {
@@ -118,7 +119,7 @@ public static class ServerSend
         }
     }
 
-    public static void PlayerLeave(Player player)
+    public static void PlayerLeave(Player.Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerLeave))
         {
@@ -128,7 +129,7 @@ public static class ServerSend
         }
     }
     
-    public static void PlayerState(Player player)
+    public static void PlayerState(Player.Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerState))
         {

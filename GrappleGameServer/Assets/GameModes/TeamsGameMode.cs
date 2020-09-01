@@ -2,9 +2,9 @@
 
 namespace GameModes
 {
-	public class LastManStandingGameMode : GameMode
+	public class TeamsGameMode : GameMode
 	{
-		public static LastManStandingGameMode instance;
+		public static TeamsGameMode instance;
 		
 		public override void OnLoad()
 		{

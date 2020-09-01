@@ -5,21 +5,35 @@ namespace Player.Trooper.LocalTrooper
 {
     public class GrapplingGun : MonoBehaviour
     {
+        public static GrapplingGun instance;
+        
+        void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Debug.Log("Instance already exists, destroying object!");
+                Destroy(this);
+            }
+        }
+        
         [SerializeField] private Transform player;
         [SerializeField] private GameObject pointer;
         [SerializeField] private LayerMask whatIsGrappleable, obstructions;
-        [SerializeField] private float maxDistance = 1000f, grappleChangeSpeed;
+        public float maxDistance = 1000f, grappleChangeSpeed;
 
         private Transform gunDirection;
         
-        private Vector3 grapplePoint;
-        private bool grappling;
+        public Vector3 grapplePoint;
+        public bool grappling;
 
         private RaycastHit hit;
         private bool hitting;
         private SpringJoint joint;
         private bool snappingGrapplePoint;
-        private bool playerGrapplePoint;
 
         private void Start()
         {
@@ -29,7 +43,6 @@ namespace Player.Trooper.LocalTrooper
         private void Update()
         {
             snappingGrapplePoint = false;
-            playerGrapplePoint = false;
             hitting = Physics.Raycast(gunDirection.position, gunDirection.forward, out hit, maxDistance, whatIsGrappleable);
             
             GameManager.players[Client.instance.myId].trooper.grapplePoint = grapplePoint;
@@ -57,11 +70,6 @@ namespace Player.Trooper.LocalTrooper
                     hit.point = hit.transform.position;
                     snappingGrapplePoint = true;
                 }
-                else if(hit.transform.CompareTag("Player")) 
-                {
-                    hit.point = hit.transform.position;
-                    playerGrapplePoint = true;
-                }
             }
             
             if (!grappling && hitting)
@@ -86,7 +94,7 @@ namespace Player.Trooper.LocalTrooper
             joint.autoConfigureConnectedAnchor = false;
 
             //set anchor depending on target
-            if (snappingGrapplePoint || playerGrapplePoint)
+            if (snappingGrapplePoint)
             {
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                 grapplePoint = hit.point - hit.transform.position;
@@ -143,11 +151,6 @@ namespace Player.Trooper.LocalTrooper
             if (snappingGrapplePoint)
             {
                 GameManager.players[Client.instance.myId].trooper.grappleObjectId = hit.transform.name;
-            }
-            else if (playerGrapplePoint)
-            {
-                GameManager.players[Client.instance.myId].trooper.grappleObjectId = 
-                    "player "+ hit.transform.GetComponentInParent<Player.Trooper.Trooper>().player.id;
             }
             else
             {

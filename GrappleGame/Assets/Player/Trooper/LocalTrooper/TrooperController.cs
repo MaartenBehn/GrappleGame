@@ -8,19 +8,31 @@ namespace Player.Trooper.LocalTrooper
 {
     public class TrooperController : MonoBehaviour
     {
-        private Player.Trooper.Trooper trooper;
-        new Rigidbody rigidbody;
-        private new CapsuleCollider collider;
+        public static TrooperController instance;
+        
+        public Trooper trooper;
+        public new Rigidbody rigidbody;
+        public new CapsuleCollider collider;
         void Awake()
         {
-            trooper = GetComponent<Player.Trooper.Trooper>();
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Debug.Log("Instance already exists, destroying object!");
+                Destroy(this);
+            }
+            
+            trooper = GetComponent<Trooper>();
             rigidbody = GetComponent<Rigidbody>();
             collider = GetComponent<CapsuleCollider>();
         }
         
         public bool grounded = false;
-        bool nearGround = false;
-        Vector3 groundNormal;
+        public bool nearGround = false;
+        public Vector3 groundNormal;
 
         [SerializeField] CinemachineFreeLook cinemachineFreeLook;
         [SerializeField] private LayerMask groundLayers;

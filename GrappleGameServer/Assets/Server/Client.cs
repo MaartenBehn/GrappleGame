@@ -13,7 +13,7 @@ public class Client
     private const int DataBufferSize = 4096;
 
     public readonly int id;
-    public Player player;
+    public Player.Player player;
     public readonly Tcp tcp;
     public readonly Udp udp;
 
@@ -215,7 +215,7 @@ public class Client
     /// <param name="playerName">The username of the new player.</param>
     public void EnterPlayer(string playerName)
     {
-        player = new Player()
+        player = new Player.Player()
         {
             username = playerName,
             client = this,

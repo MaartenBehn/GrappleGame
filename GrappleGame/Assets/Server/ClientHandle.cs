@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Player.Trooper.LocalTrooper;
 using SharedFiles.Utility;
 using UI;
 using UnityEngine;
@@ -28,10 +29,12 @@ namespace Server
             UIManager.instance.SwitchPanel(PanelType.startPanel);
         }
         
-        public static void LobbyChange(Packet packet)
+        public static void GameStateChange(Packet packet)
         {
+            GameModeType gameModeType = (GameModeType) packet.ReadInt();
             string lobbyName = packet.ReadString();
-            
+
+            GameManager.instance.gameModeType = gameModeType;
             GameManager.instance.LobbyChange(lobbyName);
         }
 
@@ -70,6 +73,10 @@ namespace Server
             GameManager.players[id].trooper.transform.rotation = rotation;
             GameManager.players[id].trooper.velocity = velocity;
             GameManager.players[id].trooper.grounded = grounded;
+
+            if (id != Client.instance.myId) return;
+            TrooperController.instance.rigidbody.velocity = velocity;
+            TrooperController.instance.grounded = grounded;
         }
         
         public static void TrooperGrappleUpdate(Packet packet)
@@ -85,6 +92,10 @@ namespace Server
             GameManager.players[id].trooper.grapplePoint = position;
             GameManager.players[id].trooper.maxDistanceFromGrapple = maxDistanceFromGrapple;
 
+            if (id != Client.instance.myId) return;
+            GrapplingGun.instance.grappling = isGrappling;
+            GrapplingGun.instance.grapplePoint = position;
+            GrapplingGun.instance.maxDistance = maxDistanceFromGrapple;
         }
     }
 }

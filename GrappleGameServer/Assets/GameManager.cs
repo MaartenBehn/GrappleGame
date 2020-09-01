@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         
-        players = new List<Player>();
+        players = new List<Player.Player>();
         
         
     }
@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public LobbyData currentLobbyData;
     [HideInInspector] public string currentLobbyPreFabName;
-    public List<Player> players;
+    public List<Player.Player> players;
 
     public GameMode currentGameMode;
-    
+
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
@@ -61,28 +61,44 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ChangeGameMode(GameMode gameMode)
+    public void ChangeGameState(GameModeType gameModeType, string lobbyName)
     {
+        foreach (Player.Player player in players)
+        {
+            player.state = PlayerState.loadingScreen;
+            ServerSend.PlayerState(player);
+        }
         
-    }
+        if (currentGameMode != null)
+        {
+            currentGameMode.OnUnload();
+        }
 
-    public void LoadLobby(string name)
-    {
+        switch (gameModeType)
+        {
+            case GameModeType.waiting:
+                currentGameMode = new Waiting();
+                break;
+        }
+        
         if (currentLobbyData != null)
         {
             Destroy(currentLobbyData.gameObject);
         }
         
-        GameObject newLobbyPreFab = lobbyPreFabList.Find(gameObject => gameObject.name == name);
+        GameObject newLobbyPreFab = lobbyPreFabList.Find(gameObject => gameObject.name == lobbyName);
         currentLobbyPreFabName = newLobbyPreFab.name;
         currentLobbyData = Instantiate(newLobbyPreFab).GetComponent<LobbyData>();
 
-        foreach (Player player in players)
+        foreach (Player.Player player in players)
         {
-            ServerSend.LobbyChange(player.client.id);
+            ServerSend.GameStateChange(player.client.id);
         }
+        
+        currentGameMode.OnLoad();
+        
     }
-    
+
     private void OnApplicationQuit()
     {
         Server.Stop();

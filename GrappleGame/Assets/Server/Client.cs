@@ -303,7 +303,7 @@ namespace Server
             {
                 { (int)ServerPackets.serverConnection, ClientHandle.ServerConnection },
                 { (int)ServerPackets.gameEnterRejected, ClientHandle.GameEnterRejected },
-                { (int)ServerPackets.lobbyChange, ClientHandle.LobbyChange },
+                { (int)ServerPackets.gameState, ClientHandle.GameStateChange },
                 { (int)ServerPackets.playerEnter, ClientHandle.PlayerEnter },
                 { (int)ServerPackets.playerLeave, ClientHandle.PlayerLeave },
                 { (int)ServerPackets.playerState, ClientHandle.PlayerState },
