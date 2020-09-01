@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Player;
 using SharedFiles.Utility;
 using UnityEngine;
 
@@ -107,34 +108,34 @@ public static class ServerSend
 
     /// <summary>Tells a client to spawn a player.</summary>
     /// <param name="toClient">The client that should spawn the player.</param>
-    /// <param name="player">The player to spawn.</param>
-    public static void PlayerEnter(Player.Player player)
+    /// <param name="playerManager">The player to spawn.</param>
+    public static void PlayerEnter(Player.PlayerManager playerManager)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerEnter))
         {
-            packet.Write(player.client.id);
-            packet.Write(player.username);
+            packet.Write(playerManager.client.id);
+            packet.Write(playerManager.username);
 
-            SendTcpData(player.client.id, packet);
+            SendTcpData(playerManager.client.id, packet);
         }
     }
 
-    public static void PlayerLeave(Player.Player player)
+    public static void PlayerLeave(Player.PlayerManager playerManager)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerLeave))
         {
-            packet.Write(player.client.id);
+            packet.Write(playerManager.client.id);
 
-            SendTcpDataToAll(player.client.id, packet);
+            SendTcpDataToAll(playerManager.client.id, packet);
         }
     }
     
-    public static void PlayerState(Player.Player player)
+    public static void PlayerState(Player.PlayerManager playerManager)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerState))
         {
-            packet.Write(player.client.id);
-            packet.Write((int) player.state);
+            packet.Write(playerManager.client.id);
+            packet.Write((int) playerManager.state);
 
             SendTcpDataToAll(packet);
         }

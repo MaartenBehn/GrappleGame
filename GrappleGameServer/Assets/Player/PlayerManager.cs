@@ -2,7 +2,7 @@
 
 namespace Player
 {
-    public class Player
+    public class PlayerManager
     {
         public string username;
         public Client client;

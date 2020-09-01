@@ -14,7 +14,7 @@
           <e p="Waiting.cs" t="Include" />
         </e>
         <e p="Player" t="Include">
-          <e p="Player.cs" t="Include" />
+          <e p="PlayerManager.cs" t="Include" />
           <e p="Trooper.cs" t="Include" />
         </e>
         <e p="Server" t="Include">

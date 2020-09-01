@@ -57,7 +57,7 @@ namespace Player.Trooper.LocalTrooper
             float mouseVertical = 0.0f;
             float mouseHorizontal = 0.0f;
             
-            if (UIManager.instance.lastActivePanel.panelType == PanelType.inGamePanel)
+            if (UIManager.instance.lastActivePanel.panelType == UIManager.instance.GetCurrentInGamePanel())
             {
                 // Getting movment inputs only if in Game
                 input = Vector3.zero;
@@ -129,7 +129,7 @@ namespace Player.Trooper.LocalTrooper
             
             cinemachineFreeLook.m_YAxis.m_InputAxisName = 
                 grounded && 
-                UIManager.instance.lastActivePanel.panelType == PanelType.inGamePanel ? 
+                UIManager.instance.lastActivePanel.panelType == UIManager.instance.GetCurrentInGamePanel() ? 
                     "Mouse Y" : "";
             cinemachineFreeLook.m_YAxisRecentering.m_enabled = !nearGround;
             

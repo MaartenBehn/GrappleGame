@@ -13,7 +13,7 @@ public class Client
     private const int DataBufferSize = 4096;
 
     public readonly int id;
-    public Player.Player player;
+    public Player.PlayerManager playerManager;
     public readonly Tcp tcp;
     public readonly Udp udp;
 
@@ -215,24 +215,24 @@ public class Client
     /// <param name="playerName">The username of the new player.</param>
     public void EnterPlayer(string playerName)
     {
-        player = new Player.Player()
+        playerManager = new Player.PlayerManager()
         {
             username = playerName,
             client = this,
             state = PlayerState.loadingScreen
         };
 
-        GameManager.instance.players.Add(player);
+        GameManager.instance.players.Add(playerManager);
         ServerDatabase.UpdateServer();
 
         // Send all players to the new player
         foreach (Client client in Server.clients.Values)
         {
-            if (client.player != null)
+            if (client.playerManager != null)
             {
                 if (client.id != id)
                 {
-                    ServerSend.PlayerEnter(client.player);
+                    ServerSend.PlayerEnter(client.playerManager);
                 }
             }
         }
@@ -240,11 +240,13 @@ public class Client
         // Send the new player to all players (including himself)
         foreach (Client client in Server.clients.Values)
         {
-            if (client.player != null)
+            if (client.playerManager != null)
             {
-                ServerSend.PlayerEnter(player);
+                ServerSend.PlayerEnter(playerManager);
             }
         }
+        
+        GameManager.instance.currentGameMode.OnPlayerEnter(playerManager);
     }
 
     /// <summary>Disconnects the client and stops all network traffic.</summary>
@@ -255,14 +257,16 @@ public class Client
         tcp.Disconnect();
         udp.Disconnect();
 
-        if (player == null) return;
-
-        GameManager.instance.players.Remove(player);
+        if (playerManager == null) return;
         
-        player.Disconnect();
+        GameManager.instance.currentGameMode.OnPlayerLeave(playerManager);
+
+        GameManager.instance.players.Remove(playerManager);
+        
+        playerManager.Disconnect();
 
         ServerDatabase.UpdateServer();
         
-        player = null;
+        playerManager = null;
     }
 }

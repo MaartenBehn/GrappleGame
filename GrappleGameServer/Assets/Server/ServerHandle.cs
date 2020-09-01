@@ -43,7 +43,7 @@ public static class ServerHandle
         Vector3 velocity = packet.ReadVector3();
         bool grounded = packet.ReadBool();
 
-        Server.clients[fromClient].player.trooper.UpdateTransform(position, rotation, velocity, grounded);
+        Server.clients[fromClient].playerManager.trooper.UpdateTransform(position, rotation, velocity, grounded);
     }
     
     public static void TrooperGrappleUpdate(int fromClient, Packet packet)
@@ -53,6 +53,6 @@ public static class ServerHandle
         Vector3 position = packet.ReadVector3();
         float distanceFromGrapple = packet.ReadFloat();
         
-        Server.clients[fromClient].player.trooper.GrappleUpdate(objectId, isGrappling, position, distanceFromGrapple);
+        Server.clients[fromClient].playerManager.trooper.GrappleUpdate(objectId, isGrappling, position, distanceFromGrapple);
     }
 }

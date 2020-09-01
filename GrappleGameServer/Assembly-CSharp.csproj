@@ -50,7 +50,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Player\Player.cs" />
+     <Compile Include="Assets\Player\PlayerManager.cs" />
      <Compile Include="Assets\GameModes\LastManStandingGameMode.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\SharedFiles\Utility\GrappleMath.cs" />

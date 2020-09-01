@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Player;
 using SharedFiles.Utility;
 using UnityEngine;
 
@@ -21,6 +22,11 @@ namespace GameModes
 		public override void OnUnload()
 		{
 			
+		}
+
+		public override void OnPlayerEnter(PlayerManager player)
+		{
+			GameManager.instance.ChangePlayerState(player, PlayerState.inGame);
 		}
 
 		public override void Update()

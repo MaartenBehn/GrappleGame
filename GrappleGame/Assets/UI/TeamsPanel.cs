@@ -1,11 +1,10 @@
-using Server;
 using UnityEngine;
 
 namespace UI
-{ 
-	public class LobbyPanel : UIPanel
+{
+	public class TeamsPanel : UIPanel
 	{
-		public static LobbyPanel instance;
+		public static TeamsPanel instance;
 		
 		private void Awake()
 		{
@@ -19,12 +18,12 @@ namespace UI
 				Destroy(this);
 			}
 
-			panelType = PanelType.connectingPanel;
+			panelType = PanelType.teamsPanel;
 		}
 
 		public override void OnLoad()
 		{
-			Cursor.lockState = CursorLockMode.None;
+			Cursor.lockState = CursorLockMode.Locked;
 		}
 	}
 }

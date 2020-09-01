@@ -32,9 +32,9 @@ namespace UI
 		[SerializeField] private float serverTimeOutTime; // in sec
 		private void Update()
 		{
-			if (GameManager.instance.currentLobby != null)
+			if (GameManager.instance.gameModeType != 0)
 			{
-				UIManager.instance.SwitchPanel(PanelType.lobbyPanel);
+				UIManager.instance.SwitchPanel(UIManager.instance.GetCurrentInGamePanel());
 				return;
 			}
 			

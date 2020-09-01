@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Server;
+using SharedFiles.Utility;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,13 @@ namespace UI
 {
     public enum PanelType
     {
-        startPanel = 0,
-        inGamePanel = 1,
-        pausePanel = 2,
-        settingsPanel = 3,
-        connectingPanel = 4,
-        lobbyPanel = 5
+        startPanel = 1,
+        pausePanel,
+        settingsPanel,
+        connectingPanel,
+        waitingPanel,
+        lastManStandingPanel,
+        teamsPanel
     }
 
     public class UIManager : MonoBehaviour
@@ -25,6 +27,7 @@ namespace UI
 
         List<UIPanel> panelList;
         public UIPanel lastActivePanel;
+        private Dictionary<GameModeType, PanelType> inGamePanels;
 
         private void Awake()
         {
@@ -52,22 +55,38 @@ namespace UI
                 gameSettings.currentResolution.x,
                 gameSettings.currentResolution.y,
                 gameSettings.fullScreen);
+            
+            inGamePanels = new Dictionary<GameModeType, PanelType>();
+            inGamePanels.Add(GameModeType.waiting, PanelType.waitingPanel);
+            inGamePanels.Add(GameModeType.lastManStanding, PanelType.lastManStandingPanel);
+            inGamePanels.Add(GameModeType.teams, PanelType.teamsPanel);
         }
 
         private void Update()
         {
             switch (lastActivePanel.panelType)
             {
-                case PanelType.inGamePanel:
-                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.pausePanel); }
-                    break;
                 case PanelType.pausePanel:
-                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.inGamePanel); }
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(GetCurrentInGamePanel()); }
                     break;
                 case PanelType.settingsPanel:
-                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.inGamePanel); }
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(GetCurrentInGamePanel()); }
+                    break;
+                case PanelType.waitingPanel:
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.pausePanel); }
+                    break;
+                case PanelType.lastManStandingPanel:
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.pausePanel); }
+                    break;
+                case PanelType.teamsPanel:
+                    if (Input.GetKeyDown(KeyCode.Escape)) { SwitchPanel(PanelType.pausePanel); }
                     break;
             }
+        }
+
+        public PanelType GetCurrentInGamePanel()
+        {
+            return inGamePanels[GameManager.instance.gameModeType];
         }
 
         public void SwitchPanel(PanelType type)

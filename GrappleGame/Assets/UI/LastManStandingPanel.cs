@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace UI
 {
-	public class InGamePanel : UIPanel
+	public class LastManStandingPanel : UIPanel
 	{
-		public static InGamePanel instance;
+		public static LastManStandingPanel instance;
 		
 		private void Awake()
 		{
@@ -18,7 +18,7 @@ namespace UI
 				Destroy(this);
 			}
 
-			panelType = PanelType.inGamePanel;
+			panelType = PanelType.lastManStandingPanel;
 		}
 
 		public override void OnLoad()

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameModes;
+using Player;
 using SharedFiles.Lobby;
 using SharedFiles.Utility;
 using UnityEditor.SceneManagement;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         
-        players = new List<Player.Player>();
+        players = new List<Player.PlayerManager>();
         
         
     }
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public LobbyData currentLobbyData;
     [HideInInspector] public string currentLobbyPreFabName;
-    public List<Player.Player> players;
+    public List<Player.PlayerManager> players;
 
     public GameMode currentGameMode;
 
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         ServerDatabase.UpdateServer();
 
-        currentGameMode = new Waiting();
+        ChangeGameState(GameModeType.waiting, startLobby.name);
     }
 
     private void Update()
@@ -63,10 +64,9 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameState(GameModeType gameModeType, string lobbyName)
     {
-        foreach (Player.Player player in players)
+        foreach (PlayerManager player in players)
         {
-            player.state = PlayerState.loadingScreen;
-            ServerSend.PlayerState(player);
+            ChangePlayerState(player, PlayerState.loadingScreen);
         }
         
         if (currentGameMode != null)
@@ -90,13 +90,41 @@ public class GameManager : MonoBehaviour
         currentLobbyPreFabName = newLobbyPreFab.name;
         currentLobbyData = Instantiate(newLobbyPreFab).GetComponent<LobbyData>();
 
-        foreach (Player.Player player in players)
+        foreach (Player.PlayerManager player in players)
         {
             ServerSend.GameStateChange(player.client.id);
         }
         
         currentGameMode.OnLoad();
         
+    }
+
+    public void ChangePlayerState(PlayerManager player, PlayerState state)
+    {
+        if(player.state == state) return;
+        player.state = state;
+
+        switch (state)
+        {
+            case PlayerState.loadingScreen:
+                if (player.trooper != null)
+                {
+                    Destroy(player.trooper.gameObject);
+                }
+                break;
+            case PlayerState.inGame:
+                player.trooper = Instantiate(playerPrefab).GetComponent<Trooper>();
+                player.trooper.player = player;
+                break;
+            case PlayerState.spectator:
+                if (player.trooper != null)
+                {
+                    Destroy(player.trooper.gameObject);
+                }
+                break;
+        }
+        
+        ServerSend.PlayerState(player);
     }
 
     private void OnApplicationQuit()
