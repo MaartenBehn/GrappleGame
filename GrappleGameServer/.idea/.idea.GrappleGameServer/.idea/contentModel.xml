@@ -6,6 +6,31 @@
     <e p="H:\dev\GrappleGame\GrappleGameServer" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="External Libs" t="Include">
+          <e p="SimpleFirebaseUnity" t="Include">
+            <e p="Plugins" t="Include">
+              <e p="Android" t="Include">
+                <e p="AndroidManifest.xml" t="Include" />
+              </e>
+            </e>
+            <e p="Sample" t="Include">
+              <e p="AutoRotate.cs" t="Include" />
+              <e p="MoveControl.cs" t="Include" />
+              <e p="SampleScript.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="DataSnapshot.cs" t="Include" />
+              <e p="Firebase.cs" t="Include" />
+              <e p="FirebaseError.cs" t="Include" />
+              <e p="FirebaseManager.cs" t="Include" />
+              <e p="FirebaseObserver.cs" t="Include" />
+              <e p="FirebaseParam.cs" t="Include" />
+              <e p="FirebaseQueue.cs" t="Include" />
+              <e p="FirebaseRoot.cs" t="Include" />
+              <e p="miniJSON.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="GameManager.cs" t="Include" />
         <e p="GameModes" t="Include">
           <e p="GameMode.cs" t="Include" />
@@ -35,29 +60,6 @@
             <e p="GrappleMath.cs" t="Include" />
             <e p="Packet.cs" t="Include" />
             <e p="ThreadManager.cs" t="Include" />
-          </e>
-        </e>
-        <e p="SimpleFirebaseUnity" t="Include">
-          <e p="Plugins" t="Include">
-            <e p="Android" t="Include">
-              <e p="AndroidManifest.xml" t="Include" />
-            </e>
-          </e>
-          <e p="Sample" t="Include">
-            <e p="AutoRotate.cs" t="Include" />
-            <e p="MoveControl.cs" t="Include" />
-            <e p="SampleScript.cs" t="Include" />
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="DataSnapshot.cs" t="Include" />
-            <e p="Firebase.cs" t="Include" />
-            <e p="FirebaseError.cs" t="Include" />
-            <e p="FirebaseManager.cs" t="Include" />
-            <e p="FirebaseObserver.cs" t="Include" />
-            <e p="FirebaseParam.cs" t="Include" />
-            <e p="FirebaseQueue.cs" t="Include" />
-            <e p="FirebaseRoot.cs" t="Include" />
-            <e p="miniJSON.cs" t="Include" />
           </e>
         </e>
       </e>
