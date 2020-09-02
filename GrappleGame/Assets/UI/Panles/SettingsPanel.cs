@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Panles
 {
 	public class SettingsPanel : UIPanel
 	{
@@ -54,6 +53,8 @@ namespace UI
 
 		public override void OnLoad()
 		{
+			Cursor.lockState = CursorLockMode.None;
+			
 			fullscreenModeDropdown.value = UIManager.gameSettings.fullScreen ? 0 : 1;
 			
 			for (int i = 0; i < resolutions.Count; i++)
@@ -61,6 +62,7 @@ namespace UI
 				if (resolutions[i].height != UIManager.gameSettings.currentResolution.y) continue;
 				resolutionDropdown.value = i;
 			}
+			base.OnLoad();
 		}
 
 		public override void OnUnload()

@@ -1,8 +1,7 @@
-
 using Server;
 using UnityEngine;
 
-namespace UI
+namespace UI.Panles
 {
 	public class ConnectingPanel : UIPanel
 	{
@@ -26,6 +25,7 @@ namespace UI
 		public override void OnLoad()
 		{
 			Cursor.lockState = CursorLockMode.None;
+			base.OnLoad();
 		}
 
 		float timer = 0.0f;

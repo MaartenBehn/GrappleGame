@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 namespace SharedFiles.Lobby
 {
@@ -23,7 +25,8 @@ namespace SharedFiles.Lobby
                 snappingObjects[i].name = "snap " + i;
             }
         }
-        
+
+        public Image preViewImage;
         public GameObject[] snappingObjects;
     }
 }

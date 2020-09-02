@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI
+namespace UI.Panles
 {
 	public class PausePanel : UIPanel
 	{
@@ -24,6 +24,7 @@ namespace UI
 		public override void OnLoad()
 		{
 			Cursor.lockState = CursorLockMode.None;
+			base.OnLoad();
 		}
 	}
 }

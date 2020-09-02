@@ -32,7 +32,7 @@ Last update: 2018-05-20  (by Dikra)
 using System;
 using System.Net;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
     public class FirebaseError : Exception
     {

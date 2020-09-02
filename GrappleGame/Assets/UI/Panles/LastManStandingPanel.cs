@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Panles
 {
 	public class LastManStandingPanel : UIPanel
 	{
@@ -19,11 +19,16 @@ namespace UI
 			}
 
 			panelType = PanelType.lastManStandingPanel;
+			usedOverlays = new[]
+			{
+				OverlayType.healthOverlay
+			};
 		}
 
 		public override void OnLoad()
 		{
 			Cursor.lockState = CursorLockMode.Locked;
+			base.OnLoad();
 		}
 	}
 }

@@ -31,7 +31,7 @@ Last update: 2018-05-20  (by Dikra)
 
 using UnityEngine;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
     public class FirebaseManager : MonoBehaviour
     {

@@ -28,17 +28,15 @@ Last update: 2018-05-20  (by Dikra)
 
 */
 
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Net;
+using System.Text;
+using UnityEngine;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
-    using MiniJSON;
-
 #if !UNITY_WEBGL
     using System.Threading;
 #endif      

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Server;
+﻿using Server;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace UI
+namespace UI.Panles
 {
 	public class StartPanel : UIPanel
 	{
@@ -33,6 +30,7 @@ namespace UI
 			UpdateServers();
 			UpdateServerList();
 			SelectedServerChanged();
+			base.OnLoad();
 		}
 
 		[SerializeField] public TMP_InputField usernameField;

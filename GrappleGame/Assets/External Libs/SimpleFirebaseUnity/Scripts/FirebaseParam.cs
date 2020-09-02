@@ -32,7 +32,7 @@ Last update: 2018-05-20  (by Dikra)
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
 	public struct FirebaseParam
 	{

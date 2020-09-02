@@ -30,14 +30,12 @@ Last update: 2018-05-20  (by Dikra)
 */
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
-    using MiniJSON;
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     public class FirebaseQueue
     {
 
@@ -241,7 +239,7 @@ namespace SimpleFirebaseUnity
         #region PUBLIC FUNCTIONS
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:SimpleFirebaseUnity.FirebaseQueue"/> class.
+        /// Initializes a new instance of the <see cref="T:External_Libs.SimpleFirebaseUnity.Scripts.FirebaseQueue"/> class.
         /// </summary>
         /// <param name="_autoStart">If set to <c>true</c> auto start when a queue added.</param>
         /// <param name="_retryCounterLimit">Number of retries allowed when a request got an error. After limit reached, next command in queue will be stopped (can be restarted manually, starting from the last uncompleted command in queue).</param>
@@ -254,7 +252,7 @@ namespace SimpleFirebaseUnity
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:SimpleFirebaseUnity.FirebaseQueue"/> class.
+        /// Initializes a new instance of the <see cref="T:External_Libs.SimpleFirebaseUnity.Scripts.FirebaseQueue"/> class.
         /// </summary>
         /// <param name="_autoStart">If set to <c>true</c> auto start when a queue added.</param>
         /// <param name="_retryCounterLimit">Number of retries allowed when a request got an error. After limit reached, next command in queue will be stopped (can be restarted manually, starting from the last uncompleted command in queue).</param>
@@ -265,7 +263,7 @@ namespace SimpleFirebaseUnity
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:SimpleFirebaseUnity.FirebaseQueue"/> class.
+        /// Initializes a new instance of the <see cref="T:External_Libs.SimpleFirebaseUnity.Scripts.FirebaseQueue"/> class.
         /// </summary>
         /// <param name="_autoStart">If set to <c>true</c> auto start when a queue added.</param>
         /// <param name="_OnQueueCompleted">Callback which is called when process on last command in queue completed.</param>
@@ -276,7 +274,7 @@ namespace SimpleFirebaseUnity
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:SimpleFirebaseUnity.FirebaseQueue"/> class.
+        /// Initializes a new instance of the <see cref="T:External_Libs.SimpleFirebaseUnity.Scripts.FirebaseQueue"/> class.
         /// </summary>
         /// <param name="_autoStart">If set to <c>true</c> auto start when a queue added.</param>
         public FirebaseQueue(bool _autoStart)

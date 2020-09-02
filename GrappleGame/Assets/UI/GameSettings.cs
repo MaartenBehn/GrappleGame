@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using Server;
 using UnityEngine;
 
-namespace UI
+namespace UI.Panles
 {
 	[Serializable]
 	public class GameSettings

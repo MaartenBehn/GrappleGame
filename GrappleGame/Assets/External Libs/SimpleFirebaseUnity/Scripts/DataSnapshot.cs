@@ -32,10 +32,8 @@ Last update: 2018-05-20  (by Dikra)
 using System.Collections.Generic;
 using System.Security;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
-    using MiniJSON;
-
     public class DataSnapshot
     {
         protected object val_obj;

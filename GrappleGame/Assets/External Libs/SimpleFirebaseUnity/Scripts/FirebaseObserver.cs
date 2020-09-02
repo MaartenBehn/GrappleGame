@@ -29,11 +29,11 @@ Last update: 2018-05-20  (by Dikra)
 
 */
 
-using UnityEngine;
-using System.Collections;
 using System;
+using System.Collections;
+using UnityEngine;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
 	public class FirebaseObserver  {
 

@@ -2,6 +2,7 @@
 using Player.Trooper;
 using SharedFiles.Utility;
 using UI;
+using UI.Panles;
 using UnityEngine;
 
 namespace Server

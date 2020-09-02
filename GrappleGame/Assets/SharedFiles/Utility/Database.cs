@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SimpleFirebaseUnity;
+using External_Libs.SimpleFirebaseUnity.Scripts;
 using UnityEngine;
 
 namespace SharedFiles.Utility

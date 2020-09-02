@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Server;
 using SharedFiles.Utility;
+using UI.Panles;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,13 @@ namespace UI
         connectingPanel,
         waitingPanel,
         lastManStandingPanel,
-        teamsPanel
+        teamsPanel,
+        votePanel
+    }
+    
+    public enum OverlayType
+    {
+        healthOverlay
     }
 
     public class UIManager : MonoBehaviour
@@ -110,6 +117,11 @@ namespace UI
         public void SwitchPanel(int typeId)
         {
             SwitchPanel((PanelType) typeId);
+        }
+
+        public void SetOverlay(OverlayType overlayType, bool active)
+        {
+            
         }
         
         public static void WritSettingsFile()

@@ -1,10 +1,11 @@
+using UI.Panles;
 using UnityEngine;
 
-namespace UI
+namespace UI.Overlays
 {
-	public class TeamsPanel : UIPanel
+	public class HealthOverlay : UIOverlay
 	{
-		public static TeamsPanel instance;
+		public static HealthOverlay instance;
 		
 		private void Awake()
 		{
@@ -18,12 +19,22 @@ namespace UI
 				Destroy(this);
 			}
 
-			panelType = PanelType.teamsPanel;
+			overlayType = OverlayType.healthOverlay;
 		}
 
 		public override void OnLoad()
 		{
-			Cursor.lockState = CursorLockMode.Locked;
+			base.OnLoad();
+		}
+
+		public override void OnUnload()
+		{
+			base.OnUnload();
+		}
+
+		private void Update()
+		{
+			
 		}
 	}
 }

@@ -29,12 +29,12 @@ Last update: 2018-05-20  (by Dikra)
 
 */
 
-using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
-using System.Net;
 using System.Collections;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
-namespace SimpleFirebaseUnity
+namespace External_Libs.SimpleFirebaseUnity.Scripts
 {
     internal class FirebaseRoot : Firebase
     {
@@ -89,7 +89,7 @@ namespace SimpleFirebaseUnity
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleFirebaseUnity.FirebaseRoot"/> class.
+        /// Initializes a new instance of the <see cref="FirebaseRoot"/> class.
         /// </summary>
         /// <param name="_host">Host.</param>
         /// <param name="_cred">Cred.</param>
