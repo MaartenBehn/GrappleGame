@@ -35,7 +35,7 @@ namespace UI.Panles
 			foreach (GameObject lobbyPreFab in GameManager.instance.lobbyPreFabList)
 			{
 				LobbyData lobbyData = lobbyPreFab.GetComponent<LobbyData>();
-				Button voteButton = Instantiate(voteLobbyButtonPreFab, voteLobbyContent.transform).GetComponent<Button>();
+				Button voteButton = Instantiate(voteButtonPreFab, voteLobbyContent.transform).GetComponent<Button>();
 				voteButton.image = lobbyData.preViewImage;
 				voteLobbyButtons.Add(voteButton);
 			}
@@ -43,18 +43,16 @@ namespace UI.Panles
 			voteGameModeButtons = new List<Button>();
 			foreach (GameModeVoteImage gameModeVoteImage in voteGameModeImages)
 			{
-				Button voteButton = Instantiate(voteGameModeButtonPreFab, voteGameModeContent.transform).GetComponent<Button>();
+				Button voteButton = Instantiate(voteButtonPreFab, voteGameModeContent.transform).GetComponent<Button>();
 				voteButton.image = gameModeVoteImage.image;
 				voteGameModeButtons.Add(voteButton);
 			}
 		}
 
-		[SerializeField] private GameObject voteLobbyButtonPreFab;
+		[SerializeField] private GameObject voteButtonPreFab;
 		[SerializeField] private GameObject voteLobbyContent;
 		private List<Button> voteLobbyButtons;
-		
 		[SerializeField] List<GameModeVoteImage> voteGameModeImages;
-		[SerializeField] private GameObject voteGameModeButtonPreFab;
 		[SerializeField] private GameObject voteGameModeContent;
 		private List<Button> voteGameModeButtons;
 
