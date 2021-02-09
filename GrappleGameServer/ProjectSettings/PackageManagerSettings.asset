@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ScopedRegistriesSettingsExpanded: 1
-  oneTimeWarningShown: 1
+  oneTimeWarningShown: 0
   m_Registries:
   - m_Id: main
     m_Name: 

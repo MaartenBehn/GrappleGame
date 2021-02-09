@@ -295,7 +295,6 @@ namespace Server
             }
         }
         
-        
         /// <summary>Initializes all necessary client data.</summary>
         private void InitializeClientData()
         {

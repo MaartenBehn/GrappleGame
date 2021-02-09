@@ -2088,6 +2088,7 @@ MonoBehaviour:
   camera: {fileID: 1048683556}
   lobbyPreFabList:
   - {fileID: 1597208937453549524, guid: b13ac1f7e28e3a846b9e56ce0f8e6819, type: 3}
+  - {fileID: 5688199734461982461, guid: 33d50ef842732da4f9fe053c6e696372, type: 3}
   currentLobby: {fileID: 0}
   gameModeType: 0
 --- !u!4 &761847842

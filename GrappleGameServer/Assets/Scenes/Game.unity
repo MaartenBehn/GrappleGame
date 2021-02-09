@@ -439,7 +439,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 4187005777591049097, guid: 39bc75e18c104401b2e73bcc1216b849, type: 3}
   lobbyPreFabList:
   - {fileID: 1597208937453549524, guid: b13ac1f7e28e3a846b9e56ce0f8e6819, type: 3}
-  startLobby: {fileID: 1597208937453549524, guid: b13ac1f7e28e3a846b9e56ce0f8e6819, type: 3}
+  - {fileID: 5688199734461982461, guid: 33d50ef842732da4f9fe053c6e696372, type: 3}
+  startLobby: {fileID: 5688199734461982461, guid: 33d50ef842732da4f9fe053c6e696372, type: 3}
   currentLobbyData: {fileID: 0}
   currentLobbyPreFabName: 
 --- !u!4 &1902706400
